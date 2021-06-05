@@ -1,7 +1,19 @@
-/*
- * Главный файл стилей.
- * Все паршалы подключаются сюда.
- */
+// utils - инструменты
+@import './utils/hidden';
+@import './utils/mixins';
+@import './utils/variables';
 
-// Стили для файла с примером HTML-фрагмента
-@import './example';
+// base - базовые стили
+@import './base/common';
+@import './base/container';
+
+// components - компоненты (кнопки, логотип)
+@import './components/button';
+@import './components/logo';
+
+// layouts - стилизация страниц
+@import './layouts/card';
+@import './layouts/footer';
+@import './layouts/header';
+@import './layouts/modal';
+@import './layouts/pagination';
