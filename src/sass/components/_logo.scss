@@ -1,10 +1,10 @@
 .logo {
   display: flex;
-  height: 24px;
+  align-items: baseline;
+  height: 30px;
 }
 
 .logo__icon {
-  background-color: #fff; /*поставить ссылку на svg и удалить заливку*/
   margin-right: 12px;
 }
 
@@ -13,8 +13,12 @@
 }
 
 .logo__text {
-  color: #fff;
   display: none;
+  color: #fff;
+  font-size: 30px;
+  font-family: 500;
+  font-style: normal;
+  line-height: 1.172;
 }
 
 @media screen and (min-width: 768px) {

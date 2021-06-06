@@ -1,37 +1,43 @@
 header {
   background-color: rgba(0, 0, 0, 0.56);
-  background-image: url(#);
+  background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
+    url(../../src/images/header/main/main-mobile.jpg);
   background-repeat: no-repeat;
   background-size: cover;
 }
 
 @media (min-resolution: 2dppx) {
   header {
-    background-image: url(#);
+    background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
+      url(../../src/images/header/main/main-mobile@2x.jpg);
   }
 }
 
 @media screen and (min-width: 768px) {
   header {
-    background-image: url(#);
+    background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
+      url(../../src/images/header/main/main-tablet.jpg);
   }
 }
 
 @media screen and (min-width: 768px) and (min-resolution: 2dppx) {
   header {
-    background-image: url(#);
+    background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
+      url(../../src/images/header/main/main-tablet@2x.jpg);
   }
 }
 
 @media screen and (min-width: 1024px) {
   header {
-    background-image: url(#);
+    background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
+      url(../../src/images/header/main/main-desk.jpg);
   }
 }
 
 @media screen and (min-width: 1200px) and (min-resolution: 2dppx) {
   header {
-    background-image: url(#);
+    background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
+      url(../../src/images/header/main/main-desk@2x.jpg);
   }
 }
 
@@ -55,12 +61,17 @@ header .container {
 nav {
   display: flex;
   justify-content: space-between;
+  align-items: baseline;
   margin-bottom: 45px;
 }
 
 .navigation__link {
   position: relative;
   color: #fff;
+  font-size: 12px;
+  font-weight: 500;
+  font-style: normal;
+  line-height: 1.172;
 }
 
 .current-page.navigation__link::after {
@@ -85,16 +96,23 @@ nav {
 
 .search__input {
   padding: 0px;
+  padding-bottom: 4px;
   width: 100%;
   background-color: transparent;
   border-top-style: none;
   border-left-style: none;
   border-right-style: none;
   border-bottom-color: #fff;
+  color: #fff;
 }
 
 input::placeholder {
   color: #fff;
+  font-family: Roboto;
+  font-size: 14px;
+  font-weight: 400;
+  font-style: normal;
+  line-height: 1.172;
 }
 
 @media screen and (min-width: 768px) {
@@ -111,19 +129,10 @@ input::placeholder {
 .search__img {
   position: absolute;
   top: 50%;
-  right: 0px;
-  width: 12px;
-  height: 12px;
+  right: -8px;
   transform: translateY(-50%) scale(0.8);
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-image: url(#); /*вписать ссылку*/
-  fill: #fff;
   border: none;
-  border-radius: 5%;
   background-color: transparent;
-  outline: 0;
 }
 
 .search__img:hover {
