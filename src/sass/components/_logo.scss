@@ -1,0 +1,28 @@
+.logo {
+  display: flex;
+  align-items: baseline;
+  height: 30px;
+}
+
+.logo__icon {
+  margin-right: 12px;
+}
+
+.logo__film {
+  fill: #818181;
+}
+
+.logo__text {
+  display: none;
+  color: #fff;
+  font-size: 30px;
+  font-family: 500;
+  font-style: normal;
+  line-height: 1.172;
+}
+
+@media screen and (min-width: 768px) {
+  .logo__text {
+    display: block;
+  }
+}
