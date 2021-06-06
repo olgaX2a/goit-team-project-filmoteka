@@ -1,0 +1,24 @@
+.logo {
+  display: flex;
+  height: 24px;
+}
+
+.logo__icon {
+  background-color: #fff; /*поставить ссылку на svg и удалить заливку*/
+  margin-right: 12px;
+}
+
+.logo__film {
+  fill: #818181;
+}
+
+.logo__text {
+  color: #fff;
+  display: none;
+}
+
+@media screen and (min-width: 768px) {
+  .logo__text {
+    display: block;
+  }
+}
