@@ -1,3 +1,7 @@
+body {
+  font-family: var(--main-font);
+}
+
 h1,
 h2,
 h3,
@@ -17,9 +21,9 @@ ol {
   padding: 0;
 }
 
-// .link {
-//   text-decoration: none;
-// }
+.link {
+  text-decoration: none;
+}
 
 .list {
   list-style: none;
