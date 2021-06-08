@@ -43,6 +43,17 @@ export default {
             })
     },
 
+// получение полного списка жанров 
+    getGenresList() {
+        const url = `${BASE_URL}/genre/${searchOpt.mediaType}/list?api_key=${API_KEY}`;
+        return fetch(url)
+            .then(res => res.json())
+            .then(genres =>{ 
+                console.log(genres);
+                return genres
+            })
+    },
+
 // для работы со страницами (предварительно)
     resetPage() {
         this.page = 1;

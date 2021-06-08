@@ -13,4 +13,5 @@ function movieFullInfo(id) {
     return movieService.getMovieInfoById(id)
 }
 
-mainPage()
+
+
