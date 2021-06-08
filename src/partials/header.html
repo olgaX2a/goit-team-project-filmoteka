@@ -1,30 +1,42 @@
-<header>
+<header class="home__page">
   <div class="container">
     <nav>
-    <a class="logo link" href="#">
-      <svg class="logo__icon" width="24px" height="24px">
-        <use class="logo__film" href="../src/images/spriteHeader.svg#icon-film" width="25px" height="25px" ></use>
-      </svg>
-      <p class="logo__text">Filmoteka</p>
-    </a>
+      <a class="logo link" href="#">
+        <svg class="logo__icon" width="24px" height="24px">
+          <use class="logo__film" href="../src/images/spriteHeader.svg#icon-film" width="25px" height="25px" ></use>
+        </svg>
+        <p class="logo__text">Filmoteka</p>
+      </a>
 
-    <ul class="navigation list">
-      <li class="navigation__item">
-        <a class="navigation__link link current-page" href="#">HOME</a>
-      </li>
-      <li class="navigation__item">
-        <a class="navigation__link link" href="#">MY LIBRARY</a>
-      </li>
-    </ul>
-  </nav>
+      <ul class="navigation list">
+        <li class="navigation__item">
+          <a class="navigation__link link link__home current-page" href="#">Home</a>
+        </li>
+        <li class="navigation__item">
+          <a class="navigation__link link link__library" href="#">My library</a>
+        </li>
+      </ul>
+    </nav>
 
   <form class="search" id="search">
-      <input class="search__input" type="text" name="query" autocomplete="on" placeholder="Поиск фильмов" />
-      <button class="search__img js-search" type="button" title="Search">
-        <svg class="search__icon" width="14px" height="14px">
-          <use class="search__film" href="../src/images/spriteHeader.svg#icon-search" width="14px" height="14px"></use>
-        </svg>
-      </button>
+    <input class="search__input" type="text" name="query" autocomplete="on" placeholder="Поиск фильмов" />
+    <button class="search__img js-search" type="button" title="Search">
+      <svg class="search__icon" width="14px" height="14px">
+        <use class="search__film" href="../src/images/spriteHeader.svg#icon-search" width="14px" height="14px"></use>
+      </svg>
+    </button>
   </form>
+
+  <div class="library__buttons hidden"> <!--hidden-->
+    <ul class="button__list">
+      <li class="button__item">
+        <button class="button" type="button">Watched</button>
+      </li>
+      <li class="button__item">
+        <button class="button" type="button">Queue</button>
+      </li>
+    </ul>
+  </div>
+
   </div>
 </header>
