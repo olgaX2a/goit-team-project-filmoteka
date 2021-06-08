@@ -12,7 +12,7 @@ export default {
 
 // поиск популярных фильмов для вывода на страницу
     fetchTrending() {
-        const url = `${BASE_URL}/trending/${searchOpt.mediaType}/${searchOpt.timeWindow}?api_key=${API_KEY}`;
+        const url = `${BASE_URL}/trending/${searchOpt.mediaType}/${searchOpt.timeWindow}?api_key=${API_KEY}&page=${this.page}`;
         return fetch(url)
         .then(res => res.json())
             .then(movies =>{ 
@@ -23,7 +23,7 @@ export default {
     
 // поиск фильма по названию
     searchMovie() {
-        const url = `${BASE_URL}/search/${searchOpt.mediaType}?api_key=${API_KEY}&query=${searchQuery}`;
+        const url = `${BASE_URL}/search/${searchOpt.mediaType}?api_key=${API_KEY}&query=${this.searchQuery}&page=${this.page}`;
         return fetch(url)
         .then(res => res.json())
             .then(movie =>{ 

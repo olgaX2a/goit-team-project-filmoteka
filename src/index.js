@@ -7,10 +7,9 @@ function mainPage() {
 }
 // для рендера результатов поиска фильма (необходимо дорабатывать)
 function movieSearchResults() {
-    return movieService.movieSearch()
+    return movieService.searchMovie()
 }
 // для рендера полной информации о фильме (необходимо дорабатывать)
-function movieFullInfo() {
-    return movieService.getMovieInfoById()
+function movieFullInfo(id) {
+    return movieService.getMovieInfoById(id)
 }
-
