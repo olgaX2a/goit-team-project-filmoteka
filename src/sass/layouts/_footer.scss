@@ -22,7 +22,7 @@
   }
 }
 
-.text {
+.footer__text {
   margin-top: 0;
   justify-content: center;
   align-items: center;
@@ -39,20 +39,20 @@
   margin-left: 3px;
 }
 
-.link {
+.footer__link {
   color: #545454;
   margin-left: 3px;
   text-decoration: underline;
 }
 
 @media (min-width: 320px) {
-  .text {
+  .footer__text {
     margin-bottom: 10px;
   }
 }
 
 @media (min-width: 768px) {
-  .text {
+  .footer__text {
     display: inline;
   }
 }
