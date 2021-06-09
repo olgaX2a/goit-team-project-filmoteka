@@ -13,7 +13,7 @@
 .modal .modal_content {
     background-color: #fefefe;
     margin: 15% auto;
-    padding: 20px;
+    // padding: 20px;
     border: 1px solid #888;
     width: 80%;
     z-index: 99999;
@@ -34,20 +34,20 @@ li{
     list-style: none;
 }
 
-    .img__film {
-        padding-bottom: 30.5px;
-        @media screen and (min-width: 768px) {
-            padding-bottom: 146.5px;
-        }
-    }
+.container {
+    padding-left: 20px;
+    padding-right: 20px;
+    max-width: 280px;
+    max-height: 958px;
+}
 
     .card__title {
         margin-bottom: 20px;
+        margin-top: 30px;
         @include font(500, 20px, 1.15)
     }
 
     .card__modal__item{
-        // width: 67px;
         &:not(:last-child) {
             margin-bottom: 10px;
         }
@@ -55,17 +55,13 @@ li{
         color: #8C8C8C;
     }
 
-    .card__modal__item--change__color {
-        color: #000000;
-    }
-
-    .card__title_info {
+        .card__title_info {
         margin-top: 20px;
         margin-bottom: 10px;
         @include font(500, 12px, 1.33);
     }
 
-    .card__modal__item__text {
+        .card__modal__item__text {
         margin-bottom: 21px;
         @include font(500, 12px, 1.67);
     }
@@ -74,9 +70,11 @@ li{
         display: flex;
     }
 
-    .card__modal__list_rigth{
+        .card__modal__list_rigth{
         margin-right: 41px;
+        width: 68px;
     }
+
 
     .color__vote {
         padding: 1px 10px 1px 10px;
@@ -127,95 +125,250 @@ li{
    padding-bottom: 40px;
 }
 
-@media screen and (min-width: 320px) {
-
-    .container {
-    // width: 240px;
-    // padding-top:42px;
-    padding-left: 0px;
-    padding-right: 0px;
-    display: flex;
-    flex-direction: column;
-    }
-
-    .modal .modal_content {
-    background-color: #fefefe;
-    margin: 15% auto;
-    // padding: 20px;
-    padding-left: 20px;
-    padding-right: 20px;
-    padding-top: 0px;
-    padding-bottom: 0px;
-    border: 1px solid #888;
-    width: 85%;
-    z-index: 99999;
+.card_modal_item_more {
+    max-width: 240px;
+    min-height: 236px;
+    @include font(500, 12px, 1.66);
+    font-style: normal;
+    font-family: 'Roboto', sans-serif;;
 }
 
-    .card_modal_item_more{
-        width: 240px;
-        height: 236px;
-    }
+
+.card__modal__item--change__color {
+    color: #000000;
 }
-    
+
 @media screen and (min-width: 768px) {
-
-      .container {
-    // width: 240px;
-    padding-left: 0;
-    padding-right: 0;
-    padding-top: 42px;
-    display: flex;
-    flex-direction: row;
-    // flex-wrap: nowrap;
-    }
-
-    .container__tablet{
-        // padding-top: 42px;
-        margin-left: 32px;
-    }
-
-    .card__title_info {
-    //  margin-bottom: 20px;
-     margin-top: 20px;
-    }
-
-    .card_modal_item_more{
-        width: 264px;
-        height: 236px;
-    }
-
-    .watched {
-        width: 125px;
-        height: 44px;
-    }
-    .queue {
-        width: 125px;
-        height: 44px;
-    }
-}
-
-@media screen and (min-width: 1366px) {
     .container {
-    width: 1366px;
-    }
+    padding-left: 28px;
+    padding-right: 30px;
+    max-width: 618px;
+    max-height: 562px;
+}
+
+   .container__info {
+       display: flex;
+       padding-top: 42px;
+   }
+
+   .img__film {
+       width: 264px;
+       height: 373px;
+       padding-right: 32px;
+   }
+
+   .modal .modal_content .close_modal_window {
+       margin-top: 10px;
+       margin-right: -18px;
+   }
+
+   .card_modal_item_more {
+    min-width: 264px;
+    height: 236px;
+}
+
+ .card__title {
+     margin-top: 0px;
+ }
+
+ .watched{
+     width: 125px;
+     height: 44px;
+ }
+
+ .queue{
+      width: 125px;
+     height: 44px;    
+ }
+}
+
+
+// ====================================================================
+
+//     .img__film {
+//         padding-bottom: 30.5px;
+//         @media screen and (min-width: 768px) {
+//             padding-bottom: 146.5px;
+//         }
+//     }
+
+//     .card__title {
+//         margin-bottom: 20px;
+//         @include font(500, 20px, 1.15)
+//     }
+
+//     .card__modal__item{
+//         // width: 67px;
+//         &:not(:last-child) {
+//             margin-bottom: 10px;
+//         }
+//         @include font(500, 12px, 1.33);
+//         color: #8C8C8C;
+//     }
+
+//     .card__modal__item--change__color {
+//         color: #000000;
+//     }
+
+//     .card__title_info {
+//         margin-top: 20px;
+//         margin-bottom: 10px;
+//         @include font(500, 12px, 1.33);
+//     }
+
+//     .card__modal__item__text {
+//         margin-bottom: 21px;
+//         @include font(500, 12px, 1.67);
+//     }
+
+//     .container__card {
+//         display: flex;
+//     }
+
+//     .card__modal__list_rigth{
+//         margin-right: 41px;
+//     }
+
+//     .color__vote {
+//         padding: 1px 10px 1px 10px;
+//         background: #FF6B01;
+//         border-radius: 5px;
+//         color: #ffffff;
+//     }
+
+//     .color__votes {
+//         padding: 1px 4px 1px 4px;
+//         background-color: #F7F7F7;
+//         border-radius: 5px;
+//         color: #000000;
+//     }
+
+//     .change__background {
+//         padding: 1px 4px 1px 4px;
+//         background: #F7F7F7;
+//         border-radius: 5px;
+//     }
+
+//     .watched{
+//         width: 112px;
+//         height: 44px;
+//         background: #FF6B01;
+//         border-radius: 5px;
+//         // border: 1px solid #000000;
+//         border: none;
+//         @include font(500, 12px, 1.33);
+//         color: #ffffff;
+//         margin-right: 15px;
+//     }
+
+//     .queue{
+//         width: 112px;
+//         height: 44px;
+//         background: white;
+//         border-radius: 5px;
+//         border: 1px solid #000000;
+//         // color: #000000;
+//         @include font(500, 12px, 1.33)
+//     }
+
+// .container__btn{
+//    display: flex;
+//    justify-content: start;
+//    align-items: center;
+//    padding-bottom: 40px;
+// }
+
+// @media screen and (min-width: 320px) {
+
+//     .container {
+//     // width: 240px;
+//     // padding-top:42px;
+//     padding-left: 0px;
+//     padding-right: 0px;
+//     // display: flex;
+//     // flex-direction: column;
+//     }
+
+//     .modal .modal_content {
+//     background-color: #fefefe;
+//     margin: 15% auto;
+//     // padding: 20px;
+//     padding-left: 20px;
+//     padding-right: 20px;
+//     padding-top: 0px;
+//     padding-bottom: 0px;
+//     border: 1px solid #888;
+//     width: 85%;
+//     z-index: 99999;
+// }
+
+//     .card_modal_item_more{
+//         width: 240px;
+//         height: 236px;
+//     }
+// }
     
-    .img__film{
-       padding: 50px 30px 40px 30px;
-    }
+// @media screen and (min-width: 768px) {
 
-        .container__tablet{
-        padding-top: 50px;
-    }
+//       .container {
+//     // width: 240px;
+//     // padding-left: 0;
+//     // padding-right: 0;
+//     padding-top: 42px;
+//     display: flex;
+//     flex-direction: row;
+//     // flex-wrap: nowrap;
+//     max-width: 618px;
+//     margin-left: 30px;
+//     }
 
-        .card_modal_item_more{
-        width: 390px;
-        height: 160px;
-    }
+//     .container__tablet{
+//         // padding-top: 42px;
+//         margin-left: 32px;
+//     }
 
-    .container__btn{
-   justify-content: start;
-   padding-bottom: 102px;
-}
-}
+//     .card__title_info {
+//     //  margin-bottom: 20px;
+//      margin-top: 20px;
+//     }
+
+//     .card_modal_item_more{
+//         width: 264px;
+//         height: 236px;
+//     }
+
+//     .watched {
+//         width: 125px;
+//         height: 44px;
+//     }
+//     .queue {
+//         width: 125px;
+//         height: 44px;
+//     }
+// }
+
+// @media screen and (min-width: 1366px) {
+//     .container {
+//     width: 1366px;
+//     }
+    
+//     .img__film{
+//        padding: 50px 30px 40px 30px;
+//     }
+
+//         .container__tablet{
+//         padding-top: 50px;
+//     }
+
+//         .card_modal_item_more{
+//         width: 390px;
+//         height: 160px;
+//     }
+
+//     .container__btn{
+//    justify-content: start;
+//    padding-bottom: 102px;
+// }
+// }
 
 
