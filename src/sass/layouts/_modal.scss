@@ -25,7 +25,7 @@
     font-size: 35px;
     font-weight: normal;
     cursor: pointer;
-    margin-top: 15px;
+    margin-top: 5px;
     margin-bottom: 5px;
     margin-left: auto;
 }
@@ -99,14 +99,18 @@ li{
     .watched{
         width: 112px;
         height: 44px;
-        background: #FF6B01;
+        background: white;
         border-radius: 5px;
-        // border: 1px solid #000000;
-        border: none;
-        @include font(500, 12px, 1.33);
-        color: #ffffff;
+        border: 1px solid #000000;
         margin-right: 15px;
-    }
+        @include font(500, 12px, 1.33);
+
+          &:hover,
+          &:focus {
+         background-color: #ff6b01;
+         color: white;
+  }
+}
 
     .queue{
         width: 112px;
@@ -114,8 +118,13 @@ li{
         background: white;
         border-radius: 5px;
         border: 1px solid #000000;
-        // color: #000000;
-        @include font(500, 12px, 1.33)
+        @include font(500, 12px, 1.33);
+
+          &:hover,
+          &:focus {
+    background-color: #ff6b01;
+    color: white;
+  }
     }
 
 .container__btn{
@@ -126,8 +135,8 @@ li{
 }
 
 .card_modal_item_more {
-    max-width: 240px;
-    min-height: 236px;
+    // max-width: 240px;
+    // min-height: 236px;
     @include font(500, 12px, 1.66);
     font-style: normal;
     font-family: 'Roboto', sans-serif;;
@@ -165,7 +174,7 @@ li{
    }
 
    .card_modal_item_more {
-    max-width: 264px;
+    // max-width: 264px;
     // height: 236px;
 }
 
@@ -184,7 +193,62 @@ li{
  }
 
  .container__btn {
-     margin-top: -25px;
+     margin-top: 0px;
+ }
+
+ .container__tablet {
+     margin-left: 32px;
+ }
+}
+
+@media screen and (min-width: 1024px) {
+    .container {
+    padding-left: 30px;
+    padding-right: 30px;
+    max-width: 882px;
+    max-height: 568px;
+}
+
+   .container__info {
+       display: flex;
+       padding-top: 50px;
+       max-width: 882px;
+       max-height: 568px;
+   }
+
+   .img__film {
+       width: 396px;
+       height: 478px;
+       margin-bottom: 40px;
+    //    padding-right: 32px;
+   }
+
+   .modal .modal_content .close_modal_window {
+       margin-top: 5px;
+       margin-right: -20px;
+   }
+
+   .card_modal_item_more {
+    // max-width: 396px;
+    // height: 236px;
+}
+
+ .card__title {
+     margin-top: 0px;
+ }
+
+ .watched{
+     width: 136px;
+     height: 44px;
+ }
+
+ .queue{
+      width: 136px;
+     height: 44px;    
+ }
+
+ .container__btn {
+     margin-top: 0px;
  }
 
  .container__tablet {
