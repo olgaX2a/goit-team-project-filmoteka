@@ -149,22 +149,24 @@ li{
    .container__info {
        display: flex;
        padding-top: 42px;
+       max-width: 618px;
+       max-height: 562px;
    }
 
    .img__film {
        width: 264px;
        height: 373px;
-       padding-right: 32px;
+    //    padding-right: 32px;
    }
 
    .modal .modal_content .close_modal_window {
-       margin-top: 10px;
-       margin-right: -18px;
+       margin-top: 5px;
+       margin-right: -40px;
    }
 
    .card_modal_item_more {
-    min-width: 264px;
-    height: 236px;
+    max-width: 264px;
+    // height: 236px;
 }
 
  .card__title {
@@ -179,6 +181,14 @@ li{
  .queue{
       width: 125px;
      height: 44px;    
+ }
+
+ .container__btn {
+     margin-top: -10px;
+ }
+
+ .container__tablet {
+     margin-left: 32px;
  }
 }
 
