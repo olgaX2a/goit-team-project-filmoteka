@@ -1,23 +1,48 @@
-const API_KEY = 'a6a422d110dec9c7fa9eeee757b6f274';
-const BASE_URL = 'https://api.themoviedb.org/3';
+import cardFilm from '../templates/card';
 
-const searchOpt = {
-  mediaType: 'movie',
-  timeWindow: 'week',
-};
+import APi from './apiService.js';
 
-function fetchTrending() {
-  try {
-    const url = `${BASE_URL}/trending/${searchOpt.mediaType}/${searchOpt.timeWindow}?api_key=${API_KEY}`;
-    return fetch(url)
-      .then(res => res.json())
-      .then(movies => {
-        console.log(movies);
-        return movies.results;
-      });
-  } catch (error) {
-    console.log(error);
+
+const cardList = document.querySelector('.card__list');
+
+
+
+async function renderPage() {
+    const trends = await APi.fetchTrending().then((data) => {
+      return data;
+    });
+    const genres = await APi.getGenresList().then((list) => {
+      return list.genres;
+    });
+      const result = await createObj(trends, genres);
+  
+    console.log("result :>> ", result);
+      cardList.insertAdjacentHTML('afterend', cardFilm(result))
   }
+  renderPage();
+
+function createYear(obj) {
+  return obj.release_date ? obj.release_date.slice(0, 4) : "";
 }
 
-export default { fetchTrending };
+function createPoster(obj) {
+  return obj.poster_path
+    ? "https://image.tmdb.org/t/p/w500" + obj.poster_path
+    : "";
+}
+
+function createGenres(obj, list) {
+    const movieGenreList = obj.genre_ids;
+    const movieGenreArray = list.filter(item => movieGenreList.includes(item.id));
+    const normalizedGenres = movieGenreArray.map((el) => el.name).join(', ');
+    return normalizedGenres;
+}
+
+function createObj(data, list) {
+  return data.map((obj) => ({
+    ...obj,
+    release_year: createYear(obj),
+      poster: createPoster(obj),
+    genres: createGenres(obj, list)
+  }));
+}
