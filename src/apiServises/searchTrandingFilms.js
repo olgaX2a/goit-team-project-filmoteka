@@ -4,11 +4,12 @@ const BASE_URL = 'https://api.themoviedb.org/3';
 const searchOpt = {
   mediaType: 'movie',
   timeWindow: 'week',
+  page: '3',
 };
 
 function fetchTrending() {
   try {
-    const url = `${BASE_URL}/trending/${searchOpt.mediaType}/${searchOpt.timeWindow}?api_key=${API_KEY}`;
+    const url = `${BASE_URL}/trending/${searchOpt.mediaType}/${searchOpt.timeWindow}?api_key=${API_KEY}&page=${searchOpt.page}`;
     return fetch(url)
       .then(res => res.json())
       .then(movies => {
