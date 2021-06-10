@@ -27,5 +27,9 @@
   },
   "dependencies": {
     "basiclightbox": "^5.0.4"
+    "jquery": "^3.6.0",
+    "paginationjs": "^2.1.5"
+    
+
   }
 }
