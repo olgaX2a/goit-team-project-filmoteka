@@ -17,7 +17,7 @@ async function renderPage() {
       const result = await createObj(trends, genres);
   
     console.log("result :>> ", result);
-      cardList.insertAdjacentHTML('afterend', cardFilm(result))
+      cardList.insertAdjacentHTML('beforeend', cardFilm(result))
   }
   renderPage();
 
