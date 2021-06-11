@@ -16,7 +16,7 @@ import './js/renderSearch';
 
 
 // pagination
-
+import './js/pagination.js';
 
 
 

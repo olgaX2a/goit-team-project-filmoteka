@@ -17,14 +17,14 @@ export default {
             .catch((error) => console.log(error))
 
     },
-    
+
 // поиск фильма по названию
     searchMovie() {
         const url = `${BASE_URL}/search/${this.mediaType}?api_key=${API_KEY}&query=${this.searchQuery}&page=${this.page}&language=${this.language}`;
         return fetch(url)
             .then(res => res.json())
             .catch((error) => console.log(error))
-            
+
     },
 
 // получение полной информации о фильме
@@ -35,7 +35,7 @@ export default {
             .catch((error) => console.log(error))
     },
 
-// получение полного списка жанров 
+// получение полного списка жанров
     getGenresList() {
         const url = `${BASE_URL}/genre/${this.mediaType}/list?api_key=${API_KEY}&language=${this.language}`;
         return fetch(url)
@@ -66,5 +66,5 @@ export default {
     },
     set language(value) {
         this.searchQuery = value;
-    },    
+    },
 };

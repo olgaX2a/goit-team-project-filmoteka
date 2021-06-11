@@ -1,13 +1,7 @@
-import $ from 'jquery';
-console.log($);
+import API from '../apiServises/apiService.js';
+import pagination from 'paginationjs/dist/pagination.min.js';
 
-console.log(pagination);
-$('#pagination-container').pagination({
-    dataSource: [1, 2, 3, 4, 5, 6, 7,195],
-    callback: function(data, pagination) {
-        // template method of yourself
-        const html = template(data);
-        $('#data-container').html(html);
-    }
-})
-
+$('#pagination-container').pagination({dataSource: [1, 2, 3, 4, 5, 6, 7,  40],
+    pageSize: 5,
+    showGoInput: true,
+    showGoButton: true,})
