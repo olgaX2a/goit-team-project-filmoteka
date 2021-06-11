@@ -1,5 +1,5 @@
 import cardFilm from '../templates/card';
-
+// import pagination from 'paginationjs/dist/pagination.min.js';
 import APi from '../apiServises/apiService';
 import {createObj} from '../apiServises/normalizeResults'
 
@@ -19,3 +19,5 @@ async function renderTrending() {
 }
 // временный вызов функции для тестирования работоспособности, в дальнейшем повесить на слушатель
 renderTrending();
+
+
