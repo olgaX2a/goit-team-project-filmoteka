@@ -1,6 +1,41 @@
 import './sass/main.scss';
+// header
 import './js/navigation';
-import './js/trending';
-import './js/genre';
-import './js/rendering.js';
-import './js/pagination.js';
+
+
+
+
+
+
+// cards
+import './js/renderTrendingFilms';
+import './js/renderSearch';
+
+
+
+
+
+// pagination
+
+
+
+
+
+// modal (with movie full info)
+import './js/modal';
+
+
+
+
+// footer
+
+
+
+
+// footer-modal (with team)
+
+
+
+
+// language changing
+
