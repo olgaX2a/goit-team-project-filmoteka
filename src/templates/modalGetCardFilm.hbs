@@ -1,0 +1,124 @@
+{{!-- <div id="my_modal" class="modal" data-action="{{id}}">
+    <div class="modal_content">
+        <div class="modal__container">
+            <span class="close_modal_window">×</span>
+            <div class="modal__container__info">
+                <img src="https://image.tmdb.org/t/p/w500{{poster_path}}" alt="{{title}}" class="modal__img__film"
+                    alt="Фильм" width="240" height="356" />
+                <div class="modal__container__tablet">
+                    <h2 class="modal__card__title">{{title}}</h2>
+
+                    <div class="modal__container__card">
+                        <ul class="modal__card__modal__list_rigth">
+                            <li class="modal__card__modal__item">
+                                Vote / Votes
+                            </li>
+                            <li class="modal__card__modal__item">
+                                Popularity
+                            </li>
+                            <li class="modal__card__modal__item">
+                                Original Title
+                            </li>
+                            <li class="modal__card__modal__item">
+                                Genre
+                            </li>
+                        </ul>
+
+                        <ul class="modal__card__modal__list_left">
+                            <li class="modal__card__modal__item modal__card__modal__item--change__color__background">
+                                <span class="modal__color__vote">{{vote_average}}</span> /
+                                <span class="modal__color__votes">{{vote_count}}</span>
+                            </li>
+                            <li class="modal__card__modal__item modal__card__modal__item--change__color">
+                                {{popularity}}
+                            </li>
+                            <li class="modal__card__modal__item modal__card__modal__item--change__color">
+                                {{original_title}}
+                            </li>
+                            <li class="modal__card__modal__item modal__card__modal__item--change__color">
+                                {{#each genres}}
+                                <span class="modal__genre__item">{{this.name}}</span>
+                                {{/each}}
+                            </li>
+                        </ul>
+                    </div>
+
+                    <h3 class="modal__card__title_info">ABOUT</h3>
+                    <ul class="modal__card__modal__list__bottom">
+
+                        <li class="modal__card__modal__item__text">
+                            <p class="modal__card_modal_item_more">
+                                {{overview}}
+                            </p>
+                        </li>
+                    </ul>
+                    <div class="modal__container__btn">
+                        <button class="modal__btn__watched">ADD TO WATCHED</button>
+                        <button class="modal__btn__queue">ADD TO QUEUE</button>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+        </div> --}}
+        
+        
+        {{#each}}
+        <div class="modal-card" data-action="{{id}}">
+            <div class="modal__container__info">
+                <img src="https://image.tmdb.org/t/p/w500{{poster_path}}" alt="{{title}}" class="modal__img__film" />
+                <div class="modal__container__tablet">
+                    <h2 class="modal__card__title">{{title}}</h2>
+        
+                    <div class="modal__container__card">
+                        <ul class="modal__card__modal__list_rigth">
+                            <li class="modal__card__modal__item">
+                                Vote / Votes
+                            </li>
+                            <li class="modal__card__modal__item">
+                                Popularity
+                            </li>
+                            <li class="modal__card__modal__item">
+                                Original Title
+                            </li>
+                            <li class="modal__card__modal__item">
+                                Genre
+                            </li>
+                        </ul>
+        
+                        <ul class="modal__card__modal__list_left">
+                            <li class="modal__card__modal__item modal__card__modal__item--change__color__background">
+                                <span class="modal__color__vote">{{vote_average}}</span> /
+                                <span class="modal__color__votes">{{vote_count}}</span>
+                            </li>
+                            <li class="modal__card__modal__item modal__card__modal__item--change__color">
+                                {{popularity}}
+                            </li>
+                            <li class="modal__card__modal__item modal__card__modal__item--change__color">
+                                {{original_title}}
+                            </li>
+                            <li class="modal__card__modal__item modal__card__modal__item--change__color">
+                                {{#each genres}}
+                                <span class="modal__genre__item">{{this.name}}</span>
+                                {{/each}}
+                            </li>
+                        </ul>
+                    </div>
+                    <h3 class="modal__card__title_info">ABOUT</h3>
+                    <ul class="modal__card__modal__list__bottom">
+        
+                        <li class="modal__card__modal__item__text">
+                            <p class="modal__card_modal_item_more">
+                                {{overview}}
+                            </p>
+                        </li>
+                    </ul>
+                    <div class="modal__container__btn">
+                        <button class="modal__btn__watched">ADD TO WATCHED</button>
+                        <button class="modal__btn__queue">ADD TO QUEUE</button>
+                    </div>
+                </div>
+        </div>
+    </div>
+    {{/each}}
