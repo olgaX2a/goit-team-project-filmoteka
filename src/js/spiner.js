@@ -14,7 +14,7 @@ import {renderTrending} from '../js/renderTrendingFilms';
     rotate: 0, // The rotation offset
     animation: 'spinner-line-fade-quick', // The CSS animation name for the lines
     direction: 1, // 1: clockwise, -1: counterclockwise
-    color: '#ffffff', // CSS color or array of colors
+    color: 'grey', // CSS color or array of colors
     fadeColor: 'transparent', // CSS color or array of colors
     top: '50%', // Top position relative to parent
     left: '50%', // Left position relative to parent
@@ -24,7 +24,7 @@ import {renderTrending} from '../js/renderTrendingFilms';
     position: 'absolute', // Element positioning
   };
   
-  const spinerContainer = document.getElementById('spiner__container');
+  const spinerContainer = document.getElementById('spiner');
   const spinner = new Spinner(opts).spin(spinerContainer);
 
   console.log(spinner);
