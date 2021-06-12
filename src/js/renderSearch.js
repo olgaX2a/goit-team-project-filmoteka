@@ -32,5 +32,4 @@ async function renderSearch() {
   // временный вывод в консоль для контроля
   console.log('result :>> ', result);
   cardList.innerHTML = cardFilm(result);
-  APi.incrementPage();
 }
