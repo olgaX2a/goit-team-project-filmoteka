@@ -21,9 +21,9 @@
   margin-left: 30px;
   margin-bottom: 30px;
 
-  // box-shadow: 0px 1px 3px rgb(0 0 0 / 12%), 0px 1px 1px rgb(0 0 0 / 14%),
-  //   0px 2px 1px rgb(0 0 0 / 20%);
-  // border-radius: 0px 0px 4px 4px;
+  box-shadow: 0px 1px 3px rgb(0 0 0 / 12%), 0px 1px 1px rgb(0 0 0 / 14%),
+    0px 2px 1px rgb(0 0 0 / 20%);
+  border-radius: 0px 0px 4px 4px;
 
   @media screen and (min-width: 768px) and (max-width: 1023px) {
     flex-basis: calc(100% / 2 - 30px);

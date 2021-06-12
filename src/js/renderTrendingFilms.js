@@ -1,7 +1,8 @@
 import cardFilm from '../templates/card';
 
 import APi from '../apiServises/apiService';
-import {createObj} from '../apiServises/normalizeResults'
+import {createObj} from '../apiServises/normalizeResults';
+import loading from '../js/spiner';
 
 const cardList = document.querySelector('.card__list');
 
@@ -18,4 +19,11 @@ async function renderTrending() {
     cardList.insertAdjacentHTML('beforeend', cardFilm(result))
 }
 // временный вызов функции для тестирования работоспособности, в дальнейшем повесить на слушатель
-renderTrending();
+
+window.onload = () => {
+  if (renderTrending()) {
+    loading.spinner.stop();
+    console.log(loading.spinner.stop);
+  }
+};
+
