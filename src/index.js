@@ -10,8 +10,8 @@ import './js/navigation';
 import './js/renderTrendingFilms';
 import './js/renderSearch';
 
-
-
+// spiner
+import './js/spiner';
 
 
 // pagination
