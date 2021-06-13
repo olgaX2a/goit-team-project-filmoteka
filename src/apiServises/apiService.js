@@ -10,12 +10,10 @@ export default {
 
 // поиск популярных фильмов для вывода на страницу
   fetchTrending() {
-    console.log(this.page)
         const url = `${BASE_URL}/trending/${this.mediaType}/${this.timeWindow}?api_key=${API_KEY}&page=${this.page}&language=${this.language}`;
         return fetch(url)
             .then(res => res.json())
             .catch((error) => console.log(error))
-
     },
 
 // поиск фильма по названию
@@ -67,10 +65,10 @@ export default {
     set language(value) {
         this.searchQuery = value;
   },
-  get page() {
+  get pages() {
     return this.page;
   },
-  set page(value) {
-    this.page = value;
+  set pages(num) {
+    this.page = num;
   }
 };

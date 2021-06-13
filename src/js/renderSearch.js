@@ -1,5 +1,4 @@
 import cardFilm from '../templates/card';
-
 import APi from '../apiServises/apiService';
 import { createObj } from '../apiServises/normalizeResults';
 import {showSpinner, hideSpinner} from '../js/spiner';
@@ -29,7 +28,7 @@ function onSearchSubmit(event) {
 
 
 
-async function renderSearch() {
+export default async function renderSearch() {
   try {
     const trends = await APi.searchMovie().then(data => {
       return data.results;

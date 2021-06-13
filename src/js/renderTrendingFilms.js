@@ -1,5 +1,4 @@
 import cardFilm from '../templates/card';
-import pagination from 'paginationjs/dist/pagination.min.js';
 import APi from '../apiServises/apiService';
 import { createObj } from '../apiServises/normalizeResults';
 import {showSpinner, hideSpinner} from '../js/spiner';
@@ -30,7 +29,7 @@ homeLink.addEventListener('click', () => {
   renderTrending();
 });
 
-async function renderTrending() {
+export default async function renderTrending() {
   try {
     const trends = await APi.fetchTrending().then(data => {
       return data.results;
