@@ -1,6 +1,5 @@
 const API_KEY = 'a6a422d110dec9c7fa9eeee757b6f274';
 const BASE_URL = 'https://api.themoviedb.org/3'
-
 export default {
     mediaType: 'movie',
     timeWindow: 'week',
@@ -10,7 +9,8 @@ export default {
 
 
 // поиск популярных фильмов для вывода на страницу
-    fetchTrending() {
+  fetchTrending() {
+    console.log(this.page)
         const url = `${BASE_URL}/trending/${this.mediaType}/${this.timeWindow}?api_key=${API_KEY}&page=${this.page}&language=${this.language}`;
         return fetch(url)
             .then(res => res.json())
@@ -66,5 +66,11 @@ export default {
     },
     set language(value) {
         this.searchQuery = value;
-    },
+  },
+  get page() {
+    return this.page;
+  },
+  set page(value) {
+    this.page = value;
+  }
 };

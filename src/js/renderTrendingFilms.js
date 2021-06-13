@@ -1,5 +1,5 @@
 import cardFilm from '../templates/card';
-// import pagination from 'paginationjs/dist/pagination.min.js';
+import pagination from 'paginationjs/dist/pagination.min.js';
 import APi from '../apiServises/apiService';
 import { createObj } from '../apiServises/normalizeResults';
 import {showSpinner, hideSpinner} from '../js/spiner';
@@ -41,7 +41,7 @@ async function renderTrending() {
     const result = await createObj(trends, genres);
 
     // временный вывод в консоль для контроля
-    console.log('result :>> ', result);
+    // console.log('result :>> ', result);
     cardList.innerHTML = cardFilm(result);
   } catch (error) {
     console.log('error :>> ', error);
