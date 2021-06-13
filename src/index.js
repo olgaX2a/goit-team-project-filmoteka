@@ -37,3 +37,7 @@ import './js/modal';
 
 
 // language changing
+
+
+// theme
+import './js/theme';
