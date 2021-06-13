@@ -3,40 +3,72 @@
     <nav>
       <a class="logo link" href="#">
         <svg class="logo__icon" width="24px" height="24px">
-          <use class="logo__film" href="../src/images/spriteHeader.svg#icon-film" width="25px" height="25px" ></use>
+          <use
+            class="logo__film"
+            href="../src/images/sprite.svg#film"
+            width="25px"
+            height="25px"
+          ></use>
         </svg>
         <p class="logo__text">Filmoteka</p>
       </a>
+      
+      <div class="nav__menu">
+        <ul class="navigation list">
+          <li class="navigation__item">
+            <a class="navigation__link link link__home current-page" href="#">Home</a>
+          </li>
+          <li class="navigation__item">
+            <a class="navigation__link link link__library" href="#">My library</a>
+          </li>
+        </ul>
 
-      <ul class="navigation list">
-        <li class="navigation__item">
-          <a class="navigation__link link link__home current-page" href="#">Home</a>
-        </li>
-        <li class="navigation__item">
-          <a class="navigation__link link link__library" href="#">My library</a>
-        </li>
-      </ul>
+        <div class="nav__auth">
+          <button class="button_registration auth__button" type="button">
+            <svg class="button-icon" width="24px" height="24px">
+              <use href="../src/images/sprite.svg#signup"></use>
+            </svg>
+          </button>
+
+          <button class="button_login auth__button" type="button">
+            <svg class="button-icon" width="24px" height="24px">
+              <use href="../src/images/sprite.svg#login"></use>
+            </svg>
+          </button>
+        </div>
+      </div>
     </nav>
 
-  <form class="search" id="search">
-    <input class="search__input" type="text" name="query" autocomplete="on" placeholder="Поиск фильмов" />
-    <button class="search__img js-search" type="button" title="Search">
-      <svg class="search__icon" width="14px" height="14px">
-        <use class="search__film" href="../src/images/spriteHeader.svg#icon-search" width="14px" height="14px"></use>
-      </svg>
-    </button>
-  </form>
+    <form class="search" id="search">
+      <input
+        class="search__input"
+        type="text"
+        name="query"
+        autocomplete="on"
+        placeholder="Поиск фильмов"
+      />
+      <button class="search__img js-search" type="button" title="Search">
+        <svg class="search__icon" width="20px" height="20px">
+          <use
+            class="search__film"
+            href="../src/images/sprite.svg#search"
+            width="20px"
+            height="20px"
+          ></use>
+        </svg>
+      </button>
+    </form>
 
-  <div class="library__buttons hidden"> <!--hidden-->
-    <ul class="button__list list">
-      <li class="button__item">
-        <button class="button" type="button">Watched</button>
-      </li>
-      <li class="button__item">
-        <button class="button" type="button">Queue</button>
-      </li>
-    </ul>
-  </div>
-
+    <div class="library__buttons hidden">
+      <!--hidden-->
+      <ul class="button__list list">
+        <li class="button__item">
+          <button class="button" type="button">Watched</button>
+        </li>
+        <li class="button__item">
+          <button class="button" type="button">Queue</button>
+        </li>
+      </ul>
+    </div>
   </div>
 </header>

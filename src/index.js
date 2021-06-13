@@ -6,6 +6,7 @@ import './js/navigation';
 
 
 
+
 // cards
 import './js/renderTrendingFilms';
 import './js/renderSearch';
@@ -37,3 +38,7 @@ import './js/modal';
 
 
 // language changing
+
+
+//auth
+import './js/user';

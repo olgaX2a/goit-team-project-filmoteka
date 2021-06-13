@@ -112,6 +112,11 @@ nav {
   margin-bottom: 45px;
 }
 
+.nav__menu {
+  display: flex;
+  align-items: center;
+}
+
 .navigation__link {
   position: relative;
   color: #fff;
@@ -136,6 +141,7 @@ nav {
 
 .navigation {
   display: flex;
+  margin-right: 50px;
 }
 
 .navigation__item:not(:last-child) {
