@@ -64,11 +64,27 @@
 }
 
 .card__data {
-  font-family: var(font-family);
+  display: flex;
+  font-family: var(--font-family);
   font-weight: 500;
   font-size: 12px;
   line-height: 1, 33;
   color: var(--accent-color);
+}
+
+.card__vote {
+  display: block;
+  text-align: center;
+  margin-left: 10px;
+  background-color: var(--accent-color);
+  border-radius: 5px;
+  width: 36px;
+}
+.card__rating {
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.17;
+  color: var(--white-color);
 }
 
 .is-hidden {
