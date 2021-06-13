@@ -1,10 +1,10 @@
 {{#each this}}
-<li {{id}} class="card__item">
+<li id="{{id}}" class="card__item">
     <div class="card__thumb">
         <img class="card__photo" src="{{poster}}" alt="{{title}}" width="280" height="402">
     </div>
     <div class="card__info">
-        <h2 class="card__title">{{original_title}}</h2>
+        <h2 class="card__title">{{title}}</h2>
         <p class="card__data">{{genres}} | {{release_year}}</p>
     </div>
 </li>
