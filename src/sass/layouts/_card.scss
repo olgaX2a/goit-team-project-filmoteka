@@ -1,24 +1,10 @@
 .card__section {
   padding-top: 20px;
   padding-bottom: 40px;
-  // background-image: 
-//  url(.././images/photofon/1.jpg);
-  // url(.././images/photofon/2.jpg);
-  // url(.././images/photofon/1.jpg);
-  
-    // background-position: center;
-    // background-size: cover;
-    
-  
-  
-   
+
   @media screen and (min-width: 768px) {
     padding-top: 60px;
     padding-bottom: 50px;
-
-    // background-repeat: no-repeat;
-    // background-position: center;
-    // background-size: cover;
   }
 }
 .card__list {
@@ -81,6 +67,7 @@
 
 .card__data {
   display: flex;
+  margin-bottom: 5px;
   font-family: var(--font-family);
   font-weight: 500;
   font-size: 12px;
