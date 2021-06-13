@@ -8,18 +8,20 @@ import renderSearch from './renderSearch';
 
 $('#pagination-container').pagination({
   dataSource: function (done) {
-    var result = [];
-    for (var i = 1; i <= 1000; i++) {
+    let result = [];
+    let  totalPages = checkValue();
+
+    for (var i = 1; i <= totalPages; i++) {
         result.push(i);
     };
+    // console.log(result)
     done(result);
  },
-  totalNumber: 1000,
       pageSize: 1,
 			showPageNumbers: true,
 			showPrevious: true,
 			showNext: true,
-  autoHidePrevious: true,
+      autoHidePrevious: true,
       autoHideNext: true,
 			showFirstOnEllipsisShow: true,
 			showLastOnEllipsisShow: true,
@@ -27,10 +29,23 @@ $('#pagination-container').pagination({
     API.pages = Number(data);
     $('.paginationjs-pages ul').addClass('pagination-container');;
     $('.paginationjs-pages li').addClass("pagination-button");
-    // renderTrending();
-    renderSearch();
+    if (API.searchQuery === '') {
+      // console.log("renderTrending> " + data);
+      // console.log(API.totalPage);
+      renderTrending();
+    } else {
+      // console.log(API.totalPage);
+      // console.log("renderSearch> " + data);
+      renderSearch();
+    }
+
     },
 })
 
 
 
+function checkValue() {
+  return API.totalPage;
+}
+
+console.log(checkValue());

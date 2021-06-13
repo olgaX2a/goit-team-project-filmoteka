@@ -32,6 +32,8 @@ homeLink.addEventListener('click', () => {
 export default async function renderTrending() {
   try {
     const trends = await APi.fetchTrending().then(data => {
+      APi.totalPages = Number(data.total_pages);
+      // console.dir(APi.totalPages);
       return data.results;
     });
     const genres = await APi.getGenresList().then(list => {

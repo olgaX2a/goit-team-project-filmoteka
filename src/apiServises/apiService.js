@@ -3,9 +3,10 @@ const BASE_URL = 'https://api.themoviedb.org/3'
 export default {
     mediaType: 'movie',
     timeWindow: 'week',
-    searchQuery: 'cat',
+    searchQuery: '',
     page: 1,
     language: 'en',
+    totalPage: 1000,
 
 
 // поиск популярных фильмов для вывода на страницу
@@ -70,5 +71,11 @@ export default {
   },
   set pages(num) {
     this.page = num;
-  }
+  },
+  get totalPages() {
+    return this.totalPage;
+  },
+  set totalPages(num) {
+    this.totalPage = num;
+  },
 };
