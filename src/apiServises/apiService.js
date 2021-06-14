@@ -1,30 +1,29 @@
-const API_KEY = 'a6a422d110dec9c7fa9eeee757b6f274';
-const BASE_URL = 'https://api.themoviedb.org/3'
-
+export const API_KEY = 'a6a422d110dec9c7fa9eeee757b6f274';
+export const BASE_URL = 'https://api.themoviedb.org/3'
 export default {
     mediaType: 'movie',
     timeWindow: 'week',
-    searchQuery: 'cat',
+    searchQuery: '',
     page: 1,
     language: 'en',
+    totalPage: 1000,
 
 
 // поиск популярных фильмов для вывода на страницу
-    fetchTrending() {
+  fetchTrending() {
         const url = `${BASE_URL}/trending/${this.mediaType}/${this.timeWindow}?api_key=${API_KEY}&page=${this.page}&language=${this.language}`;
         return fetch(url)
             .then(res => res.json())
             .catch((error) => console.log(error))
-
     },
-    
+
 // поиск фильма по названию
     searchMovie() {
         const url = `${BASE_URL}/search/${this.mediaType}?api_key=${API_KEY}&query=${this.searchQuery}&page=${this.page}&language=${this.language}`;
         return fetch(url)
             .then(res => res.json())
             .catch((error) => console.log(error))
-            
+
     },
 
 // получение полной информации о фильме
@@ -35,7 +34,7 @@ export default {
             .catch((error) => console.log(error))
     },
 
-// получение полного списка жанров 
+// получение полного списка жанров
     getGenresList() {
         const url = `${BASE_URL}/genre/${this.mediaType}/list?api_key=${API_KEY}&language=${this.language}`;
         return fetch(url)
@@ -66,5 +65,17 @@ export default {
     },
     set language(value) {
         this.searchQuery = value;
-    },    
+  },
+  get pages() {
+    return this.page;
+  },
+  set pages(num) {
+    this.page = num;
+  },
+  get totalPages() {
+    return this.totalPage;
+  },
+  set totalPages(num) {
+    this.totalPage = num;
+  },
 };
