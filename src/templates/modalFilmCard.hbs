@@ -1,0 +1,50 @@
+<div class="modal-card" data-action="{{id}}">
+    <div class="modal__image">
+        <img class="modal_image" src="https://image.tmdb.org/t/p/w500{{poster_path}}" alt="{{title}}" onerror="this.onerror=null;this.src='https://ik.imagekit.io/tc8jxffbcvf/default-movie-portrait_EmJUj9Tda5wa.jpg?tr=fo-auto,di-';"
+/>
+    </div>
+
+    <div class="modal__film__wrapper">
+        <h2 class="modal__film__title">{{title}}</h2>
+        <ul>
+             <p class="modal__item__vote modal__item__text">
+            Vote / Votes <span class="modal__item__average">{{vote_average}}</span>/<span
+                class="modal__item__count">{{vote_count}}</span> </p>
+            <li>
+       <p class="modal__item__popularity modal__item__text">
+            Popularity <span class="modal__item__data">{{popularity}}</span>
+        </p>
+            </li>
+
+            <li>
+            <p class="modal__item__original__title modal__item__text">
+            Original Title <span class="modal__item__title__data">{{original_title}}</span>
+        </p>
+            </li>
+        </ul>
+ 
+        <div class="modal__genres">
+            <p class="modal__genres__item modal__item__text">
+                Genre
+            </p>
+            <p class="modal__genres__list">{{#each genres}}
+                <span class="modal__genres__list__data">{{this.name}}</span>
+                {{/each}}</p>
+
+        </div>
+
+        <p class="modal__about">About</p>
+        <p class="modal__info">
+            {{overview}}
+        </p>
+        <div class="modal__btn__container">
+            <button class="modal__btn">
+                Add to watched
+            </button>
+            <button class="modal__btn">
+                Add to queue
+            </button>
+        </div>
+    </div>
+    <div class="modal-close-btn">Close</div>
+</div>
