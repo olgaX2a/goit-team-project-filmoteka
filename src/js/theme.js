@@ -2,7 +2,7 @@ const chekBox = document.querySelector('#theme-switch-toggle');
 chekBox.addEventListener('change', changeTheme);
 chekBox.addEventListener('change', setLocalStorage);
 console.log(chekBox);
-const body = document.querySelector('.card__section');
+const body = document.querySelector('body');
 
 const Theme = {
   LIGHT: 'light-theme',
