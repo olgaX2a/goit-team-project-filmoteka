@@ -11,6 +11,7 @@ import './js/spiner';
 
 // pagination
 import './js/pagination.js';
+import './js/customPg.js';
 
 
 
