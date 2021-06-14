@@ -1,3 +1,7 @@
+li{
+  list-style: none;
+}
+
 .modal-close-btn {
   display: none;
 
@@ -28,11 +32,11 @@
   }
 }
 
-.genres {
+.modal__genres {
   display: flex;
 }
 
-.image {
+.modal_image {
   display: block;
   margin-right: auto;
   margin-left: auto;
@@ -46,11 +50,11 @@
   }
 }
 
-.cardItem__wrapper {
+.modal__film__wrapper {
   padding: 32px 20px 36px;
 }
 
-.cardItem__name {
+.modal__film__title {
   font-family: 'Roboto', 'Arial', sans-serif;
   font-size: 20px;
   font-weight: 500;
@@ -61,7 +65,7 @@
   text-transform: uppercase;
 }
 
-.cardItem__wrapper p {
+.modal__film__wrapper p {
   font-size: 12px;
   font-weight: 500;
 
@@ -71,13 +75,13 @@
   letter-spacing: 1px;
 }
 
-.cardItem_text {
+.modal__item__text {
   color: #8d8d8d;
   display: flex;
   align-items: center;
 }
 
-.cardItem__vote_average {
+.modal__item__average {
   display: inline-block;
   margin-left: 50px;
   margin-right: 3px;
@@ -90,7 +94,7 @@
   padding: 1px 9px 1px 10px;
 }
 
-.cardItem__vote_count {
+.modal__item__count {
   display: inline-block;
   margin-left: 3px;
   color: rgb(0, 0, 0);
@@ -102,13 +106,13 @@
   line-height: 1.5;
 }
 
-.cardItem___data {
+.modal__item__data {
   margin-left: 63px;
   color: rgb(0, 0, 0);
   font-weight: 500;
 }
 
-.cardItem__title_data {
+.modal__item__title__data {
   margin-left: 46px;
   text-transform: uppercase;
   color: rgb(0, 0, 0);
@@ -122,7 +126,7 @@
   // }
 }
 
-.cardItem__genre {
+.modal__genres__item {
   display: inline-block;
   margin-right: 90px;
   @media screen and (min-width: 320px) and (max-width: 767px) {
@@ -130,36 +134,36 @@
   }
 }
 
-.cardItem__genre_data {
+.modal__genres__list__data {
   color: rgb(0, 0, 0);
   margin-right: 5px;
 }
 
-.cardItem__genreList {
+.modal__genres__list {
   list-style: disc;
   display: block;
   flex-wrap: wrap;
   list-style: disc;
 }
 
-.cardItem__about {
+.modal__about {
   text-transform: uppercase;
   font-weight: 700;
   color: rgb(0, 0, 0);
 }
 
-.cardItem__description {
+.modal__info {
   font-size: 11px;
   color: rgb(0, 0, 0);
 }
 
-// .cardItem__listButton {
+// .modal__btn__container {
 //   display: flex;
 //   text-align: center;
 //   justify-content: space-between;
 // }
 
-.cardItem__button {
+.modal__btn {
   padding: 0 15px;
   font-size: 12px;
   font-family: 'Roboto', 'Arial', sans-serif;
@@ -174,7 +178,7 @@
   width: 134px;
 }
 
-// .cardItem__button:hover {
+// .modal__btn:hover {
 //   background-color: rgb(255, 107, 8);
 //   color: rgb(255, 255, 255);
 //   border: 0;
@@ -192,7 +196,7 @@
     display: flex;
   }
 
-  .image {
+  .modal_image {
     display: block;
     width: auto;
     height: auto;
@@ -210,19 +214,19 @@
     padding: 0;
   }
 
-  .cardItem__wrapper {
+  .modal__film__wrapper {
     width: 370px;
     padding: 10px;
     margin-left: 30px;
   }
 
-  .cardItem__image {
+  .modal__image {
     width: 295px;
     padding-left: 50px;
     padding-bottom: 10px;
   }
 
-  .cardItem__name {
+  .modal__film__title {
     font-size: 25px;
     line-height: 35px;
   }
@@ -235,7 +239,7 @@
     margin-top: 0px;
     display: flex;
   }
-  .image {
+  .modal_image {
     display: block;
     width: auto;
     height: auto;
@@ -243,15 +247,15 @@
     border-radius: 5px;
   }
 
-  .cardItem__wrapper {
+  .modal__film__wrapper {
     width: 423px;
   }
 
-  .cardItem__genreList {
+  .modal__genres__list {
     width: 290px;
   }
 
-  // .cardItem__button {
+  // .modal__btn {
   //   width: 170px;
   // }
 }

@@ -3,6 +3,7 @@ import cardFilm from '../templates/card';
 import APi from '../apiServises/apiService';
 import { createObj } from '../apiServises/normalizeResults';
 import {showSpinner, hideSpinner} from '../js/spiner';
+import { openModal } from './renderMovieInfo';
 
 const cardList = document.querySelector('.card__list');
 const searchRef = document.getElementById('search');
@@ -28,7 +29,6 @@ function onSearchSubmit(event) {
 }
 
 
-
 async function renderSearch() {
   try {
     const trends = await APi.searchMovie().then(data => {
@@ -41,6 +41,9 @@ async function renderSearch() {
     // временный вывод в консоль для контроля
     console.log('result :>> ', result);
     cardList.innerHTML = cardFilm(result);
+    Array.from(cardList.children).forEach(element => {
+      element.addEventListener('click', openModal)
+    })
   } catch (error) {
     console.log('error :>> ', error);
   } finally {

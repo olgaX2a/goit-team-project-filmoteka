@@ -2,26 +2,30 @@ import modalFilmCard from '../templates/modalFilmCard.hbs';
 import * as basicLightbox from 'basiclightbox';
 import 'basiclightbox/dist/basicLightbox.min.css';
 
+
 const apiKey = 'a6a422d110dec9c7fa9eeee757b6f274';
 
-const cardFilm = document.querySelector('.card__list');
+// const cardItems= document.querySelector('.card__item');
+// cardItems.addEventListener('click', openModal);
 
-cardFilm.addEventListener('click', openModal);
 
-function fetchOneMovieInfo(movie_id) {
-  const url = `https://api.themoviedb.org/3/movie/${movie_id}?api_key=${apiKey}`;
+
+function getMovieInfoById(movie_id) {
+  console.log(movie_id)
+  const url = `https://api.themoviedb.org/3/movie/${movie_id}?api_key=${apiKey}&language=en`;
   return fetch(url)
     .then(response => response.json())
     .then(data => ({
       ...data,
-      popularity: data.popularity.toFixed(1),
-    }));
+      popularity_rate: data.popularity.toFixed(1),
+    }))
+    .catch((error) => console.log(error));
 }
 
-function openModal(e) {
-  e.preventDefault();
 
-  fetchOneMovieInfo(e.target.data.id)
+export const openModal = (e) => {
+  e.preventDefault();
+  getMovieInfoById(e.currentTarget.id)
     .then(data => {
       if (e.target.nodeName !== 'IMG') return;
 
@@ -48,8 +52,4 @@ function openModal(e) {
       }
 
     })
-    .then(data => {})
-    .catch(error => {
-      console.log('oops!');
-    });
 }
