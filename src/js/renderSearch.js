@@ -31,8 +31,7 @@ function onSearchSubmit(event) {
 export default async function renderSearch() {
   try {
     const trends = await APi.searchMovie().then(data => {
-      APi.totalPages = Number();
-      console.log(APi.totalPage)
+      APi.totalPages = Number(data.total_pages);
       return data.results;
     });
     const genres = await APi.getGenresList().then(list => {

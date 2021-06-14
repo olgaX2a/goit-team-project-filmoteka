@@ -1,5 +1,5 @@
-const API_KEY = 'a6a422d110dec9c7fa9eeee757b6f274';
-const BASE_URL = 'https://api.themoviedb.org/3'
+export const API_KEY = 'a6a422d110dec9c7fa9eeee757b6f274';
+export const BASE_URL = 'https://api.themoviedb.org/3'
 export default {
     mediaType: 'movie',
     timeWindow: 'week',
