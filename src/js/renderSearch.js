@@ -1,7 +1,8 @@
 import cardFilm from '../templates/card';
 import APi from '../apiServises/apiService';
 import { createObj } from '../apiServises/normalizeResults';
-import {showSpinner, hideSpinner} from '../js/spiner';
+import { showSpinner, hideSpinner } from '../js/spiner';
+
 
 const cardList = document.querySelector('.card__list');
 const searchRef = document.getElementById('search');
@@ -31,6 +32,7 @@ function onSearchSubmit(event) {
 export default async function renderSearch() {
   try {
     const trends = await APi.searchMovie().then(data => {
+      console.dir(APi.searchMovie)
       APi.totalPages = Number(data.total_pages);
       return data.results;
     });
@@ -51,3 +53,9 @@ export default async function renderSearch() {
 function clearCardsMarkup() {
   cardList.innerHTML = "";
 }
+
+// function paginationSearch() {
+//   $('#pagination-container').pagination({
+//     dataSource: ``
+//   })
+// }

@@ -18,7 +18,7 @@ const prevDotsRef = document.querySelector('#previous');
 const afterDotsRef = document.querySelector('#after');
 
 
-paginationRef.addEventListener('click', onPaginationClick);
+// paginationRef.addEventListener('click', onPaginationClick);
 
 let currentPage = 1;
 
@@ -120,3 +120,6 @@ function onPaginationClick(event) {
     }
   }
 }
+
+
+
