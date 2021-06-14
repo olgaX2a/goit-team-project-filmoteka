@@ -34,3 +34,8 @@ if (themeInLocal === Theme.DARK) {
   body.classList.add(Theme.DARK);
   chekBox.checked = true;
 }
+if (themeInLocal === Theme.LIGHT) {
+  body.classList.add(Theme.LIGHT);
+  chekBox.checked = true;
+}
+
