@@ -27,3 +27,8 @@ import './js/scrollup';
 
 // language changing
 
+
+
+// theme
+import './js/theme';
+

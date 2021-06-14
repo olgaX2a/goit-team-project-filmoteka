@@ -11,7 +11,8 @@ const createPoster = function(obj) {
 const createGenres = function(obj, list) {
     const movieGenreList = obj.genre_ids;
     const movieGenreArray = list.filter(item => movieGenreList.includes(item.id));
-    const normalizedGenres = movieGenreArray.map((el) => el.name).join(', ');
+    const movieGenreArraySlise = movieGenreArray.slice(0, 3);
+    const normalizedGenres = movieGenreArraySlise.map((el) => el.name).join(', ');
     return normalizedGenres;
 }
 
