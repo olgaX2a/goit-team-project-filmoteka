@@ -1,5 +1,4 @@
 import cardFilm from '../templates/card';
-
 import APi from '../apiServises/apiService';
 import { createObj } from '../apiServises/normalizeResults';
 import {showSpinner, hideSpinner} from '../js/spiner';
@@ -14,7 +13,7 @@ function onSearchSubmit(event) {
   clearCardsMarkup();
 
   APi.searchQuery = event.target.query.value.trim();
-  console.log('APi.searchQuery :>> ', !APi.searchQuery);
+  // console.log('APi.searchQuery :>> ', !APi.searchQuery);
   if (!APi.searchQuery) {
     // временный вывод в консоль, необходимо выкидывать ошибку в разметку
       console.log('Nothing to search');
@@ -29,9 +28,10 @@ function onSearchSubmit(event) {
 
 
 
-async function renderSearch() {
+export default async function renderSearch() {
   try {
     const trends = await APi.searchMovie().then(data => {
+      APi.totalPages = Number(data.total_pages);
       return data.results;
     });
     const genres = await APi.getGenresList().then(list => {
@@ -39,7 +39,7 @@ async function renderSearch() {
     });
     const result = await createObj(trends, genres);
     // временный вывод в консоль для контроля
-    console.log('result :>> ', result);
+    // console.log('result :>> ', result);
     cardList.innerHTML = cardFilm(result);
   } catch (error) {
     console.log('error :>> ', error);

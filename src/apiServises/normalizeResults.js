@@ -15,7 +15,7 @@ const createGenres = function(obj, list) {
     return normalizedGenres;
 }
 
-export const createObj = function(data, list) {
+export const createObj = function (data, list) {
   return data.map((obj) => ({
     ...obj,
     release_year: createYear(obj),
