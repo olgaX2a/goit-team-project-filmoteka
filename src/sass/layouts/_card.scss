@@ -1,9 +1,10 @@
 .card__section {
-  margin-top: 20px;
-  margin-bottom: 40px;
+  padding-top: 20px;
+  padding-bottom: 40px;
+
   @media screen and (min-width: 768px) {
-    margin-top: 60px;
-    margin-bottom: 50px;
+    padding-top: 60px;
+    padding-bottom: 50px;
   }
 }
 .card__list {
@@ -20,10 +21,11 @@
   flex-basis: calc(100% / 1 - 30px);
   margin-left: 30px;
   margin-bottom: 30px;
+  background-color: #fff;
 
-  // box-shadow: 0px 1px 3px rgb(0 0 0 / 12%), 0px 1px 1px rgb(0 0 0 / 14%),
-  //   0px 2px 1px rgb(0 0 0 / 20%);
-  // border-radius: 0px 0px 4px 4px;
+  box-shadow: 0px 1px 3px rgb(0 0 0 / 12%), 0px 1px 1px rgb(0 0 0 / 14%),
+    0px 2px 1px rgb(0 0 0 / 20%);
+  border-radius: 0px 0px 4px 4px;
 
   @media screen and (min-width: 768px) and (max-width: 1023px) {
     flex-basis: calc(100% / 2 - 30px);
@@ -48,6 +50,7 @@
 
 .card__info {
   padding-top: 10px;
+  padding-left: 5px;
   font-family: var(--main-font);
 }
 
@@ -63,11 +66,28 @@
 }
 
 .card__data {
-  font-family: var(font-family);
+  display: flex;
+  margin-bottom: 5px;
+  font-family: var(--font-family);
   font-weight: 500;
   font-size: 12px;
   line-height: 1, 33;
   color: var(--accent-color);
+}
+
+.card__vote {
+  display: block;
+  text-align: center;
+  margin-left: 10px;
+  background-color: var(--accent-color);
+  border-radius: 5px;
+  width: 36px;
+}
+.card__rating {
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.17;
+  color: var(--white-color);
 }
 
 .is-hidden {
