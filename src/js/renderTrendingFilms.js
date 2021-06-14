@@ -1,5 +1,4 @@
 import cardFilm from '../templates/card';
-
 import APi from '../apiServises/apiService';
 import { createObj } from '../apiServises/normalizeResults';
 import {showSpinner, hideSpinner} from '../js/spiner';
@@ -31,9 +30,10 @@ homeLink.addEventListener('click', () => {
   renderTrending();
 });
 
-async function renderTrending() {
+export default async function renderTrending() {
   try {
     const trends = await APi.fetchTrending().then(data => {
+      APi.totalPages = Number(data.total_pages);
       return data.results;
     });
     const genres = await APi.getGenresList().then(list => {
@@ -42,7 +42,7 @@ async function renderTrending() {
     const result = await createObj(trends, genres);
 
     // временный вывод в консоль для контроля
-    console.log('result :>> ', result);
+    // console.log('result :>> ', result);
     cardList.innerHTML = cardFilm(result);
     Array.from(cardList.children).forEach(element => {
       element.addEventListener('click', openModal)
@@ -58,3 +58,6 @@ async function renderTrending() {
 function clearQuery() {
   searchRef.query.value = ""
 }
+
+// временный вызов функции для тестирования работоспособности, в дальнейшем повесить на слушатель
+// renderTrending();

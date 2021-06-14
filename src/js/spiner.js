@@ -34,6 +34,6 @@ export const hideSpinner = function () {
   spinerContainer.classList.add('is-hidden');
 };
 
-console.log(spinner);
+// console.log(spinner);
 
 // export default { spinner };
