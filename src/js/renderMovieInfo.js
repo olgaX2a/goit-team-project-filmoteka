@@ -9,9 +9,8 @@ const apiKey = 'a6a422d110dec9c7fa9eeee757b6f274';
 // cardItems.addEventListener('click', openModal);
 
 
-
 function getMovieInfoById(movie_id) {
-  console.log(movie_id)
+  // console.log(movie_id)
   const url = `https://api.themoviedb.org/3/movie/${movie_id}?api_key=${apiKey}&language=en`;
   return fetch(url)
     .then(response => response.json())
@@ -22,7 +21,6 @@ function getMovieInfoById(movie_id) {
     .catch((error) => console.log(error));
 }
 
-
 export const openModal = (e) => {
   e.preventDefault();
   getMovieInfoById(e.currentTarget.id)
@@ -30,7 +28,7 @@ export const openModal = (e) => {
       if (e.target.nodeName !== 'IMG') return;
 
       const markup = modalFilmCard(data);
-      const modal = basicLightbox.create(markup);
+      const modal = basicLightbox.create(markup)
 
       modal.show();
 
@@ -50,6 +48,5 @@ export const openModal = (e) => {
         modal.close();
         window.removeEventListener('keydown', closeModalHandler);
       }
-
     })
 }

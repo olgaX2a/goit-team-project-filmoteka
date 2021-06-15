@@ -16,7 +16,7 @@ import './js/customPg.js';
 
 
 // modal (with movie full info)
-import './js/modal';
+// import './js/modal';
 
 
 // footer
