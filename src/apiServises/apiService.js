@@ -13,7 +13,7 @@ export default {
 // поиск популярных фильмов для вывода на страницу
   fetchTrending() {
         const url = `${BASE_URL}/trending/${this.mediaType}/${this.timeWindow}?api_key=${API_KEY}&page=${this.page}&language=${this.language}`;
-      this.stringUrl = url;
+    this.stringUrl = url;
       return fetch(url)
             .then(res => res.json())
             .catch((error) => console.log(error))

@@ -3,21 +3,21 @@ const btn = document.getElementById('btn_modal_window');
 const span = document.getElementsByClassName('close_modal_window')[0];
 
 
-btn.addEventListener('click', event => {
-  modal.style.display = 'block';
-  // const element = event.target.value;
-  // fetchFilms(157336);
-});
+// btn.addEventListener('click', event => {
+//   modal.style.display = 'block';
+//   // const element = event.target.value;
+//   // fetchFilms(157336);
+// });
 
-span.addEventListener('click', event => {
-  modal.style.display = 'none';
-});
+// span.addEventListener('click', event => {
+//   modal.style.display = 'none';
+// });
 
-window.addEventListener('click', event => {
-  if (event.target == modal) {
-    modal.style.display = 'none';
-  }
-});
+// window.addEventListener('click', event => {
+//   if (event.target == modal) {
+//     modal.style.display = 'none';
+//   }
+// });
 
 // function fetchFilms(movie_id) {
 //   return fetch(

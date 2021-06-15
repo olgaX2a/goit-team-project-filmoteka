@@ -3,6 +3,7 @@ import APi from '../apiServises/apiService';
 import { createObj } from '../apiServises/normalizeResults';
 import {showSpinner, hideSpinner} from '../js/spiner';
 import { openModal } from './renderMovieInfo';
+// import paginationAPI from './pagination.js';
 
 const searchRef = document.getElementById('search');
 
@@ -41,12 +42,14 @@ export default async function renderTrending() {
     });
     const result = await createObj(trends, genres);
 
+
     // временный вывод в консоль для контроля
     // console.log('result :>> ', result);
     cardList.innerHTML = cardFilm(result);
     Array.from(cardList.children).forEach(element => {
       element.addEventListener('click', openModal)
-    })
+    });
+
   } catch (error) {
     console.log('error :>> ', error);
   }
@@ -59,5 +62,6 @@ function clearQuery() {
   searchRef.query.value = ""
 }
 
+// paginationAPI(APi.totalPages);
 // временный вызов функции для тестирования работоспособности, в дальнейшем повесить на слушатель
 // renderTrending();

@@ -64,3 +64,10 @@
 .arrow-right {
   background-image: url(../images/svg/arrow-right.svg);
 }
+
+.pagination-button.arrow-left:hover,
+.pagination-button.arrow-left:focus,
+.pagination-button.arrow-right:hover,
+.pagination-button.arrow-right:focus {
+  background-color: var(--accent-color);
+}
