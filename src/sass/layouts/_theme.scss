@@ -1,4 +1,4 @@
-body.light-theme {
+.light-theme {
   background-image: url(.././images/photofon/m-light.jpg);
   background-position: center center;
   background-size: cover;
@@ -16,7 +16,7 @@ body.light-theme {
   }
 }
 
-body.dark-theme {
+.dark-theme {
   background-image: linear-gradient(to right, rgba(47, 48, 58, 0.4), rgba(47, 48, 58, 0.4)),
     url(.././images/photofon/m-night.jpg);
   background-position: center;

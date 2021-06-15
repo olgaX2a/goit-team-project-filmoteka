@@ -36,6 +36,10 @@
     width: 274px;
   }
 }
+.card__item:hover {
+  box-shadow: 0px 8px 43px rgba(255, 107, 1, 0.6);
+  transition: 500ms cubic-bezier(0.4, 0, 0.2, 1);
+}
 
 .card__photo {
   width: 100%;
@@ -51,12 +55,12 @@
 .card__info {
   padding-top: 10px;
   padding-left: 5px;
+  padding-bottom: 5px;
   font-family: var(--main-font);
 }
 
 .card__title {
   margin-bottom: 4px;
-
   font-weight: 500;
   font-size: 12px;
   line-height: 1.17;
@@ -67,7 +71,6 @@
 
 .card__data {
   display: flex;
-  margin-bottom: 5px;
   font-family: var(--font-family);
   font-weight: 500;
   font-size: 12px;
