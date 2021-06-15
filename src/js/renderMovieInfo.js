@@ -19,9 +19,10 @@ function getMovieInfoById(movie_id) {
     .catch(error => console.log(error));
 }
 
-export const openModal = e => {
+export const openModal = function (e) {
   e.preventDefault();
-  getMovieInfoById(e.currentTarget.id).then(data => {
+  const targetID = e.currentTarget.id;
+  getMovieInfoById(targetID).then(data => {
     if (e.target.nodeName !== 'IMG') return;
 
     const markup = modalFilmCard(data);

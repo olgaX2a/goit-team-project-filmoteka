@@ -72,14 +72,14 @@ function setQueueToLocal(objToSet) {
   localStorage.setItem('queue', JSON.stringify(objToSet));
 }
 
-function isInWatched(film) {
+function isInWatched(filmId) {
   const watchedList = getWatchedFromLocal();
-  const res = watchedList.find(el => el.id === film.id);
+  const res = watchedList.find(el => el.id === filmId);
   return res ? true : false;
 }
-function isInQueue(film) {
+function isInQueue(filmId) {
   const queueList = getQueueFromLocal();
-  const res = queueList.find(el => el.id === film.id);
+  const res = queueList.find(el => el.id === filmId);
   return res ? true : false;
 }
 
@@ -108,6 +108,8 @@ function removeFilmFromQueue(film) {
   list.splice(indexToRemove, 1);
   setQueueToLocal(list);
 }
+
+function name(params) {}
 
 // end functions
 
