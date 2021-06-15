@@ -5,6 +5,7 @@ import './js/navigation';
 // cards
 import './js/renderTrendingFilms';
 import './js/renderSearch';
+import './js/userLibrary';
 
 // spiner
 import './js/spiner';
@@ -24,8 +25,5 @@ import './js/footer';
 
 // language changing
 
-
-
 // theme
 import './js/theme';
-
