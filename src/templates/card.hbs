@@ -5,7 +5,11 @@
     </div>
     <div class="card__info">
         <h2 class="card__title">{{title}}</h2>
-        <p class="card__data">{{genres}} | {{release_year}}</p>
+        <p class="card__data">{{genres}} | {{release_year}}
+            <span class="card__vote">
+                <span class="card__rating">{{vote_average}}</span>
+            </span>
+        </p>
     </div>
 </li>
 {{/each}}
