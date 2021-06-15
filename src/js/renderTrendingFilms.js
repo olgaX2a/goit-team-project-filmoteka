@@ -3,7 +3,7 @@ import APi from '../apiServises/apiService';
 import { createObj } from '../apiServises/normalizeResults';
 import {showSpinner, hideSpinner} from '../js/spiner';
 import { openModal } from './renderMovieInfo';
-// import paginationAPI from './pagination.js';
+
 
 const searchRef = document.getElementById('search');
 
@@ -62,6 +62,5 @@ function clearQuery() {
   searchRef.query.value = ""
 }
 
-// paginationAPI(APi.totalPages);
 // временный вызов функции для тестирования работоспособности, в дальнейшем повесить на слушатель
 // renderTrending();

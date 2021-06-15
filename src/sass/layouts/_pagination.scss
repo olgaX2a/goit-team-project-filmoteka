@@ -8,12 +8,27 @@
   }
 
   @media screen and (min-width: 768px) {
-    padding: 50px 0 60px 0;
+    padding: 30px 0 30px 0;
   }
 }
 
+.paginationjs-pages > ul {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  @media screen and (min-width: 320px) and (max-width: 768px) {
+    padding: 40px 0;
+  }
+
+  @media screen and (min-width: 768px) {
+    padding: 30px 0 30px 0;
+  }
+}
 .pagination-button:not(:last-child),
-.dots {
+.paginationjs-pages:not(:last-child),
+.dots,
+.paginationjs-ellipsis {
   margin-right: 16px;
 }
 
@@ -26,6 +41,20 @@
   font-family: Roboto;
   font-weight: 500;
   font-size: 12px;
+  line-height: 1.333;
+}
+
+.paginationjs-page {
+  margin-right: 10px;
+  margin-left: 10px;
+  padding: 0;
+  background-color: var(--withe-color);
+  border: none;
+  color: var(--accent-color);
+  cursor: pointer;
+  font-family: Roboto;
+  font-weight: 500;
+  font-size: 17px;
   line-height: 1.333;
 }
 
@@ -65,9 +94,62 @@
   background-image: url(../images/svg/arrow-right.svg);
 }
 
+//////////////////version 2//////
+.pagination-container2 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  @media screen and (min-width: 320px) and (max-width: 768px) {
+    padding: 0 0;
+  }
+
+  @media screen and (min-width: 768px) {
+    padding: 0 0 60px 0;
+  }
+}
+
+.pagination-button2:not(:last-child) {
+  margin-right: 16px;
+}
+
+.pagination-button2 {
+  padding: 0;
+  background-color: var(--withe-color);
+  border: none;
+  color: var(--accent-color);
+  cursor: pointer;
+  font-family: Roboto;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.333;
+}
+
+.arrow-left2,
+.arrow-right2 {
+  width: 40px;
+  height: 40px;
+  border-radius: 5px;
+  background-color: var(--grey-color);
+  transform: matrix(-1, 0, 0, 1, 0, 0);
+  stroke: #000;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.arrow-left2 {
+  background-image: url(../images/svg/arrow-left.svg);
+}
+
+.arrow-right2 {
+  background-image: url(../images/svg/arrow-right.svg);
+}
+
 .pagination-button.arrow-left:hover,
 .pagination-button.arrow-left:focus,
 .pagination-button.arrow-right:hover,
-.pagination-button.arrow-right:focus {
+.pagination-button.arrow-right:focus,
+.pagination-button2.arrow-left2:hover,
+.pagination-button2.arrow-right2:hover {
   background-color: var(--accent-color);
 }
