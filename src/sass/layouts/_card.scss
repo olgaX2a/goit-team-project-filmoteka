@@ -36,7 +36,12 @@
     width: 274px;
   }
 }
-.card__item:hover {
+.card__link {
+  display: block;
+}
+.card__link:hover,
+.card__link:focus {
+  border: none;
   box-shadow: 0px 8px 43px rgba(255, 107, 1, 0.6);
   transition: 500ms cubic-bezier(0.4, 0, 0.2, 1);
 }
