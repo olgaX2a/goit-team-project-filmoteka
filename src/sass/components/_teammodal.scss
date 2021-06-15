@@ -1,0 +1,129 @@
+.lightbox {
+  @include center-flex();
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--animation-duration) var(--timing-function);
+}
+
+.lightbox.is-open {
+  opacity: 1;
+  pointer-events: initial;
+}
+
+.lightbox__overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.lightbox__content {
+  transform: scale(0.95);
+  transition: transform var(--animation-duration) var(--timing);
+}
+
+.lightbox.is-open .lightbox__content {
+  transform: scale(1);
+
+  .user-list {
+    .content-el {
+      width: 200px;
+      &:not(:last-child) {
+        margin-bottom: 10px;
+      }
+    }
+
+    .item-footer {
+      @include font(500, 18px, 22px);
+      text-align: center;
+      color: var(--accent-color);
+
+      display: block;
+      padding: 10px;
+      border-radius: 8px;
+      width: 200px;
+      padding: 15px;
+      @include centeredFlex();
+
+      &:hover,
+      &:focus {
+        background-color: var(--accent-color);
+        color: var(--grey-color);
+      }
+    }
+  }
+
+  @media screen and (min-width: 768px) {
+    .user-list {
+      display: flex;
+      flex-wrap: wrap;
+      width: 420px;
+
+      .content-el:not(:nth-child(2n)) {
+        margin-right: 20px;
+      }
+    }
+  }
+}
+
+.social-links-list {
+  @include center-flex($jc: space-between);
+}
+
+.social-links-item {
+  padding: 12px;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+
+  transition: background-color 250ms var(--timing);
+
+  &:hover {
+    background-color: var(--accent-color);
+  }
+
+  .social-links-list-team:focus & {
+    background-color: var(--accent-color);
+  }
+}
+
+.icon-social-links {
+  fill: #afb1b8;
+
+  transition: fill 250ms var(--timing);
+
+  .social-links-item:hover & {
+    fill: #ffffff;
+  }
+
+  .social-links-list-team:focus & {
+    fill: #ffffff;
+  }
+}
+
+.social-links-list-team {
+  display: block;
+}
+
+// Сетка для планшета
+
+@media screen and (min-width: 768px) and (max-width: 1023 px) {
+  .team-list {
+    flex-wrap: wrap;
+    margin-left: -30px;
+    margin-top: -30px;
+  }
+
+  .team-list-item {
+    flex-basis: calc(100% / 2 - 30px);
+    margin-left: 30px;
+    margin-top: 30px;
+  }
+}
