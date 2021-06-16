@@ -3,7 +3,6 @@ import APi from '../apiServises/apiService';
 import { createObj } from '../apiServises/normalizeResults';
 import {showSpinner, hideSpinner} from '../js/spiner';
 import { openModal } from './renderMovieInfo';
-import paginationAPI from './pagination';
 
 
 const cardList = document.querySelector('.card__list');
@@ -58,3 +57,4 @@ export default async function renderSearch() {
 function clearCardsMarkup() {
   cardList.innerHTML = "";
 }
+

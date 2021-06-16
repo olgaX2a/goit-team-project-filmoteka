@@ -3,7 +3,7 @@ export const BASE_URL = 'https://api.themoviedb.org/3'
 export default {
     mediaType: 'movie',
     timeWindow: 'week',
-    searchQuery: '',
+    searchQuery: 'cat',
     page: 1,
   language: 'en',
     stringUrl: 'https://api.themoviedb.org/3/trending/movie/week?api_key=a6a422d110dec9c7fa9eeee757b6f274&page=1&language=',
