@@ -111,7 +111,7 @@ export function removeFilmFromQueue(film) {
   setQueueToLocal(list);
 }
 
-export function getCorrectWatchButtons(id, watcheBtn) {
+export function getCorrectWatchedButtons(id, watcheBtn) {
   if (isInWatched(id)) {
     renderRemoveFromWatched(watcheBtn);
     return;
