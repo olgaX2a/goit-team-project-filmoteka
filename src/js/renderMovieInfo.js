@@ -26,7 +26,6 @@ export const openModal = (e) => {
   getMovieInfoById(e.currentTarget.id)
     .then(data => {
       if (e.target.nodeName !== 'IMG') return;
-
       const markup = modalFilmCard(data);
       const modal = basicLightbox.create(markup)
 
@@ -50,3 +49,4 @@ export const openModal = (e) => {
       }
     })
 }
+

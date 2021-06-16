@@ -1,4 +1,4 @@
-<div class="modal-card" data-action="{{id}}">
+<div class="modal-card modal-card__scroll" data-action="{{id}}">
             <div class="modal__container__info">
                 <img src="https://image.tmdb.org/t/p/w500{{poster_path}}" alt="{{title}}" class="modal__img__film" />
                 <div class="modal__container__tablet">
@@ -15,8 +15,11 @@
                             <li class="modal__card__modal__item">
                                 Original Title
                             </li>
-                            <li class="modal__card__modal__item modal__card__modal__item--margin">
-                                Genre
+                            <li class="modal__card__modal__item modal__card__modal__item--margin modal__card__modal__item--genres">
+                                <p class="genre__item">Genre</p>
+                                 <p class="genre__item__list"> {{#each genres}}
+                                <span class="modal__genre__item modal__genre__item__genre__color">{{this.name}}</span>
+                                {{/each}} </p>
                             </li>
                         </ul>
         
@@ -31,11 +34,11 @@
                             <li class="modal__card__modal__item modal__card__modal__item--change__color">
                                 {{original_title}}
                             </li>
-                            <li class="modal__card__modal__item modal__card__modal__item--change__color">
+                            {{!-- <li class="modal__card__modal__item modal__card__modal__item--change__color">
                                 {{#each genres}}
                                 <span class="modal__genre__item">{{this.name}}</span>
                                 {{/each}}
-                            </li>
+                            </li> --}}
                         </ul>
                     </div>
                     <h3 class="modal__card__title_info">ABOUT</h3>
