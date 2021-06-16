@@ -1,36 +1,60 @@
-.modal {
-  display: none;
-  position: fixed;
-  z-index: 1;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  overflow: auto;
-  background-color: rgba(0, 0, 0, 0.6);
-  z-index: 1000;
-}
-.modal .modal_content {
-  background-color: #fefefe;
-  margin: 15% auto;
-  // padding: 20px;
-  border: 1px solid #888;
-  width: 80%;
-  z-index: 99999;
+.blocked-scroll {
+  overflow: hidden;
+  // position:fixed;
+  // overflow-y: scroll
 }
 
-.modal .modal_content .close_modal_window {
-  color: #000000;
-  float: right;
-  font-size: 35px;
-  font-weight: normal;
-  cursor: pointer;
+.opened-scroll {
+  overflow: visible;
+}
+
+
+.modal__card__modal__item--genres{
+ display: flex;
+ margin-top: 10px;
+}
+
+.genre__item{
+  margin-right: 79px;
   margin-top: 5px;
-  margin-bottom: 5px;
-  margin-left: auto;
+  @media screen and (min-width: 1024px) {
+    margin-right: 120px;
+  }
 }
 
-li {
+.genre__item__list {
+  margin-top: 5px;
+  display: flex;
+  flex-direction: column;
+}
+
+.modal__genre__item__genre__color {
+  display: flex;
+  width: 100px;
+  font-weight: 500;
+  font-size: 11px;
+  line-height: 1.33;
+  color: #000000;
+
+  &:not(:last-child) {
+    margin-right: 3px;
+  }
+}
+
+
+.modal-card {
+  // position: relative;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-bottom: 40px;
+  width: 280px;
+}
+
+.basicLightbox__placeholder{
+  background-color: white;
+}
+
+li{
   list-style: none;
 }
 
@@ -41,403 +65,343 @@ li {
   max-height: 958px;
 }
 
-.modal__card__title {
-  margin-bottom: 20px;
-  margin-top: 30px;
-  @include font(500, 20px, 1.15);
-}
-
-.card__modal__item {
-  &:not(:last-child) {
-    margin-bottom: 10px;
+  .modal__card__title {
+      margin-bottom: 20px;
+      margin-top: 30px;
+      @include font(500, 20px, 1.15)
   }
-  @include font(500, 12px, 1.33);
-  color: #8c8c8c;
+
+  .modal__card__modal__item{
+      &:not(:last-child) {
+          margin-bottom: 10px;
+      }
+      @include font(500, 11px, 1.33);
+      color: #8C8C8C;
+  }
+
+      .modal__card__title_info {
+      margin-top: 20px;
+      margin-bottom: 10px;
+      @include font(500, 11px, 1.33);
+  }
+
+      .modal__card__modal__item__text {
+      margin-bottom: 21px;
+      @include font(500, 11px, 1.67);
+  }
+
+  .modal__container__card {
+      display: flex;
+      width: 240px;
+  }
+
+      .modal__card__modal__list_rigth{
+      margin-right: 39px;
+      width: 69px;
+  }
+
+  .modal__card__modal__list_left{
+      min-width: 134px;
+  }
+
+  .modal__color__vote {
+      padding: 1px 10px 1px 10px;
+      background: #FF6B01;
+      border-radius: 5px;
+      color: #ffffff;
+  }
+
+  .modal__color__votes {
+      padding: 1px 4px 1px 4px;
+      background-color: #F7F7F7;
+      border-radius: 5px;
+      color: #000000;
+  }
+
+  .modal__change__background {
+      padding: 1px 4px 1px 4px;
+      background: #F7F7F7;
+      border-radius: 5px;
+  }
+
+  .modal__btn__watched{
+      width: 112px;
+      height: 44px;
+      background: white;
+      border: 1px solid #000000;
+      border-radius: 5px;
+      margin-right: 15px;
+      @include font(500, 12px, 1.33);
+
+        &:hover,
+        &:focus {
+          color: white;
+          border: none;
+          background-color: #ff6b01;
+          box-shadow: 0px 8px 43px rgb(255 107 1 / 60%);
+          transition: 500ms cubic-bezier(0.4, 0, 0.2, 1);
+}
 }
 
-.card__title_info {
-  margin-top: 20px;
-  margin-bottom: 10px;
-  @include font(500, 12px, 1.33);
-}
+  .modal__btn__queue{
+      width: 112px;
+      height: 44px;
+      background: white;
+      opacity: 1;
+      border: 1px solid #000000;
+      border-radius: 5px;
+      @include font(500, 12px, 1.33);
 
-.card__modal__item__text {
-  margin-bottom: 21px;
-  @include font(500, 12px, 1.67);
-}
-
-.container__card {
-  display: flex;
-}
-
-.card__modal__list_rigth {
-  margin-right: 41px;
-  width: 68px;
-}
-
-.color__vote {
-  padding: 1px 10px 1px 10px;
-  background: #ff6b01;
-  border-radius: 5px;
-  color: #ffffff;
-}
-
-.color__votes {
-  padding: 1px 4px 1px 4px;
-  background-color: #f7f7f7;
-  border-radius: 5px;
-  color: #000000;
-}
-
-.change__background {
-  padding: 1px 4px 1px 4px;
-  background: #f7f7f7;
-  border-radius: 5px;
-}
-
-.watched {
-  width: 112px;
-  height: 44px;
-  background: white;
-  border-radius: 5px;
-  border: 1px solid #000000;
-  margin-right: 15px;
-  @include font(500, 12px, 1.33);
-
-  &:hover,
-  &:focus {
+        &:hover,
+        &:focus {
+          color: white;
+border: none;
     background-color: #ff6b01;
-    color: white;
+    box-shadow: 0px 8px 43px rgb(255 107 1 / 60%);
+    transition: 500ms cubic-bezier(0.4, 0, 0.2, 1);
+}
   }
+
+.modal__container__btn{
+ display: flex;
+ justify-content: start;
+ align-items: center;
+//  padding-bottom: 40px;
 }
 
-.queue {
-  width: 112px;
-  height: 44px;
-  background: white;
-  border-radius: 5px;
-  border: 1px solid #000000;
-  @include font(500, 12px, 1.33);
-
-  &:hover,
-  &:focus {
-    background-color: #ff6b01;
-    color: white;
-  }
-}
-
-.container__btn {
-  display: flex;
-  justify-content: start;
-  align-items: center;
-  padding-bottom: 40px;
-}
-
-.card_modal_item_more {
+.modal__card_modal_item_more {
   // max-width: 240px;
   // min-height: 236px;
   @include font(500, 12px, 1.66);
   font-style: normal;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Roboto', sans-serif;;
 }
 
-.card__modal__item--change__color {
+
+.modal__card__modal__item--change__color {
+  width: 147px;
   color: #000000;
 }
 
+
 @media screen and (min-width: 768px) {
-  .modal__container {
-    padding-left: 28px;
+
+  .modal-card {
+    // position: relative;
+    padding-left: 30px;
     padding-right: 30px;
-    max-width: 618px;
-    max-height: 562px;
+    padding-bottom: 40px;
+    width: 618px;
+    // margin-top: 15px;
   }
 
-  .container__info {
-    display: flex;
-    padding-top: 42px;
-    max-width: 618px;
-    max-height: 562px;
-  }
 
-  .img__film {
-    width: 264px;
-    height: 373px;
-    //    padding-right: 32px;
-  }
+  .modal__container {
+  padding-left: 28px;
+  padding-right: 30px;
+  max-width: 618px;
+  max-height: 562px;
+}
 
-  .modal .modal_content .close_modal_window {
-    margin-top: 5px;
-    margin-right: -20px;
-  }
+ .modal__container__info {
+     display: flex;
+    //  padding-top: 42px;
+     max-width: 618px;
+     max-height: 562px;
+     margin-top: 0px;
+ }
 
-  // .card_modal_item_more {
-  //   // max-width: 264px;
-  //   // height: 236px;
-  // }
+ .modal__img__film {
+     width: 100%;
+     height: 373px;
+ }
 
-  .modal__card__title {
-    margin-top: 0px;
-  }
+ .modal .modal_content .close_modal_window {
+     margin-top: 5px;
+     margin-right: -20px;
+ }
 
-  .watched {
+
+.modal__card__title {
+   margin-top: 0px;
+}
+
+.modal__watched{
+   width: 125px;
+   height: 44px;
+}
+
+.modal__queue{
     width: 125px;
-    height: 44px;
-  }
+   height: 44px;    
+}
 
-  .queue {
-    width: 125px;
-    height: 44px;
-  }
+.modal__container__btn {
+   margin-top: 0px;
+}
 
-  .container__btn {
-    margin-top: 0px;
-  }
+.modal__container__tablet {
+   margin-left: 30px;
+}
 
-  .container__tablet {
-    margin-left: 32px;
-  }
+.modal__btn__watched{
+      width: 125px;
+      height: 44px;
+}
+
+.modal__btn__queue{
+      width: 125px;
+      height: 44px;
+}
+
+.modal__card__modal__list__bottom{
+width: 264px;
+// max-height: 236px;
+}
+
+.modal__card__modal__list_rigth {
+  margin-right: 39px;
+  min-width: 69px;
+}
+
+.modal__card__modal__item--change__color {
+  width: 178px;
+  color: #000000;
+}
 }
 
 @media screen and (min-width: 1024px) {
-  .modal__container {
+
+  .modal-card {
+    // position: relative;
     padding-left: 30px;
     padding-right: 30px;
-    max-width: 882px;
-    max-height: 568px;
+    padding-bottom: 50px;
+    width: 882px;
+    // margin-top: 15px;
   }
 
-  .container__info {
+  .modal__container {
+  padding-left: 30px;
+  padding-right: 30px;
+  max-width: 882px;
+  max-height: 568px;
+}
+
+ .modal__container__info {
+     display: flex;
+    //  padding-top: 50px;
+     max-width: 882px;
+     max-height: 568px;
+ }
+
+ .modal__img__film {
+     width: 100%;
+     height: 478px;
+    //  margin-bottom: 40px;
+  //    padding-right: 32px;
+ }
+
+ .modal .modal_content .close_modal_window {
+     margin-top: 5px;
+     margin-right: -20px;
+ }
+
+.modal__card__title {
+   margin-top: 0px;
+}
+
+.modal__watched{
+   width: 136px;
+   height: 44px;
+}
+
+.modal__queue{
+   width: 136px;
+   height: 44px;    
+}
+
+.modal__container__btn {
+   margin-top: 0px;
+}
+
+.modal__container__tablet {
+   margin-left: 30px;
+}
+
+.modal__btn__watched{
+      width: 136px;
+      height: 44px;
+}
+
+.modal__btn__queue{
+      width: 136px;
+      height: 44px;
+}
+
+.modal__card__modal__list__bottom{
+width: 396px;
+// height: 160px;
+}
+
+.modal__card__modal__item--change__color{
+  width: 215px;
+}
+
+.modal__genre__item{
+  width: 200px;
+}
+
+.modal__card__modal__list_rigth {
+  margin-right: 83px;
+  min-width: 69px;
+}
+}
+
+.modal-close-btn {
+  display: none;
+
+  @media screen and (max-width: 767px) {
+    position: absolute;
+    top: -14px;
+    left: 0;
     display: flex;
-    padding-top: 50px;
-    max-width: 882px;
-    max-height: 568px;
+    align-items: center;
+    justify-content: center;
+    // margin-bottom: 15px;
+
+    width: 100%;
+    height: 35px;
+
+    font-family: 'Roboto', sans-serif;
+    color: white;
+    background-color: #FF6B01;
   }
 
-  .img__film {
-    width: 396px;
-    height: 478px;
-    margin-bottom: 40px;
-    //    padding-right: 32px;
-  }
+  @media screen and (min-width: 768px) {
+    position: absolute;
+    top: -35px;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    // margin-bottom: 15px;
 
-  .modal .modal_content .close_modal_window {
-    margin-top: 5px;
-    margin-right: -20px;
-  }
+    width: 100%;
+    height: 35px;
 
-  // .card_modal_item_more {
-  //   // max-width: 396px;
-  //   // height: 236px;
-  // }
-
-  .modal__card__title {
-    margin-top: 0px;
-  }
-
-  .watched {
-    width: 136px;
-    height: 44px;
-  }
-
-  .queue {
-    width: 136px;
-    height: 44px;
-  }
-
-  .container__btn {
-    margin-top: 0px;
-  }
-
-  .container__tablet {
-    margin-left: 32px;
+    font-family: 'Roboto', sans-serif;
+    color: white;
+    background-color: #FF6B01;
   }
 }
 
-// ====================================================================
-
-//     .img__film {
-//         padding-bottom: 30.5px;
-//         @media screen and (min-width: 768px) {
-//             padding-bottom: 146.5px;
-//         }
-//     }
-
-//     .card__title {
-//         margin-bottom: 20px;
-//         @include font(500, 20px, 1.15)
-//     }
-
-//     .card__modal__item{
-//         // width: 67px;
-//         &:not(:last-child) {
-//             margin-bottom: 10px;
-//         }
-//         @include font(500, 12px, 1.33);
-//         color: #8C8C8C;
-//     }
-
-//     .card__modal__item--change__color {
-//         color: #000000;
-//     }
-
-//     .card__title_info {
-//         margin-top: 20px;
-//         margin-bottom: 10px;
-//         @include font(500, 12px, 1.33);
-//     }
-
-//     .card__modal__item__text {
-//         margin-bottom: 21px;
-//         @include font(500, 12px, 1.67);
-//     }
-
-//     .container__card {
-//         display: flex;
-//     }
-
-//     .card__modal__list_rigth{
-//         margin-right: 41px;
-//     }
-
-//     .color__vote {
-//         padding: 1px 10px 1px 10px;
-//         background: #FF6B01;
-//         border-radius: 5px;
-//         color: #ffffff;
-//     }
-
-//     .color__votes {
-//         padding: 1px 4px 1px 4px;
-//         background-color: #F7F7F7;
-//         border-radius: 5px;
-//         color: #000000;
-//     }
-
-//     .change__background {
-//         padding: 1px 4px 1px 4px;
-//         background: #F7F7F7;
-//         border-radius: 5px;
-//     }
-
-//     .watched{
-//         width: 112px;
-//         height: 44px;
-//         background: #FF6B01;
-//         border-radius: 5px;
-//         // border: 1px solid #000000;
-//         border: none;
-//         @include font(500, 12px, 1.33);
-//         color: #ffffff;
-//         margin-right: 15px;
-//     }
-
-//     .queue{
-//         width: 112px;
-//         height: 44px;
-//         background: white;
-//         border-radius: 5px;
-//         border: 1px solid #000000;
-//         // color: #000000;
-//         @include font(500, 12px, 1.33)
-//     }
-
-// .container__btn{
-//    display: flex;
-//    justify-content: start;
-//    align-items: center;
-//    padding-bottom: 40px;
+.modal__container__info {
+  margin-top: 21px;
+}
+// @media screen and (min-width:320px) {
+//   .modal__container_info{
+//     width: 280px;
+//   }
 // }
 
-// @media screen and (min-width: 320px) {
-
-//     .container {
-//     // width: 240px;
-//     // padding-top:42px;
-//     padding-left: 0px;
-//     padding-right: 0px;
-//     // display: flex;
-//     // flex-direction: column;
-//     }
-
-//     .modal .modal_content {
-//     background-color: #fefefe;
-//     margin: 15% auto;
-//     // padding: 20px;
-//     padding-left: 20px;
-//     padding-right: 20px;
-//     padding-top: 0px;
-//     padding-bottom: 0px;
-//     border: 1px solid #888;
-//     width: 85%;
-//     z-index: 99999;
-// }
-
-//     .card_modal_item_more{
-//         width: 240px;
-//         height: 236px;
-//     }
-// }
-
-// @media screen and (min-width: 768px) {
-
-//       .container {
-//     // width: 240px;
-//     // padding-left: 0;
-//     // padding-right: 0;
-//     padding-top: 42px;
-//     display: flex;
-//     flex-direction: row;
-//     // flex-wrap: nowrap;
-//     max-width: 618px;
-//     margin-left: 30px;
-//     }
-
-//     .container__tablet{
-//         // padding-top: 42px;
-//         margin-left: 32px;
-//     }
-
-//     .card__title_info {
-//     //  margin-bottom: 20px;
-//      margin-top: 20px;
-//     }
-
-//     .card_modal_item_more{
-//         width: 264px;
-//         height: 236px;
-//     }
-
-//     .watched {
-//         width: 125px;
-//         height: 44px;
-//     }
-//     .queue {
-//         width: 125px;
-//         height: 44px;
-//     }
-// }
-
-// @media screen and (min-width: 1366px) {
-//     .container {
-//     width: 1366px;
-//     }
-
-//     .img__film{
-//        padding: 50px 30px 40px 30px;
-//     }
-
-//         .container__tablet{
-//         padding-top: 50px;
-//     }
-
-//         .card_modal_item_more{
-//         width: 390px;
-//         height: 160px;
-//     }
-
-//     .container__btn{
-//    justify-content: start;
-//    padding-bottom: 102px;
-// }
-// }

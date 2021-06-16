@@ -1,0 +1,18 @@
+.scrollup {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  width: 40px;
+  height: 40px;
+  opacity: 0.3;
+  position: fixed;
+  bottom: 30px;
+  right: 50px;
+  transition: fill 250ms var(--timing), opacity 250ms var(--timing);
+  &:hover,
+  &:focus {
+    fill: var(--accent-color);
+    opacity: 1;
+  }
+}

@@ -3,10 +3,6 @@ import './sass/main.scss';
 import './js/navigation';
 
 
-
-
-
-
 // cards
 import './js/renderTrendingFilms';
 import './js/renderSearch';
@@ -14,27 +10,25 @@ import './js/renderSearch';
 // spiner
 import './js/spiner';
 
-
 // pagination
-
-
-
-
+import './js/pagination.js';
+import './js/customPg.js';
 
 // modal (with movie full info)
-import './js/modal';
+// import './js/modal';
 
-
-
-
-// footer 
-
-
-
+// footer
+import './js/scrollup';
 
 // footer-modal (with team)
+import './js/footer';
+
+// language changing
 
 
+
+// theme
+import './js/theme';
 
 
 // language changing
@@ -42,3 +36,4 @@ import './js/modal';
 
 //auth
 import './js/user';
+

@@ -10,6 +10,8 @@
 // components - компоненты (кнопки, логотип)
 @import './components/button';
 @import './components/logo';
+@import './components/scrollup';
+@import './components/_teammodal';
 
 // layouts - стилизация страниц
 @import './layouts/card';
@@ -17,4 +19,8 @@
 @import './layouts/header';
 @import './layouts/modal';
 @import './layouts/pagination';
+
 @import './layouts/authorization';
+
+@import './layouts/theme';
+
