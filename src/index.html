@@ -31,10 +31,41 @@
     <include src="./partials/pagination.html"></include>
     <include src="./partials/footer.html"></include>
     <include src="./partials/modal.html"></include>
-    <include src="./partials/spiner.html"></include>
+    <include src='./partials/spiner.html'></include>
+    <include src='./partials/authorization.html'></include>
     <include src="./partials/scrollup.html"></include>
     <include src="./partials/teammodal.html"></include>
-
+    
+    <!-- The core Firebase JS SDK is always required and must be listed first
+    <script src="https://www.gstatic.com/firebasejs/8.6.7/firebase.js"></script>
+    
+    TODO: Add SDKs for Firebase products that you want to use
+         https://firebase.google.com/docs/web/setup#available-libraries 
+    <script src="https://www.gstatic.com/firebasejs/8.6.7/firebase-analytics.js"></script>
+    
+    <script>
+      
+      // Your web app's Firebase configuration
+      // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+      var firebaseConfig = {
+        apiKey: "AIzaSyABQXBd2NFX3W2v3R2amAJrQ6tIPkdPgGY",
+        authDomain: "filmoteka-bcf47.firebaseapp.com",
+        databaseURL: "https://filmoteka-bcf47-default-rtdb.firebaseio.com",
+        projectId: "filmoteka-bcf47",
+        storageBucket: "filmoteka-bcf47.appspot.com",
+        messagingSenderId: "185648826361",
+        appId: "1:185648826361:web:8ee72df49c2b966ff25f28",
+        measurementId: "G-TXV83LRCDL"
+      };
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+      firebase.analytics();
+      let database = firebase.database();
+      console.log(database);   
+      // сщздана БД в firebase, но не могу от туда достать пользователя (одного ввела для примера)
+      //консоль выводит какой-то мусор        
+    </script> -->
+    
     <!-- Скрипт идёт последним в разметке. В нём уже подключен главный SASS-файл. -->
     <script src="./index.js"></script>
   </body>
