@@ -1,20 +1,21 @@
 import cardFilm from '../templates/card';
 import APi from '../apiServises/apiService';
 import { createObj } from '../apiServises/normalizeResults';
-import {showSpinner, hideSpinner} from '../js/spiner';
+import { showSpinner, hideSpinner } from '../js/spiner';
 import { openModal } from './renderMovieInfo';
+import refs from './refs';
 
-const searchRef = document.getElementById('search');
+// const searchRef = document.getElementById('search');
 
-const cardList = document.querySelector('.card__list');
+// const cardList = document.querySelector('.card__list');
 
 // отрисовка популярных фильмов при загрузке страницы;
 document.addEventListener('DOMContentLoaded', renderTrending);
 
 // отрисовка популярных фильмов при нажатии на логотип;
-const logoLink = document.querySelector('.logo');
+// const logoLink = document.querySelector('.logo');
 
-logoLink.addEventListener('click', () => {
+refs.logoLink.addEventListener('click', () => {
   clearQuery();
   showSpinner();
   APi.resetPage();
@@ -22,8 +23,8 @@ logoLink.addEventListener('click', () => {
 });
 
 // отрисовка популярных фильмов при нажатии на кнопу HOME;
-const homeLink = document.querySelector('.link__home');
-homeLink.addEventListener('click', () => {
+// const homeLink = document.querySelector('.link__home');
+refs.homeLink.addEventListener('click', () => {
   clearQuery();
   showSpinner();
   APi.resetPage();
@@ -43,20 +44,19 @@ export default async function renderTrending() {
 
     // временный вывод в консоль для контроля
     // console.log('result :>> ', result);
-    cardList.innerHTML = cardFilm(result);
-    Array.from(cardList.children).forEach(element => {
-      element.addEventListener('click', openModal)
-    })
+    refs.cardList.innerHTML = cardFilm(result);
+    // Array.from(cardList.children).forEach(element => {
+    //   element.addEventListener('click', openModal)
+    // })
   } catch (error) {
     console.log('error :>> ', error);
-  }
-  finally {
+  } finally {
     hideSpinner();
   }
 }
 
 function clearQuery() {
-  searchRef.query.value = ""
+  refs.search.query.value = '';
 }
 
 // временный вызов функции для тестирования работоспособности, в дальнейшем повесить на слушатель

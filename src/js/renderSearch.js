@@ -1,11 +1,13 @@
 import cardFilm from '../templates/card';
 import APi from '../apiServises/apiService';
 import { createObj } from '../apiServises/normalizeResults';
-import {showSpinner, hideSpinner} from '../js/spiner';
+import { showSpinner, hideSpinner } from '../js/spiner';
 import { openModal } from './renderMovieInfo';
 
 const cardList = document.querySelector('.card__list');
 const searchRef = document.getElementById('search');
+export const watcheBtn = document.querySelector('.js-modal-watched');
+export const queueBtn = document.querySelector('.js-modal-queue');
 
 searchRef.addEventListener('submit', onSearchSubmit);
 
@@ -17,19 +19,16 @@ function onSearchSubmit(event) {
   // console.log('APi.searchQuery :>> ', !APi.searchQuery);
   if (!APi.searchQuery) {
     // временный вывод в консоль, необходимо выкидывать ошибку в разметку
-      console.log('Nothing to search');
-      return
-  }
-  else {
+    console.log('Nothing to search');
+    return;
+  } else {
     showSpinner();
     APi.resetPage();
-    renderSearch()
+    renderSearch();
   }
 }
 
-
 export default async function renderSearch() {
-
   try {
     const trends = await APi.searchMovie().then(data => {
       APi.totalPages = Number(data.total_pages);
@@ -43,8 +42,8 @@ export default async function renderSearch() {
     // console.log('result :>> ', result);
     cardList.innerHTML = cardFilm(result);
     Array.from(cardList.children).forEach(element => {
-      element.addEventListener('click', openModal)
-    })
+      element.addEventListener('click', openModal);
+    });
   } catch (error) {
     console.log('error :>> ', error);
   } finally {
@@ -53,5 +52,5 @@ export default async function renderSearch() {
 }
 
 function clearCardsMarkup() {
-  cardList.innerHTML = "";
+  cardList.innerHTML = '';
 }
