@@ -1,5 +1,5 @@
 .footer_section {
-  background-color: #ffffff;
+  background-color: rgba(0, 0, 0, 0.56);
 }
 
 .footer.container {
@@ -31,7 +31,7 @@
   font-weight: normal;
   font-size: 14px;
   line-height: 16px;
-  color: #545454;
+  color: var(--accent-color);
 }
 
 .text__indent {
@@ -39,7 +39,7 @@
 }
 
 .footer__link {
-  color: #545454;
+  color: var(--accent-color);
   margin-left: 3px;
   text-decoration: underline;
 }
