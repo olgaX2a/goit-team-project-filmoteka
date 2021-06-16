@@ -1,3 +1,5 @@
+import { pagination } from "../js/pagination.js";
+
 export const API_KEY = 'a6a422d110dec9c7fa9eeee757b6f274';
 export const BASE_URL = 'https://api.themoviedb.org/3'
 export default {

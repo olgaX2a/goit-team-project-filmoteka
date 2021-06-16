@@ -3,6 +3,7 @@ import APi from '../apiServises/apiService';
 import { createObj } from '../apiServises/normalizeResults';
 import {showSpinner, hideSpinner} from '../js/spiner';
 import { openModal } from './renderMovieInfo';
+import { pagination } from './pagination.js';
 
 
 const cardList = document.querySelector('.card__list');
@@ -24,6 +25,7 @@ function onSearchSubmit(event) {
   else {
     showSpinner();
     APi.resetPage();
+    pagination.movePageTo(1);
     renderSearch()
   }
 }
@@ -35,6 +37,7 @@ export default async function renderSearch() {
     const trends = await APi.searchMovie().then(data => {
       console.dir(APi.searchMovie)
       APi.totalPages = Number(data.total_pages);
+      pagination.reset(Number(data.total_pages));
       return data.results;
     });
     const genres = await APi.getGenresList().then(list => {

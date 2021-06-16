@@ -3,6 +3,8 @@ import APi from '../apiServises/apiService';
 import { createObj } from '../apiServises/normalizeResults';
 import {showSpinner, hideSpinner} from '../js/spiner';
 import { openModal } from './renderMovieInfo';
+import { pagination } from './pagination.js';
+
 
 
 const searchRef = document.getElementById('search');
