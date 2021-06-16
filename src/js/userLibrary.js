@@ -30,16 +30,56 @@ export function getFullLibraryFromLocal() {
   return watchedArray.concat(queueArray);
 }
 
+export function onWatchedBtnClick(film) {
+  const action = checkWatchedDataAction();
+  if (action === 'add') {
+    addFilmToWatched(film);
+    renderRemoveFromWatched();
+    return;
+  } else {
+    removeFilmFromWatched(film);
+    renderAddToWatched();
+    return;
+  }
+}
+
+export function onQueueBtnClick(film) {
+  const action = checkQueueDataAction();
+  if (action === 'add') {
+    addFilmToQueue(film);
+    return;
+  } else {
+    removeFilmFromQueue(film);
+    return;
+  }
+}
+
 export function addFilmToWatched(film) {
   const userWatched = getWatchedFromLocal();
   userWatched.push(film);
   setWatchedToLocal(userWatched);
+  refs.watchedBtn.setAttribute('data-action', 'remove');
 }
 
 export function addFilmToQueue(film) {
   const userQueue = getQueueFromLocal();
   userQueue.push(film);
   setQueueToLocal(userQueue);
+}
+
+export function removeFilmFromWatched(film) {
+  const list = getWatchedFromLocal();
+  const indexToRemove = list.map(obj => obj.id).indexOf(film.id);
+  list.splice(indexToRemove, 1);
+  setWatchedToLocal(list);
+  refs.watchedBtn.setAttribute('data-action', 'add');
+}
+export function removeFilmFromQueue(film) {
+  const list = getQueueFromLocal();
+  const indexToRemove = list.map(obj => obj.id).indexOf(film.id);
+  list.splice(indexToRemove, 1);
+  setQueueToLocal(list);
+  refs.queueBtn.setAttribute('data-action', 'add');
 }
 
 export function clearContent(element) {
@@ -77,7 +117,8 @@ export function setQueueToLocal(objToSet) {
 export function isInWatched(filmId) {
   const watchedList = getWatchedFromLocal();
   const res = watchedList.find(el => el.id === filmId);
-  return res ? true : false;
+  res ? true : false;
+  return console.log('res ? true : false :>> ', res ? true : false);
 }
 export function isInQueue(filmId) {
   const queueList = getQueueFromLocal();
@@ -85,50 +126,56 @@ export function isInQueue(filmId) {
   return res ? true : false;
 }
 
-export function renderRemoveFromWatched(btn) {
-  btn.innerHTML = 'Remove from watched';
+export function renderRemoveFromWatched() {
+  refs.watchedBtn.innerHTML = 'Remove from watched';
+  refs.watchedBtn.setAttribute('data-action', 'remove');
 }
-export function renderRemoveFromQueue(btn) {
-  btn.innerHTML = 'Remove from queue';
+export function renderRemoveFromQueue() {
+  refs.queueBtn.innerHTML = 'Remove from queue';
+  refs.queueBtn.setAttribute('data-action', 'remove');
 }
-export function renderAddToWatched(btn) {
-  btn.innerHTML = 'Add to watched';
+export function renderAddToWatched() {
+  refs.watchedBtn.innerHTML = 'Add to watched';
+  refs.watchedBtn.setAttribute('data-action', 'add');
 }
-export function renderAddToQueue(btn) {
-  btn.innerHTML = 'Add to queue';
-}
-
-export function removeFilmFromWatched(film) {
-  const list = getWatchedFromLocal();
-  const indexToRemove = list.map(obj => obj.id).indexOf(film.id);
-  list.splice(indexToRemove, 1);
-  setWatchedToLocal(list);
-}
-export function removeFilmFromQueue(film) {
-  const list = getQueueFromLocal();
-  const indexToRemove = list.map(obj => obj.id).indexOf(film.id);
-  list.splice(indexToRemove, 1);
-  setQueueToLocal(list);
+export function renderAddToQueue() {
+  refs.queueBtn.innerHTML = 'Add to queue';
+  refs.queueBtn.setAttribute('data-action', 'add');
 }
 
-export function getCorrectWatchedButtons(id, watcheBtn) {
+export function checkWatchedDataAction() {
+  return refs.watchedBtn.getAttribute('data-action');
+}
+export function checkQueueDataAction() {
+  return refs.queueBtn.getAttribute('data-action');
+}
+
+export function getCorrectWatchedButtons(id) {
   if (isInWatched(id)) {
-    renderRemoveFromWatched(watcheBtn);
+    renderRemoveFromWatched();
+    console.log('renderRemoved');
     return;
   } else {
-    renderAddToWatched(watcheBtn);
+    renderAddToWatched();
+    console.log('renderto');
     return;
   }
 }
 
-export function getCorrectQueueButtons(id, queueBtn) {
+export function getCorrectQueueButtons(id) {
   if (isInQueue(id)) {
-    renderRemoveFromQueue(queueBtn);
+    renderRemoveFromQueue();
     return;
   } else {
-    renderAddToQueue(queueBtn);
+    renderAddToQueue();
     return;
   }
+}
+
+export function getCorrectButtons(id) {
+  getCorrectWatchedButtons(id);
+  getCorrectQueueButtons(id);
+  return;
 }
 
 // end functions

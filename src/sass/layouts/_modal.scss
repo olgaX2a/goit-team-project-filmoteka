@@ -360,6 +360,7 @@ width: 396px;
 
 .modal-close-btn {
   display: none;
+  
 
   @media screen and (max-width: 767px) {
     position: absolute;
@@ -379,8 +380,8 @@ width: 396px;
   }
 
   @media screen and (min-width: 768px) {
-    position: absolute;
-    top: -35px;
+    // position: absolute;
+    // top: -35px;
     left: 0;
     display: flex;
     align-items: center;
@@ -405,3 +406,33 @@ width: 396px;
 //   }
 // }
 
+.modal {
+  position: relative;
+  // top: 50%;
+  // left: 50%;
+  z-index: 50;
+  // max-width: 450px;
+  // min-height: 609px;
+  padding: 40px;
+  background-color: rgba(255, 255, 255, 1);
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
+    0px 2px 1px rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+  opacity: 1;
+
+  // transform: translate(-50%, -50%) perspective(1000px) rotateX(0deg);
+  transition: all 500ms var(--timing) 125ms;
+
+  .backdrop.is-hidden & {
+    opacity: 0;
+
+    // transform: translate(-50%, -50%) perspective(1000px) rotateX(180deg);
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .modal {
+    max-width: 528px;
+    min-height: 581px;
+  }
+}

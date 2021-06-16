@@ -17,92 +17,96 @@ async function getFullMovieInfoById(id) {
     console.log('error in getFullMovieInfoById(id) :>> ', error);
   }
 }
+
 refs.cardList.addEventListener('click', openModal);
+refs.closeModalBtn.addEventListener('click', closeModal);
 
 let targetFilm;
 
-export function openModal(e) {
-  e.preventDefault();
-  const targetID = e.target.closest('LI').id;
+export function openModal(event) {
+  event.preventDefault();
+  const targetID = event.target.closest('LI').id;
   console.log('targetID :>> ', targetID);
-
   getFullMovieInfoById(targetID).then(data => {
     data;
-    const markup = modalFilmCard(data);
-    console.log('markup :>> ', markup);
-    const modal = basicLightbox.create(markup);
-    console.log('modal :>> ', modal);
+    clearModal();
+    refs.modalInfoContainer.innerHTML = modalFilmCard(data);
+    lib.getCorrectButtons(targetID);
+    showModal();
+    refs.watchedBtn.addEventListener('click', lib.onWatchedBtnClick(data));
+    refs.queueBtn.addEventListener('click', lib.onQueueBtnClick(data));
 
-    modal.show();
-    console.log('tf after show :>> ', data);
-    // const watcheBtn = document.querySelector('.js-modal-watched');
-    const watchedBtn = document.querySelector('.js-modal-watched');
-    console.log('watchedBtn :>> ', watchedBtn);
-    lib.getCorrectWatchedButtons(targetID, watchedBtn);
-    watchedBtn.addEventListener('click', event => {
-      if (event.target.nodeName !== 'button') {
-        return;
-      }
-      lib.addFilmToWatched(data);
-    });
+    // console.log('markup :>> ', markup);
+    // const modal = basicLightbox.create(markup);
+    // console.log('modal :>> ', modal);
 
-    const queueBtn = document.querySelector('.js-modal-queue');
-    console.log('queueBtn :>> ', queueBtn);
-    lib.getCorrectQueueButtons(targetID, queueBtn);
-    queueBtn.addEventListener('click', event => {
-      if (event.target.nodeName !== 'button') {
-        return;
-      }
-      lib.addFilmToQueue(data);
-    });
+    // modal.show();
 
+    // const watchedBtn = document.querySelector('.js-modal-watched');
+    // lib.getCorrectWatchedButtons(targetID, watchedBtn);
+    // watchedBtn.addEventListener('click', onWatchedClick);
+
+    // function onWatchedClick(event) {
+    //   if (event.target.nodeName !== 'button') {
+    //     return;
+    //   }
+    //   lib.addFilmToWatched(data);
+    // }
+    // function onQueueClick(event) {
+    //   if (event.target.nodeName !== 'button') {
+    //     return;
+    //   }
+    //   lib.addFilmToQueue(data);
+    // }
+
+    // const queueBtn = document.querySelector('.js-modal-queue');
+    // console.log('queueBtn :>> ', queueBtn);
+    // lib.getCorrectQueueButtons(targetID, queueBtn);
+    // queueBtn.addEventListener('click', onQueueClick);
+
+    // const closeBtn = document.querySelector('.modal-close-btn');
     // console.log('closeBtn :>> ', closeBtn);
-    const closeBtn = document.querySelector('.modal-close-btn');
-    console.log('closeBtn :>> ', closeBtn);
-    closeBtn.addEventListener('click', closeModal);
+    // closeBtn.addEventListener('click', closeModal);
 
-    window.addEventListener('keydown', closeModalHandler);
+    // window.addEventListener('keydown', closeModalHandler);
 
-    function closeModalHandler(e) {
-      if (e.code === 'Escape') {
-        watchedBtn.removeEventListener('click', lib.addFilmToWatched(data));
-        queueBtn.removeEventListener('click', lib.addFilmToQueue(data));
-        console.log('event listener removed1');
-        window.removeEventListener('keydown', closeModalHandler);
-        modal.close();
-      }
-    }
+    // function closeModalHandler(event) {
+    //   if (event.code === 'Escape') {
+    //     watchedBtn.removeEventListener('click', onWatchedClick);
+    //     queueBtn.removeEventListener('click', onQueueClick);
+    //     window.removeEventListener('keydown', closeModalHandler);
+    //     refs.modalInfoContainer.classList.add('is-hidden');
+    //   }
+    // }
 
-    function closeModal(e) {
-      console.log('closeModal invoked');
-      watchedBtn.removeEventListener('click', lib.addFilmToWatched(data));
-      console.log('event listenet removed watched');
-      queueBtn.removeEventListener('click', lib.addFilmToQueue(data));
-      console.log('event listenet removed queue');
-      window.removeEventListener('keydown', closeModalHandler);
-      console.log('event listenet removed window -handler');
-      modal.close();
-    }
+    // function closeModal() {
+    //   watchedBtn.removeEventListener('click', onWatchedClick);
+    //   queueBtn.removeEventListener('click', onQueueClick);
+    //   window.removeEventListener('keydown', closeModalHandler);
+    //   refs.modalInfoContainer.classList.add('is-hidden');
+    // }
   });
 }
-// async function renderFullInfo(id) {
-//   try {
-//     const info = await APi.getMovieInfoById().then((data) => ({
-//       ...data,
-//       popularity_rate: data.popularity.toFixed(1),
-//       genres_full: genres.map(el => el.name).join(', ')
-//     }))
-//   ;
-//     // временный вывод в консоль для контроля
-//     console.log('info :>> ', info);
-//     const markup = modalFilmCard(info);
-//     const modal = basicLightbox.create(markup);
-//     // Array.from(cardList.children).forEach(element => {
-//     //   element.addEventListener('click', openModal)
-//     // })
-//   } catch (error) {
-//     console.log('error :>> ', error);
-//   } finally {
-//     hideSpinner();
-//   }
-// }
+
+function showModal() {
+  refs.backdrop.classList.remove('is-hidden');
+  window.addEventListener('keydown', closeModalByEscape);
+}
+function closeModal() {
+  refs.backdrop.classList.add('is-hidden');
+  window.removeEventListener('keydown', closeModalByEscape);
+  refs.watchedBtn.removeEventListener('click', lib.onWatchedBtnClick(data));
+  refs.queueBtn.removeEventListener('click', lib.onQueueBtnClick(data));
+}
+
+function clearModal() {
+  refs.modalInfoContainer.innerHTML = '';
+}
+// window.addEventListener('keydown', closeModalByEscape);
+// window.removeEventListener('keydown', closeModalByEscape);
+function closeModalByEscape(event) {
+  if (event.code === 'Escape') {
+    closeModal();
+  }
+  return;
+}
