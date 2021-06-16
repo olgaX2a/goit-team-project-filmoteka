@@ -2,6 +2,7 @@ import './sass/main.scss';
 // header
 import './js/navigation';
 
+
 // cards
 import './js/renderTrendingFilms';
 import './js/renderSearch';
@@ -28,4 +29,11 @@ import './js/footer';
 
 // theme
 import './js/theme';
+
+
+// language changing
+
+
+//auth
+import './js/user';
 
