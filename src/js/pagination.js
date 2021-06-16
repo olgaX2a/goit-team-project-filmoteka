@@ -2,28 +2,64 @@ import API from '../apiServises/apiService.js';
 import pagination from 'paginationjs/dist/pagination.min.js';
 import renderTrending from './renderTrendingFilms';
 import renderSearch from './renderSearch';
-import {API_KEY} from '../apiServises/apiService.js';
-import {BASE_URL} from '../apiServises/apiService.js';
+import { showSpinner, hideSpinner } from '../js/spiner';
+import { smoothScrool } from './customPg.js';
 
 
 
+export default function paginationAPI(num) {
+  const sources = function () { 
+    let result = [];
 
-// $('#pagination-container').pagination({
-//     dataSource: function(done) {
-//     $.ajax({
-//         type: 'GET',
-//         url: `${BASE_URL}/trending/movie/week?api_key=${API_KEY}&page=${API.pages}&language=${API.language}`,
-//       success: function (response) {
-//         let pages = response.total_pages;
-//         let result = [];
-//         for (let i = 1; i <= pages; i++){
-//           result.push(i);
+    for (var i = 1; i <= num; i++) {
+      result.push(i);
+    }
+
+    return result;
+  };
+  const options = {
+    dataSource: sources(),
+     pageSize: 1,
+			showPageNumbers: true,
+			showPrevious: false,
+			showNext: false,
+      autoHidePrevious: true,
+      autoHideNext: true,
+			showFirstOnEllipsisShow: true,
+    showLastOnEllipsisShow: true,
+    callback: function (data, pagination) {
+      renderPages(data);
+    }
+  }
+
+  $('.paginationjs').pagination(options);
+}
+
+paginationAPI(API.totalPages);
+
+function renderPages(num) {
+  let findPages = num;
+  API.pages = Number(findPages);
+  smoothScrool()
+  if (API.searchQuery === '') {
+      renderTrending();
+    } else {
+      renderSearch();
+    }
+}
+
+// if (API.searchQuery === '') {
+//     $('.pagination-container').pagination({
+//       dataSource: `${API.stringUrl}`,
+//       locator: 'result',
+//       totalNumberLocator: function (response) {
+//          let result = [];
+//     for (let i = 1; i < response.total_pages; i++) {
+//         result.push(i);
 //         }
-//         // console.log(result)
-//             done(result);
-//         }
-//     });
-//   },
+
+//         return result;
+//       },
 //       pageSize: 1,
 // 			showPageNumbers: true,
 // 			showPrevious: true,
@@ -43,10 +79,4 @@ import {BASE_URL} from '../apiServises/apiService.js';
 //     }
 //   },
 // })
-
-//  `${BASE_URL}/trending/movie/week?api_key=${API_KEY}&page=${API.pages}&language=${API.language}`,
-//   locator: 'totalNumber',
-//     totalNumberLocator: function(response) {
-//       let N = Number(response.total_pages);
-//         return Array.apply(null, {length: N}).map(Number.call, Number);
-//     }
+  // }

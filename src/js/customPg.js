@@ -1,6 +1,7 @@
 import renderTrend from './renderTrendingFilms.js';
 import renderSearch from './renderSearch.js';
 import API from '../apiServises/apiService.js';
+import {showSpinner, hideSpinner} from '../js/spiner';
 
 const gallery = document.querySelector('.card__list');
 const inputRef = document.querySelector('.search__input');
@@ -108,15 +109,62 @@ function onPaginationClick(event) {
       lastPageRef.hidden = false;
     }
 
-    gallery.innerHTML = '';
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-
+    smoothScrool()
+    showSpinner()
     if (inputRef.value !== '') {
       API.pages = currentPage;
       renderSearch();
+      hideSpinner()
     } else {
       API.pages = currentPage;
       renderTrend();
+      hideSpinner()
     }
   }
+}
+
+
+//////////// version 2
+const containerRef = document.querySelector('.pagination-container2');
+const arrowLeftEl = document.querySelector('.arrow-left2');
+const arrowRightEl = document.querySelector('.arrow-right2');
+
+containerRef.addEventListener('click', onArrowClick);
+
+arrowLeftEl.hidden = true;
+
+function onArrowClick(e) {
+  showSpinner()
+  if (e.target.classList.contains('arrow-left2')) {
+     if (API.pages === 1) {
+       arrowLeftEl.hidden = true;
+       return
+  }
+    smoothScrool();
+  if (inputRef.value !== '') {
+      API.pages -= 1;
+    renderSearch();
+    } else {
+      API.pages -=1;
+    renderTrend();
+    }
+    hideSpinner()
+  } else if (e.target.classList.contains('arrow-right2')) {
+    arrowLeftEl.hidden = false;
+    smoothScrool();
+    if (inputRef.value !== '') {
+      API.pages += 1;
+      renderSearch();
+    } else {
+      API.pages +=1;
+      renderTrend();
+    }
+    hideSpinner()
+  }
+
+}
+
+export const smoothScrool = function() {
+   gallery.innerHTML = '';
+    window.scrollTo({ top: 0, behavior: 'smooth' });
 }

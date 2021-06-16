@@ -4,6 +4,7 @@ import { createObj } from '../apiServises/normalizeResults';
 import {showSpinner, hideSpinner} from '../js/spiner';
 import { openModal } from './renderMovieInfo';
 
+
 const searchRef = document.getElementById('search');
 
 const cardList = document.querySelector('.card__list');
@@ -41,12 +42,14 @@ export default async function renderTrending() {
     });
     const result = await createObj(trends, genres);
 
+
     // временный вывод в консоль для контроля
     // console.log('result :>> ', result);
     cardList.innerHTML = cardFilm(result);
     Array.from(cardList.children).forEach(element => {
       element.addEventListener('click', openModal)
-    })
+    });
+
   } catch (error) {
     console.log('error :>> ', error);
   }

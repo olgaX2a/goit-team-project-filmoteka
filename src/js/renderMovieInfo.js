@@ -47,10 +47,6 @@ export const openModal = (e) => {
         modal.close();
         window.removeEventListener('keydown', closeModalHandler);
       }
-  }
-  )
-
+    })
 }
 
-
-    

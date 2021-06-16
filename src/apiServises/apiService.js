@@ -5,14 +5,16 @@ export default {
     timeWindow: 'week',
     searchQuery: '',
     page: 1,
-    language: 'en',
+  language: 'en',
+    stringUrl: 'https://api.themoviedb.org/3/trending/movie/week?api_key=a6a422d110dec9c7fa9eeee757b6f274&page=1&language=',
     totalPage: 1000,
 
 
 // поиск популярных фильмов для вывода на страницу
   fetchTrending() {
         const url = `${BASE_URL}/trending/${this.mediaType}/${this.timeWindow}?api_key=${API_KEY}&page=${this.page}&language=${this.language}`;
-        return fetch(url)
+    this.stringUrl = url;
+      return fetch(url)
             .then(res => res.json())
             .catch((error) => console.log(error))
     },
@@ -20,7 +22,8 @@ export default {
 // поиск фильма по названию
     searchMovie() {
         const url = `${BASE_URL}/search/${this.mediaType}?api_key=${API_KEY}&query=${this.searchQuery}&page=${this.page}&language=${this.language}`;
-        return fetch(url)
+      this.stringUrl = url;
+      return fetch(url)
             .then(res => res.json())
             .catch((error) => console.log(error))
 
@@ -36,7 +39,7 @@ export default {
 
 // получение полного списка жанров
     getGenresList() {
-        const url = `${BASE_URL}/genre/${this.mediaType}/list?api_key=${API_KEY}&language=${this.language}`;
+      const url = `${BASE_URL}/genre/${this.mediaType}/list?api_key=${API_KEY}&language=${this.language}`;
         return fetch(url)
             .then(res => res.json())
             .catch((error) => console.log(error))
@@ -78,4 +81,10 @@ export default {
   set totalPages(num) {
     this.totalPage = num;
   },
+  get url() {
+    return this.stringUrl;
+  },
+  set url(link) {
+    this.stringUrl = link;
+  }
 };
