@@ -36,7 +36,8 @@ export function onWatchedBtnClick(film) {
     addFilmToWatched(film);
     renderRemoveFromWatched();
     return;
-  } else {
+  }
+  if (action === 'remove') {
     removeFilmFromWatched(film);
     renderAddToWatched();
     return;
@@ -47,9 +48,12 @@ export function onQueueBtnClick(film) {
   const action = checkQueueDataAction();
   if (action === 'add') {
     addFilmToQueue(film);
+    renderRemoveFromQueue();
     return;
-  } else {
+  }
+  if (action === 'remove') {
     removeFilmFromQueue(film);
+    renderAddToQueue();
     return;
   }
 }
@@ -117,13 +121,14 @@ export function setQueueToLocal(objToSet) {
 export function isInWatched(filmId) {
   const watchedList = getWatchedFromLocal();
   const res = watchedList.find(el => el.id === filmId);
-  res ? true : false;
-  return console.log('res ? true : false :>> ', res ? true : false);
+  const type = typeof res === 'Number' ? true : false;
+  return type;
 }
 export function isInQueue(filmId) {
   const queueList = getQueueFromLocal();
   const res = queueList.find(el => el.id === filmId);
-  return res ? true : false;
+  const type = typeof res === 'Number' ? true : false;
+  return type;
 }
 
 export function renderRemoveFromWatched() {
@@ -153,11 +158,9 @@ export function checkQueueDataAction() {
 export function getCorrectWatchedButtons(id) {
   if (isInWatched(id)) {
     renderRemoveFromWatched();
-    console.log('renderRemoved');
     return;
   } else {
     renderAddToWatched();
-    console.log('renderto');
     return;
   }
 }

@@ -33,8 +33,8 @@ export function openModal(event) {
     refs.modalInfoContainer.innerHTML = modalFilmCard(data);
     lib.getCorrectButtons(targetID);
     showModal();
-    refs.watchedBtn.addEventListener('click', lib.onWatchedBtnClick(data));
-    refs.queueBtn.addEventListener('click', lib.onQueueBtnClick(data));
+    refs.watchedBtn.addEventListener('click', lib.onWatchedBtnClick);
+    refs.queueBtn.addEventListener('click', lib.onQueueBtnClick);
 
     // console.log('markup :>> ', markup);
     // const modal = basicLightbox.create(markup);
