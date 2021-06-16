@@ -27,3 +27,8 @@ import './js/footer';
 
 // theme
 import './js/theme';
+
+// language changing
+
+//auth
+import './js/user';
