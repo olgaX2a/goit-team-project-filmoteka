@@ -4,13 +4,10 @@ import { createObj } from '../apiServises/normalizeResults';
 import { showSpinner, hideSpinner } from '../js/spiner';
 import { openModal } from './renderMovieInfo';
 import paginationAPI from './pagination';
+import refs from './refs';
+import * as lib from './userLibrary';
 
-const cardList = document.querySelector('.card__list');
-const searchRef = document.getElementById('search');
-export const watcheBtn = document.querySelector('.js-modal-watched');
-export const queueBtn = document.querySelector('.js-modal-queue');
-
-searchRef.addEventListener('submit', onSearchSubmit);
+refs.search.addEventListener('submit', onSearchSubmit);
 
 function onSearchSubmit(event) {
   event.preventDefault();
@@ -42,10 +39,7 @@ export default async function renderSearch() {
     const result = await createObj(trends, genres);
     // временный вывод в консоль для контроля
     // console.log('result :>> ', result);
-    cardList.innerHTML = cardFilm(result);
-    Array.from(cardList.children).forEach(element => {
-      element.addEventListener('click', openModal);
-    });
+    refs.cardList.innerHTML = cardFilm(result);
   } catch (error) {
     console.log('error :>> ', error);
   } finally {
@@ -53,5 +47,5 @@ export default async function renderSearch() {
   }
 }
 function clearCardsMarkup() {
-  cardList.innerHTML = '';
+  refs.cardList.innerHTML = '';
 }

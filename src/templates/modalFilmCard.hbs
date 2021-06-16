@@ -1,6 +1,6 @@
 <div class="modal-card modal-card__scroll" data-action="{{id}}">
             <div class="modal__container__info">
-                <img src="https://image.tmdb.org/t/p/w500{{poster_path}}" alt="{{title}}" class="modal__img__film" />
+                <img src="{{poster}}" alt="{{title}}" class="modal__img__film" />
                 <div class="modal__container__tablet">
                     <h2 class="modal__card__title">{{title}}</h2>
         
@@ -17,8 +17,8 @@
                             </li>
                             <li class="modal__card__modal__item modal__card__modal__item--margin modal__card__modal__item--genres">
                                 <p class="genre__item">Genre</p>
-                                 <p class="genre__item__list"> {{#each genres}}
-                                <span class="modal__genre__item modal__genre__item__genre__color">{{this.name}}</span>
+                                 <p class="genre__item__list"> {{#each genres_full_array}}
+                                <span class="modal__genre__item modal__genre__item__genre__color">{{this}}</span>
                                 {{/each}} </p>
                             </li>
                         </ul>

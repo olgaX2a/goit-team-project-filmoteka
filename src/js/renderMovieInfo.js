@@ -4,28 +4,41 @@ import 'basiclightbox/dist/basicLightbox.min.css';
 import APi from '../apiServises/apiService';
 import * as lib from './userLibrary';
 import refs from './refs';
+import { createInfoObj } from '../apiServises/normalizeResults';
 
 const apiKey = 'a6a422d110dec9c7fa9eeee757b6f274';
 
+async function getFullMovieInfoById(id) {
+  try {
+    const info = await APi.getMovieInfoById(id).then(data => {
+      return data;
+    });
+    const fullInfo = createInfoObj(info);
+    return fullInfo;
+  } catch (error) {
+    console.log('error in getFullMovieInfoById(id) :>> ', error);
+  }
+}
 refs.cardList.addEventListener('click', openModal);
 
-function getMovieInfoById(movie_id) {
-  // console.log(movie_id)
-  const url = `https://api.themoviedb.org/3/movie/${movie_id}?api_key=${apiKey}&language=en`;
-  return fetch(url)
-    .then(response => response.json())
-    .then(data => ({
-      ...data,
-      popularity_rate: data.popularity.toFixed(1),
-    }))
-    .catch(error => console.log(error));
-}
+// function getMovieInfoById(movie_id) {
+//   // console.log(movie_id)
+//   const url = `https://api.themoviedb.org/3/movie/${movie_id}?api_key=${apiKey}&language=en`;
+//   return fetch(url)
+//     .then(response => response.json())
+//     .then(data => ({
+//       ...data,
+//       popularity_rate: data.popularity.toFixed(1),
+//     }))
+//     .catch(error => console.log(error));
+// }
 
 export function openModal(e) {
   e.preventDefault();
-  const targetID = e.target.parentNode.parentNode.parentNode.id;
+  const targetID = e.target.closest('LI').id;
+  console.log('targetID :>> ', targetID);
 
-  getMovieInfoById(targetID).then(data => {
+  getFullMovieInfoById(targetID).then(data => {
     // if (e.target.nodeName !== 'IMG') return;
     console.log('data :>> ', data);
 
