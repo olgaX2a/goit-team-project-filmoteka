@@ -8,11 +8,9 @@ import { createInfoObj } from '../apiServises/normalizeResults';
 
 async function getFullMovieInfoById(id) {
   try {
-    const info = await APi.getMovieInfoById(id).then(data => {
-      return data;
-    });
-    const fullInfo = createInfoObj(info);
-    return fullInfo;
+    const initialData = await APi.getMovieInfoById(id);
+    const fullInfo = createInfoObj(initialData);
+    return { ...fullInfo };
   } catch (error) {
     console.log('error in getFullMovieInfoById(id) :>> ', error);
   }
@@ -20,72 +18,26 @@ async function getFullMovieInfoById(id) {
 
 refs.cardList.addEventListener('click', openModal);
 refs.closeModalBtn.addEventListener('click', closeModal);
+refs.watchedBtn.addEventListener('click', onWatchedBtnClick);
+refs.queueBtn.addEventListener('click', onQueueBtnClick);
 
 let targetFilm;
-
-export function openModal(event) {
+export async function openModal(event) {
   event.preventDefault();
   const targetID = event.target.closest('LI').id;
   console.log('targetID :>> ', targetID);
-  getFullMovieInfoById(targetID).then(data => {
-    data;
-    clearModal();
-    refs.modalInfoContainer.innerHTML = modalFilmCard(data);
-    lib.getCorrectButtons(targetID);
-    showModal();
-    refs.watchedBtn.addEventListener('click', lib.onWatchedBtnClick);
-    refs.queueBtn.addEventListener('click', lib.onQueueBtnClick);
-
-    // console.log('markup :>> ', markup);
-    // const modal = basicLightbox.create(markup);
-    // console.log('modal :>> ', modal);
-
-    // modal.show();
-
-    // const watchedBtn = document.querySelector('.js-modal-watched');
-    // lib.getCorrectWatchedButtons(targetID, watchedBtn);
-    // watchedBtn.addEventListener('click', onWatchedClick);
-
-    // function onWatchedClick(event) {
-    //   if (event.target.nodeName !== 'button') {
-    //     return;
-    //   }
-    //   lib.addFilmToWatched(data);
-    // }
-    // function onQueueClick(event) {
-    //   if (event.target.nodeName !== 'button') {
-    //     return;
-    //   }
-    //   lib.addFilmToQueue(data);
-    // }
-
-    // const queueBtn = document.querySelector('.js-modal-queue');
-    // console.log('queueBtn :>> ', queueBtn);
-    // lib.getCorrectQueueButtons(targetID, queueBtn);
-    // queueBtn.addEventListener('click', onQueueClick);
-
-    // const closeBtn = document.querySelector('.modal-close-btn');
-    // console.log('closeBtn :>> ', closeBtn);
-    // closeBtn.addEventListener('click', closeModal);
-
-    // window.addEventListener('keydown', closeModalHandler);
-
-    // function closeModalHandler(event) {
-    //   if (event.code === 'Escape') {
-    //     watchedBtn.removeEventListener('click', onWatchedClick);
-    //     queueBtn.removeEventListener('click', onQueueClick);
-    //     window.removeEventListener('keydown', closeModalHandler);
-    //     refs.modalInfoContainer.classList.add('is-hidden');
-    //   }
-    // }
-
-    // function closeModal() {
-    //   watchedBtn.removeEventListener('click', onWatchedClick);
-    //   queueBtn.removeEventListener('click', onQueueClick);
-    //   window.removeEventListener('keydown', closeModalHandler);
-    //   refs.modalInfoContainer.classList.add('is-hidden');
-    // }
-  });
+  // console.log('targetFilm before:>> ', lib.targetFilm);
+  targetFilm = await getFullMovieInfoById(targetID);
+  // console.log('selectedFilm :>> ', selectedFilm);
+  // console.log('targetFilm before:>> ', targetFilm);
+  // targetFilm = { ...selectedFilm };
+  // console.log('targetFilm after:>> ', targetFilm);
+  // refs.watchedBtn.addEventListener('click', lib.onWatchedBtnClick);
+  // refs.queueBtn.addEventListener('click', lib.onQueueBtnClick);
+  clearModal();
+  refs.modalInfoContainer.innerHTML = modalFilmCard(targetFilm);
+  lib.getCorrectButtons(targetID);
+  showModal();
 }
 
 function showModal() {
@@ -95,8 +47,8 @@ function showModal() {
 function closeModal() {
   refs.backdrop.classList.add('is-hidden');
   window.removeEventListener('keydown', closeModalByEscape);
-  refs.watchedBtn.removeEventListener('click', lib.onWatchedBtnClick(data));
-  refs.queueBtn.removeEventListener('click', lib.onQueueBtnClick(data));
+  // refs.watchedBtn.removeEventListener('click', lib.onWatchedBtnClick);
+  // refs.queueBtn.removeEventListener('click', lib.onQueueBtnClick);
 }
 
 function clearModal() {
@@ -109,4 +61,38 @@ function closeModalByEscape(event) {
     closeModal();
   }
   return;
+}
+
+function onWatchedBtnClick() {
+  const action = lib.checkWatchedDataAction();
+  console.log('action :>> ', action);
+  if (action === 'add') {
+    console.log('targetFilm in listener:>> ', targetFilm);
+    lib.addFilmToWatched(targetFilm);
+    console.log('targetFilm :>> ', targetFilm);
+    lib.renderRemoveFromWatched();
+    return;
+  }
+  if (action === 'remove') {
+    lib.removeFilmFromWatched(targetFilm);
+    console.log('targetFilm :>> ', targetFilm);
+    lib.renderAddToWatched();
+    return;
+  }
+}
+
+function onQueueBtnClick() {
+  const action = lib.checkQueueDataAction();
+  if (action === 'add') {
+    lib.addFilmToQueue(targetFilm);
+    console.log('targetFilm :>> ', targetFilm);
+    lib.renderRemoveFromQueue();
+    return;
+  }
+  if (action === 'remove') {
+    lib.removeFilmFromQueue(targetFilm);
+    console.log('targetFilm :>> ', targetFilm);
+    lib.renderAddToQueue();
+    return;
+  }
 }

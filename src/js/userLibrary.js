@@ -1,8 +1,11 @@
-import { watchedTest, queueTest, filmToCheckOne, filmToCheckTwo } from './testFilms';
+import { watchedTest, queueTest, filmToCheckOne, filmToCheckTwo, cruella } from './testFilms';
 import cardFilm from '../templates/card';
 import refs from './refs';
 
-// start eventListeners
+// export let targetFilm;
+// ------start eventListeners------
+
+// Library render
 refs.libWatched.addEventListener('click', () => {
   clearContent(refs.cardList);
   const result = getWatchedFromLocal();
@@ -21,42 +24,48 @@ refs.myLibraryLink.addEventListener('click', () => {
   console.log('fullLibrary :>> ', fullLibrary);
   renderCardList(fullLibrary);
 });
-// end eventListeners
+// ------END FUNCTIONS------
 
-// start functions
+// ------END FUNCTIONS------
 export function getFullLibraryFromLocal() {
   const watchedArray = getWatchedFromLocal();
   const queueArray = getQueueFromLocal();
   return watchedArray.concat(queueArray);
 }
 
-export function onWatchedBtnClick(film) {
-  const action = checkWatchedDataAction();
-  if (action === 'add') {
-    addFilmToWatched(film);
-    renderRemoveFromWatched();
-    return;
-  }
-  if (action === 'remove') {
-    removeFilmFromWatched(film);
-    renderAddToWatched();
-    return;
-  }
-}
+// export function onWatchedBtnClick() {
+//   const action = checkWatchedDataAction();
+//   console.log('action :>> ', action);
+//   if (action === 'add') {
+//     console.log('targetFilm in listener:>> ', targetFilm);
+//     addFilmToWatched(targetFilm);
+//     console.log('targetFilm :>> ', targetFilm);
+//     renderRemoveFromWatched();
+//     return;
+//   }
+//   if (action === 'remove') {
+//     removeFilmFromWatched(targetFilm);
+//     console.log('targetFilm :>> ', targetFilm);
+//     renderAddToWatched();
+//     return;
+//   }
+// }
 
-export function onQueueBtnClick(film) {
-  const action = checkQueueDataAction();
-  if (action === 'add') {
-    addFilmToQueue(film);
-    renderRemoveFromQueue();
-    return;
-  }
-  if (action === 'remove') {
-    removeFilmFromQueue(film);
-    renderAddToQueue();
-    return;
-  }
-}
+// export function onQueueBtnClick() {
+//   const action = checkQueueDataAction();
+//   if (action === 'add') {
+//     addFilmToQueue(targetFilm);
+//     console.log('targetFilm :>> ', targetFilm);
+//     renderRemoveFromQueue();
+//     return;
+//   }
+//   if (action === 'remove') {
+//     removeFilmFromQueue(targetFilm);
+//     console.log('targetFilm :>> ', targetFilm);
+//     renderAddToQueue();
+//     return;
+//   }
+// }
 
 export function addFilmToWatched(film) {
   const userWatched = getWatchedFromLocal();
@@ -67,7 +76,10 @@ export function addFilmToWatched(film) {
 
 export function addFilmToQueue(film) {
   const userQueue = getQueueFromLocal();
+  console.log('userQueue before push:>> ', userQueue);
   userQueue.push(film);
+  console.log('userQueue after push:>> ', userQueue);
+
   setQueueToLocal(userQueue);
 }
 
@@ -90,8 +102,8 @@ export function clearContent(element) {
   element.innerHTML = '';
 }
 
-export function renderCardList(result) {
-  refs.cardList.innerHTML = cardFilm(result);
+export function renderCardList(markup) {
+  refs.cardList.innerHTML = cardFilm(markup);
 }
 
 export function getWatchedFromLocal() {
@@ -110,25 +122,35 @@ export function getQueueFromLocal() {
   }
 }
 
-export function setWatchedToLocal(objToSet) {
-  localStorage.setItem('watched', JSON.stringify(objToSet));
+export function setWatchedToLocal(moviesArray) {
+  localStorage.setItem('watched', JSON.stringify(moviesArray));
 }
 
-export function setQueueToLocal(objToSet) {
-  localStorage.setItem('queue', JSON.stringify(objToSet));
+export function setQueueToLocal(moviesArray) {
+  localStorage.setItem('queue', JSON.stringify(moviesArray));
 }
 
-export function isInWatched(filmId) {
+export function isInWatched(id) {
   const watchedList = getWatchedFromLocal();
-  const res = watchedList.find(el => el.id === filmId);
-  const type = typeof res === 'Number' ? true : false;
-  return type;
+  console.log('watchedList :>> ', watchedList);
+  if (watchedList.length === 0) {
+    return false;
+  }
+  if (watchedList.length > 0) {
+    const res = watchedList.map(el => el.id).indexOf(id);
+    return res < 0 ? false : true;
+  }
 }
-export function isInQueue(filmId) {
+export function isInQueue(id) {
   const queueList = getQueueFromLocal();
-  const res = queueList.find(el => el.id === filmId);
-  const type = typeof res === 'Number' ? true : false;
-  return type;
+  console.log('queueList :>> ', queueList);
+  if (queueList.length === 0) {
+    return false;
+  }
+  if (queueList.length > 0) {
+    const res = queueList.map(el => el.id).indexOf(id);
+    return res < 0 ? false : true;
+  }
 }
 
 export function renderRemoveFromWatched() {
@@ -181,10 +203,10 @@ export function getCorrectButtons(id) {
   return;
 }
 
-// end functions
+// ------END FUNCTIONS------
 
 // tests
-// addFilmToQueue(filmToCheckOne);
+// addFilmToQueue(cruella);
 // console.log('object 1:>> ', isInQueue(filmToCheckTwo));
 // removeFilmFromQueue(filmToCheckOne);
 // addFilmToQueue(film)
