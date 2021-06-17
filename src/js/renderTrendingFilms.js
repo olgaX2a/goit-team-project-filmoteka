@@ -5,34 +5,24 @@ import { showSpinner, hideSpinner } from '../js/spiner';
 import { openModal } from './renderMovieInfo';
 import refs from './refs';
 import { hideEmptyLib } from './userLibrary';
+import { hideEmptySearch } from './renderSearch';
 
 // const searchRef = document.getElementById('search');
 
 // const cardList = document.querySelector('.card__list');
 
-// отрисовка популярных фильмов при загрузке страницы;
 document.addEventListener('DOMContentLoaded', renderTrending);
+refs.logoLink.addEventListener('click', renderHomePage);
+refs.homeLink.addEventListener('click', renderHomePage);
 
-// отрисовка популярных фильмов при нажатии на логотип;
-// const logoLink = document.querySelector('.logo');
-
-refs.logoLink.addEventListener('click', () => {
+function renderHomePage() {
+  hideEmptySearch();
   hideEmptyLib();
   clearQuery();
   showSpinner();
   APi.resetPage();
   renderTrending();
-});
-
-// отрисовка популярных фильмов при нажатии на кнопу HOME;
-// const homeLink = document.querySelector('.link__home');
-refs.homeLink.addEventListener('click', () => {
-  hideEmptyLib();
-  clearQuery();
-  showSpinner();
-  APi.resetPage();
-  renderTrending();
-});
+}
 
 export default async function renderTrending() {
   try {
@@ -61,6 +51,3 @@ export default async function renderTrending() {
 function clearQuery() {
   refs.search.query.value = '';
 }
-
-// временный вызов функции для тестирования работоспособности, в дальнейшем повесить на слушатель
-// renderTrending();

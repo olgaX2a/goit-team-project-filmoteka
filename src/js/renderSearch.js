@@ -40,7 +40,13 @@ export default async function renderSearch() {
     const result = await createObj(trends, genres);
     // временный вывод в консоль для контроля
     // console.log('result :>> ', result);
-    refs.cardList.innerHTML = cardFilm(result);
+    if (result.length > 0) {
+      refs.cardList.innerHTML = cardFilm(result);
+      result;
+    } else {
+      renderEmptySearch();
+      return;
+    }
   } catch (error) {
     console.log('error :>> ', error);
   } finally {
@@ -51,9 +57,9 @@ function clearCardsMarkup() {
   refs.cardList.innerHTML = '';
 }
 
-function renderEmptySearch() {
+export function renderEmptySearch() {
   refs.emptySearch.classList.remove('hidden');
 }
-function hideEmptySearch() {
+export function hideEmptySearch() {
   refs.emptySearch.classList.add('hidden');
 }
