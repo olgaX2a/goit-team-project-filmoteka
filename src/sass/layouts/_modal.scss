@@ -64,8 +64,8 @@ li{
 .modal__container {
   padding-left: 20px;
   padding-right: 20px;
-  max-width: 280px;
-  max-height: 958px;
+  // max-width: 280px;
+  // max-height: 958px;
 }
 
   .modal__card__title {
@@ -204,8 +204,8 @@ li{
   .modal__container {
   padding-left: 28px;
   padding-right: 30px;
-  max-width: 618px;
-  max-height: 562px;
+  // max-width: 618px;
+  // max-height: 562px;
 }
 
  .modal__container__info {
@@ -289,8 +289,8 @@ width: 264px;
   .modal__container {
   padding-left: 30px;
   padding-right: 30px;
-  max-width: 882px;
-  max-height: 568px;
+  // max-width: 882px;
+  // max-height: 568px;
 }
 
  .modal__container__info {
@@ -449,7 +449,10 @@ width: 396px;
   height: 100vh;
   width: 100%;
   padding: 0;
-  overflow: scroll;
+  overflow: auto;
+    @media screen and (min-width: 768px){
+      height: auto;
+  }
   @media screen and (min-width: 1024px){
     overflow: hidden;
   }

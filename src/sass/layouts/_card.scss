@@ -102,12 +102,7 @@
   color: var(--white-color);
 }
 
-.plug__container{
-// .is-hidden {
-//   display: none;
-// }
-
-// .library__empty {
+.library__plug{
   background-color: black;
 }
 .library__empty-text {
@@ -130,4 +125,7 @@
   border: none;
 }          
 
+.search__plug img {
+  margin: 0 auto;
+}
           
