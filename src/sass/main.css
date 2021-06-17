@@ -453,11 +453,15 @@ a {
   height: 100%;
   -o-object-fit: cover;
      object-fit: cover;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .card__thumb {
   border-radius: 5px;
   overflow: hidden;
+  min-height: 402px;
+  background-color: black;
 }
 
 .card__info {
