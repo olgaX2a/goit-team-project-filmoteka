@@ -27,29 +27,30 @@ let targetFilm;
 export async function openModal(event) {
   event.preventDefault();
   const targetID = event.target.closest('LI').id;
-  console.log('targetID :>> ', targetID);
   targetFilm = await getFullMovieInfoById(targetID);
-  lib.getCorrectButtons(targetID);
   clearModal();
+  lib.getCorrectButtons(targetID);
   refs.modalPoster.innerHTML = modalPoster(targetFilm);
   refs.modalText.innerHTML = modalText(targetFilm);
-  // refs.modalInfoContainer.innerHTML = modalFilmCard(targetFilm);
   showModal();
 }
 
+const prevent = event => event.preventDefault();
+
 function showModal() {
   refs.backdrop.classList.remove('is-hidden');
+  document.addEventListener('wheel', prevent, { passive: false });
   window.addEventListener('keydown', closeModalByEscape);
 }
 function closeModal() {
   refs.backdrop.classList.add('is-hidden');
+  document.removeEventListener('wheel', prevent);
   window.removeEventListener('keydown', closeModalByEscape);
 }
 
 function clearModal() {
   refs.modalPoster.innerHTML = '';
   refs.modalText.innerHTML = '';
-  // refs.modalInfoContainer.innerHTML = '';
 }
 function closeModalByEscape(event) {
   if (event.code === 'Escape') {
@@ -60,17 +61,13 @@ function closeModalByEscape(event) {
 
 function onWatchedBtnClick() {
   const action = lib.checkWatchedDataAction();
-  console.log('action :>> ', action);
   if (action === 'add') {
-    console.log('targetFilm in listener:>> ', targetFilm);
     lib.addFilmToWatched(targetFilm);
-    console.log('targetFilm :>> ', targetFilm);
     lib.renderRemoveFromWatched();
     return;
   }
   if (action === 'remove') {
     lib.removeFilmFromWatched(targetFilm);
-    console.log('targetFilm :>> ', targetFilm);
     lib.renderAddToWatched();
     return;
   }
@@ -80,13 +77,11 @@ function onQueueBtnClick() {
   const action = lib.checkQueueDataAction();
   if (action === 'add') {
     lib.addFilmToQueue(targetFilm);
-    console.log('targetFilm :>> ', targetFilm);
     lib.renderRemoveFromQueue();
     return;
   }
   if (action === 'remove') {
     lib.removeFilmFromQueue(targetFilm);
-    console.log('targetFilm :>> ', targetFilm);
     lib.renderAddToQueue();
     return;
   }

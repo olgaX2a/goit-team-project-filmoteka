@@ -102,15 +102,30 @@
   color: var(--white-color);
 }
 
-.is-hidden {
-  display: none;
-}
-
-.library__empty {
+.library__plug{
   background-color: black;
 }
 .library__empty-text {
   text-align: center;
   color: var(--accent-color);
-  @include font(500, 20px, 40px);
+  @include font(500, 20px, 40px)
 }
+
+.giphy-wrapper{
+  position: relative;
+  width: 100%;
+  height: 0;
+  padding-bottom: 56%;
+}
+
+.giphy-embed {
+  width:100%;
+  height:100%;
+  position: absolute;
+  border: none;
+}          
+
+.search__plug img {
+  margin: 0 auto;
+}
+          

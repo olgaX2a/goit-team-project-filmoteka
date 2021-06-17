@@ -1,12 +1,15 @@
 import { watchedTest, queueTest, filmToCheckOne, filmToCheckTwo, cruella } from './testFilms';
 import cardFilm from '../templates/card';
 import refs from './refs';
+import { hideEmptySearch } from './renderSearch';
 
 // export let targetFilm;
 // ------start eventListeners------
 
 // Library render
 refs.libWatched.addEventListener('click', () => {
+  // hidePagination();
+  hideEmptySearch();
   clearContent(refs.cardList);
   const result = getWatchedFromLocal();
   if (result.length > 0) {
@@ -15,12 +18,14 @@ refs.libWatched.addEventListener('click', () => {
     return;
   }
   if (result.length === 0) {
-    renderEmptyLib();
+    hideEmptySearch();
     return;
   }
 });
 
 refs.libQueue.addEventListener('click', () => {
+  // hidePagination();
+  hideEmptySearch();
   clearContent(refs.cardList);
   const result = getQueueFromLocal();
   if (result.length > 0) {
@@ -35,6 +40,8 @@ refs.libQueue.addEventListener('click', () => {
 });
 
 refs.myLibraryLink.addEventListener('click', () => {
+  // hidePagination();
+  hideEmptySearch();
   clearContent(refs.cardList);
   const fullLibrary = getFullLibraryFromLocal();
   if (fullLibrary.length > 0) {
@@ -65,24 +72,25 @@ export function addFilmToWatched(film) {
 
 export function addFilmToQueue(film) {
   const userQueue = getQueueFromLocal();
-  console.log('userQueue before push:>> ', userQueue);
   userQueue.push(film);
-  console.log('userQueue after push:>> ', userQueue);
-
   setQueueToLocal(userQueue);
 }
 
 export function removeFilmFromWatched(film) {
   const list = getWatchedFromLocal();
-  const indexToRemove = list.map(obj => obj.id).indexOf(film.id);
+  const indexToRemove = [...list].map(obj => obj.id).indexOf(film.id);
   list.splice(indexToRemove, 1);
   setWatchedToLocal(list);
   refs.watchedBtn.setAttribute('data-action', 'add');
 }
 export function removeFilmFromQueue(film) {
   const list = getQueueFromLocal();
-  const indexToRemove = list.map(obj => obj.id).indexOf(film.id);
-  list.splice(indexToRemove, 1);
+  console.log('list :>> ', list);
+  const idArray = list.map(obj => obj.id);
+  console.log('idArray :>> ', idArray);
+  const indexToRemove = idArray.indexOf(film.id);
+  console.log('indexToRemove :>> ', indexToRemove);
+  console.log('list :>> ', list);
   setQueueToLocal(list);
   refs.queueBtn.setAttribute('data-action', 'add');
 }
@@ -100,6 +108,10 @@ export function renderEmptyLib() {
 }
 export function hideEmptyLib() {
   refs.emptyLib.classList.add('hidden');
+}
+
+function hidePagination() {
+  refs.pagination.classList.add('hidden');
 }
 
 export function getWatchedFromLocal() {
@@ -127,28 +139,30 @@ export function setQueueToLocal(moviesArray) {
 }
 
 export function isInWatched(id) {
+  const numId = +id;
   const watchedList = getWatchedFromLocal();
-  console.log('watchedList :>> ', watchedList);
   if (watchedList.length === 0) {
     return false;
   }
   if (watchedList.length > 0) {
-    const res = watchedList.map(el => el.id).indexOf(id);
-    return res < 0 ? false : true;
+    const resArray = [...watchedList].map(el => el.id);
+    const res = resArray.indexOf(numId);
+    return res >= 0 ? true : false;
   }
 }
 export function isInQueue(id) {
+  const numId = +id;
   const queueList = getQueueFromLocal();
-  console.log('queueList :>> ', queueList);
   if (queueList.length === 0) {
     return false;
   }
   if (queueList.length > 0) {
-    const res = queueList.map(el => el.id).indexOf(id);
-    return res < 0 ? false : true;
+    const resArray = [...queueList].map(el => el.id);
+    const res = resArray.indexOf(numId);
+    return res >= 0 ? true : false;
   }
 }
-
+// -----BUTTONS------
 export function renderRemoveFromWatched() {
   refs.watchedBtn.innerHTML = 'Remove from watched';
   refs.watchedBtn.setAttribute('data-action', 'remove');
@@ -187,7 +201,8 @@ export function getCorrectQueueButtons(id) {
   if (isInQueue(id)) {
     renderRemoveFromQueue();
     return;
-  } else {
+  }
+  if (!isInQueue(id)) {
     renderAddToQueue();
     return;
   }

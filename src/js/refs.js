@@ -10,10 +10,11 @@ export default {
 
   //   cards
   cardList: document.querySelector('.card__list'),
-  emptyLib: document.querySelector('.library__empty'),
-  emptySearch: document.querySelector('.search__empty'),
-  // pagination
+  emptyLib: document.querySelector('.js-library-empty'),
+  emptySearch: document.querySelector('.js-search-empty'),
 
+  // pagination
+  pagination: document.querySelector('.tui-pagination'),
   // modal-film
   modalInfoContainer: document.querySelector('.modal__container__info'),
   modalFilm: document.querySelector('.modal'),

@@ -1,5 +1,4 @@
 // utils - инструменты
-@import './utils/hidden';
 @import './utils/mixins';
 @import './utils/variables';
 
@@ -20,8 +19,8 @@
 @import './layouts/modal';
 @import './layouts/pagination';
 @import './layouts/backdrop';
-
 @import './layouts/authorization';
-
 @import './layouts/theme';
 
+// utils - hidden classes
+@import './utils/hidden';

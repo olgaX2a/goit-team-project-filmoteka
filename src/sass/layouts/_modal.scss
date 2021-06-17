@@ -64,8 +64,8 @@ li{
 .modal__container {
   padding-left: 20px;
   padding-right: 20px;
-  max-width: 280px;
-  max-height: 958px;
+  // max-width: 280px;
+  // max-height: 958px;
 }
 
   .modal__card__title {
@@ -204,8 +204,8 @@ li{
   .modal__container {
   padding-left: 28px;
   padding-right: 30px;
-  max-width: 618px;
-  max-height: 562px;
+  // max-width: 618px;
+  // max-height: 562px;
 }
 
  .modal__container__info {
@@ -289,8 +289,8 @@ width: 264px;
   .modal__container {
   padding-left: 30px;
   padding-right: 30px;
-  max-width: 882px;
-  max-height: 568px;
+  // max-width: 882px;
+  // max-height: 568px;
 }
 
  .modal__container__info {
@@ -432,24 +432,30 @@ width: 396px;
 
   .backdrop.is-hidden & {
     opacity: 0;
-
-    // transform: translate(-50%, -50%) perspective(1000px) rotateX(180deg);
   }
 }
 
-@media screen and (min-width: 1200px) {
+@media screen and (min-width: 1024px) {
   .modal {
     max-width: 528px;
     min-height: 581px;
   }
 }
 
-// olga
+// ----------------Custom--------------
 
 .modal__container{
   background-color: var(--white-color);
+  height: 100vh;
   width: 100%;
   padding: 0;
+  overflow: auto;
+    @media screen and (min-width: 768px){
+      height: auto;
+  }
+  @media screen and (min-width: 1024px){
+    overflow: hidden;
+  }
 }
 
 .modal__film-title {
@@ -461,30 +467,29 @@ width: 396px;
 }
 .modal__poster-wrapper {
   display: flex;
-  // border-radius: 5px;
   overflow: hidden;
   width: 100%;
     @media screen and (min-width: 768px){
       width: 264px;
   }
     @media screen and (min-width: 1024px){
-  width: 396px;
+      width: 396px;
   }
 }
 
 .modal__poster {
   width: 100%;
-  
-    border-radius: 5px;
+  border-radius: 5px;
 }
 
 
 .modal__content{
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   padding: 20px 20px 40px 20px;
       @media screen and (min-width: 768px){
-      padding: 20px 30px 40px 30px;
+        flex-direction: row;
+        padding: 20px 30px 40px 30px;
   }
 }
 
@@ -496,7 +501,10 @@ width: 396px;
 .modal__container-info{
   display: flex;
   flex-direction: column;
-  margin-left: 30px;
+  @media screen and (min-width: 768px){
+    margin-left: 30px;
+  }
+  
 }
 
 .modal__text-container{
@@ -504,26 +512,44 @@ width: 396px;
 }
 
 .modal__btn{
-      width: 112px;
-      height: 44px;
-      background: var(--white-color);
-      border: 1px solid #000000;
-      border-radius: 5px;
-      margin-right: 15px;
-      cursor: pointer;
-      @include font(500, 12px, 16px);
-      text-transform: uppercase;
+  width: 112px;
+  height: 44px;
+  background: var(--white-color);
+  border: 1px solid #000000;
+  border-radius: 5px;
+  // margin-right: 15px;
+  cursor: pointer;
+  @include font(500, 12px, 16px);
+  text-transform: uppercase;
+  @media screen and (min-width: 768px){
+    width: 125px;
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+  @media screen and (min-width: 1024px){
+    width: 136px;
+  }
 
-        &:hover,
-        &:focus {
-          color: var(--white-color);
-          border: none;
-          background-color: var(--accent-color);
-          box-shadow: 0px 8px 43px rgba(255, 107, 1, 60%);
-          transition: 500ms var(--timing);
+
+  &:hover,
+  &:focus {
+    color: var(--white-color);
+    border: none;
+    background-color: var(--accent-color);
+    box-shadow: 0px 8px 43px rgba(255, 107, 1, 60%);
+    transition: 500ms var(--timing);
 }
 }
 
 .modal__close-btn{
   border: none;
+}
+
+.modal__btn-wrapper{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+    @media screen and (min-width: 1024px){
+    width: 290px;
+  }
 }
