@@ -52,7 +52,6 @@
   object-fit: cover;
   margin-left: auto;
   margin-right: auto;
-  
 }
 
 .card__thumb {
@@ -107,11 +106,11 @@
   display: none;
 }
 
-.library__empty{
+.library__empty {
   background-color: black;
 }
-.library__empty-text{
+.library__empty-text {
   text-align: center;
   color: var(--accent-color);
-  @include font(500, 20px, 40px)
+  @include font(500, 20px, 40px);
 }
