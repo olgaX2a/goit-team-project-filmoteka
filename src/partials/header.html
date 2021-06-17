@@ -1,5 +1,28 @@
 <header class="home__page">
   <div class="container">
+    <div class="toolbar">
+    <!-- Разметка переключателя темы -->
+    <div class="theme-switch">
+      <svg class="theme-switch__icon" role="img" aria-label="Иконка солнца">
+        <use class="theme__icon" href="./images/theme/sprite.svg#sun"
+          width="25px"
+          height="25px"></use>
+      </svg>
+    
+      <div class="theme-switch__control">
+        <input class="theme-switch__toggle" type="checkbox" name="theme" id="theme-switch-toggle"
+          aria-label="Переключить между тёмной и светлой темой" />
+        <label aria-hidden="true" class="theme-switch__track" for="theme-switch-toggle" height="24px">
+        </label>
+        <div aria-hidden="true" class="theme-switch__marker"></div>
+      </div>
+    
+      <svg class="theme-switch__icon" aria-label="Иконка луны">
+        <use href="./images/theme/sprite.svg#moon"></use>
+      </svg>
+    </div>
+    </div>
+
     <nav>
       <a class="logo link" href="#">
         <svg class="logo__icon" width="24px" height="24px">
@@ -24,13 +47,13 @@
         </ul>
 
         <div class="nav__auth">
-          <button class="button_registration auth__button" type="button">
+          <button class="button_registration auth__button" type="button" data-title="register">
             <svg class="button-icon" width="24px" height="24px">
               <use href="../src/images/sprite.svg#signup"></use>
             </svg>
           </button>
 
-          <button class="button_login auth__button" type="button">
+          <button class="button_login auth__button" type="button" data-title="log in">
             <svg class="button-icon" width="24px" height="24px">
               <use href="../src/images/sprite.svg#login"></use>
             </svg>
@@ -38,7 +61,7 @@
 
 
           <p class="user__name hidden"></p>
-          <button class="button_signOut auth__button hidden" type="button">
+          <button class="button_signOut auth__button hidden" type="button" data-title="sigh out">
             <svg class="button-icon" width="24px" height="24px">
               <use href="../src/images/sprite.svg#signout"></use>
             </svg>
@@ -53,7 +76,7 @@
         type="text"
         name="query"
         autocomplete="on"
-        placeholder="Поиск фильмов"
+        placeholder="Search movies"
       />
       <button class="search__img js-search" type="button" title="Search">
         <svg class="search__icon" width="20px" height="20px">
@@ -66,6 +89,8 @@
         </svg>
       </button>
     </form>
+
+    <span class="error__message hidden">Search result not successful. Enter the correct movie name.</span>
 
     <div class="library__buttons hidden">
       <ul class="button__list list">

@@ -77,19 +77,20 @@
 }
 
 header .container {
-  padding-top: 53px;
-  padding-bottom: 97px;
+  padding-top: 23px;
+  padding-bottom: 20px;
+  text-align: center;
 }
 
 @media screen and (min-width: 768px) {
   header .container {
-    padding-top: 41px;
+    padding-top: 20px;
   }
 }
 
 @media screen and (min-width: 1024px) {
   header .container {
-    padding-top: 48px;
+    padding-top: 24px;
   }
 }
 
@@ -97,7 +98,13 @@ nav {
   display: flex;
   justify-content: space-between;
   align-items: baseline;
-  margin-bottom: 45px;
+  margin-bottom: 10px;
+}
+
+@media screen and (min-width: 768px) {
+  nav {
+    margin-bottom: 30px;
+  }
 }
 
 .nav__menu {
@@ -115,6 +122,13 @@ nav {
   text-transform: uppercase;
 }
 
+.navigation__link:hover,
+.navigation__link:focus {
+  color: #ff6b08;
+  box-shadow: 0px 8px 43px rgba(255, 107, 1, 0.6);
+  transition: 500ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
 .current-page.navigation__link::after {
   position: absolute;
   content: '';
@@ -129,11 +143,44 @@ nav {
 
 .navigation {
   display: flex;
-  margin-right: 50px;
+  margin-right: 10px;
+}
+
+@media screen and (min-width: 768px) {
+  .navigation {
+    margin-right: 59px;
+  }
 }
 
 .navigation__item:not(:last-child) {
-  margin-right: 39px;
+  margin-right: 19px;
+}
+
+@media screen and (min-width: 768px) {
+  .navigation__item:not(:last-child) {
+    margin-right: 39px;
+  }
+}
+
+.auth__button {
+  position: relative;
+}
+
+.auth__button:hover::after {
+  content: attr(data-title);
+  position: absolute;
+  left: 20%;
+  top: 70%;
+  z-index: 1;
+  color: #ff6b08;
+}
+
+.error__message {
+  color: #ff001b;
+}
+
+#search {
+  margin-bottom: 22px;
 }
 
 .search__input {
@@ -184,4 +231,8 @@ input::placeholder {
 
 .search__img:focus {
   box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
+}
+
+.toolbar {
+  margin-bottom: 24px;
 }

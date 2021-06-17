@@ -80,6 +80,10 @@
   border: none;
 }
 
+.auth__button {
+  cursor: pointer;
+}
+
 .form-button-close:hover,
 .form-button-close:focus {
   box-shadow: 0px 8px 43px rgba(255, 107, 1, 0.6);
