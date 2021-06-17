@@ -59,7 +59,9 @@ function clearCardsMarkup() {
 
 export function renderEmptySearch() {
   refs.emptySearch.classList.remove('hidden');
+  refs.errorMessage.classList.remove('hidden');
 }
 export function hideEmptySearch() {
   refs.emptySearch.classList.add('hidden');
+  refs.errorMessage.classList.add('hidden');
 }

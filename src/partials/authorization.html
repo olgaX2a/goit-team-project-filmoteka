@@ -6,7 +6,7 @@
             <h2>Enter your email & password for registration</h2>
             <input type="text" autocomplete="username" class="hidden"/>
             <label for="reg-email">E-mail</label>
-            <input name="reg-email" class="mail" type="mail" id="reg-email" />
+            <input name="reg-email" class="mail" type="email" id="reg-email" autocomplete="new-email"/>
             <label for="reg-password">Password</label>
             <input name="reg-pass" class="pass" type="password" id="reg-password" autocomplete="new-password" />
             <button class="register-button button" type="submit">Register</button>
@@ -16,8 +16,8 @@
             <h2>Enter your email & password for login</h2>
             <input type="text" autocomplete="username" class="hidden" />
             <label for="log-email">E-mail</label>
-            <input name="log-email" class="mail" type="mail" id="log-email"/>
-            <label for="log-passwword">Password</label>
+            <input name="log-email" class="mail" type="email" id="log-email" autocomplete="current-emails"/>
+            <label for="log-password">Password</label>
             <input name="log-pass" class="pass" type="password" id="log-password" autocomplete="current-password" />
             <button class="log-in-button button" type="submit">Login</button>
         </form>
