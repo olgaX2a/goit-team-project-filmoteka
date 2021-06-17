@@ -9,8 +9,8 @@ export default {
 
   //   cards
   cardList: document.querySelector('.card__list'),
-  emptyLib: document.querySelector('.library__empty'),
-  emptySearch: document.querySelector('.search__empty'),
+  emptyLib: document.querySelector('.js-library-empty'),
+  emptySearch: document.querySelector('.js-search-empty'),
   // pagination
 
   // modal-film

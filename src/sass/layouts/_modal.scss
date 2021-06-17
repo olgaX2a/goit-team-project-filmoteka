@@ -496,7 +496,10 @@ width: 396px;
 .modal__container-info{
   display: flex;
   flex-direction: column;
-  margin-left: 30px;
+  @media screen and (min-width: 768px){
+    margin-left: 30px;
+  }
+  
 }
 
 .modal__text-container{
