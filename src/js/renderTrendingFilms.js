@@ -7,6 +7,7 @@ import refs from './refs';
 import { hideEmptyLib } from './userLibrary';
 import { hideEmptySearch } from './renderSearch';
 
+// отрисовка популярных фильмов при загрузке страницы;
 document.addEventListener('DOMContentLoaded', renderTrending);
 refs.logoLink.addEventListener('click', renderHomePage);
 refs.homeLink.addEventListener('click', renderHomePage);
@@ -23,7 +24,6 @@ function renderHomePage() {
 export default async function renderTrending() {
   try {
     const trends = await APi.fetchTrending().then(data => {
-      APi.totalPages = Number(data.total_pages);
       return data.results;
     });
     const genres = await APi.getGenresList().then(list => {

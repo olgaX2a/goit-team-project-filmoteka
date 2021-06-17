@@ -19,7 +19,10 @@ const prevDotsRef = document.querySelector('#previous');
 const afterDotsRef = document.querySelector('#after');
 
 
-paginationRef.addEventListener('click', onPaginationClick);
+paginationRef.addEventListener('click', () => {
+  showSpinner();
+  onPaginationClick();
+});
 
 let currentPage = 1;
 
@@ -30,6 +33,7 @@ leftArrowRef.hidden = true;
 firstPageRef.hidden = true;
 
 function onPaginationClick(event) {
+  showSpinner();
   if (event.target.tagName === 'BUTTON') {
     if (Number(event.target.textContent)) {
       currentPage = Number(event.target.textContent);
