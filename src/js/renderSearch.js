@@ -5,18 +5,15 @@ import { showSpinner, hideSpinner } from '../js/spiner';
 import { openModal } from './renderMovieInfo';
 import paginationAPI from './pagination';
 import refs from './refs';
+import { hidePagination } from './userLibrary';
 
 refs.search.addEventListener('submit', onSearchSubmit);
 
 function onSearchSubmit(event) {
   event.preventDefault();
   clearCardsMarkup();
-
   APi.searchQuery = event.target.query.value.trim();
-  console.log('APi.searchQuery :>> ', !APi.searchQuery);
   if (!APi.searchQuery) {
-    // временный вывод в консоль, необходимо выкидывать ошибку в разметку
-    console.log('Nothing to search');
     renderEmptySearch();
     return;
   } else {
@@ -37,8 +34,6 @@ export default async function renderSearch() {
       return list.genres;
     });
     const result = await createObj(trends, genres);
-    // временный вывод в консоль для контроля
-    // console.log('result :>> ', result);
     if (result.length > 0) {
       refs.cardList.innerHTML = cardFilm(result);
       result;
@@ -61,10 +56,8 @@ function clearCardsMarkup() {
 export function renderEmptySearch() {
   refs.emptySearch.classList.remove('hidden');
   refs.errorMessage.classList.remove('hidden');
-  refs.pagination.classList.add('hidden');
 }
 export function hideEmptySearch() {
   refs.emptySearch.classList.add('hidden');
   refs.errorMessage.classList.add('hidden');
-  refs.pagination.classList.remove('hidden');
 }

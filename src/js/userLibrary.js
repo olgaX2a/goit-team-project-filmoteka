@@ -8,7 +8,7 @@ import { hideEmptySearch } from './renderSearch';
 
 // Library render
 refs.libWatched.addEventListener('click', () => {
-  hidePagination();
+  // hidePagination();
   hideEmptySearch();
   clearContent(refs.cardList);
   const result = getWatchedFromLocal();
@@ -24,7 +24,7 @@ refs.libWatched.addEventListener('click', () => {
 });
 
 refs.libQueue.addEventListener('click', () => {
-  hidePagination();
+  // hidePagination();
   hideEmptySearch();
   clearContent(refs.cardList);
   const result = getQueueFromLocal();
@@ -40,7 +40,7 @@ refs.libQueue.addEventListener('click', () => {
 });
 
 refs.myLibraryLink.addEventListener('click', () => {
-  hidePagination();
+  // hidePagination();
   hideEmptySearch();
   clearContent(refs.cardList);
   const fullLibrary = getFullLibraryFromLocal();
