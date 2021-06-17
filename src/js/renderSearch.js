@@ -6,6 +6,7 @@ import { openModal } from './renderMovieInfo';
 import paginationAPI from './pagination';
 import refs from './refs';
 
+
 refs.search.addEventListener('submit', onSearchSubmit);
 
 function onSearchSubmit(event) {
@@ -13,7 +14,7 @@ function onSearchSubmit(event) {
   clearCardsMarkup();
 
   APi.searchQuery = event.target.query.value.trim();
-  // console.log('APi.searchQuery :>> ', !APi.searchQuery);
+  console.log('APi.searchQuery :>> ', !APi.searchQuery);
   if (!APi.searchQuery) {
     // временный вывод в консоль, необходимо выкидывать ошибку в разметку
     console.log('Nothing to search');
@@ -30,8 +31,7 @@ function onSearchSubmit(event) {
 export default async function renderSearch() {
   try {
     const trends = await APi.searchMovie().then(data => {
-      console.dir(APi.searchMovie);
-      APi.totalPages = Number(data.total_pages);
+      APi.setTotalPage(data.total_pages);
       return data.results;
     });
     const genres = await APi.getGenresList().then(list => {
@@ -51,15 +51,22 @@ export default async function renderSearch() {
     console.log('error :>> ', error);
   } finally {
     hideSpinner();
+    pagination.setTotalItems(APi.getTotalPage());
   }
 }
+
+
+
 function clearCardsMarkup() {
   refs.cardList.innerHTML = '';
 }
 
 export function renderEmptySearch() {
   refs.emptySearch.classList.remove('hidden');
+  refs.errorMessage.classList.remove('hidden');
 }
 export function hideEmptySearch() {
   refs.emptySearch.classList.add('hidden');
+  refs.errorMessage.classList.add('hidden');
 }
+

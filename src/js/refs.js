@@ -6,6 +6,7 @@ export default {
   myLibraryLink: document.querySelector('.link__library'),
   libWatched: document.querySelector('.js-lib-watched'),
   libQueue: document.querySelector('.js-lib-queue'),
+  errorMessage: document.querySelector('.error__message'),
 
   //   cards
   cardList: document.querySelector('.card__list'),
