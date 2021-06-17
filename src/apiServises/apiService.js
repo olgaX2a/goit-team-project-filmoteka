@@ -1,14 +1,11 @@
-import { pagination } from "../js/pagination.js";
-
 export const API_KEY = 'a6a422d110dec9c7fa9eeee757b6f274';
 export const BASE_URL = 'https://api.themoviedb.org/3'
 export default {
     mediaType: 'movie',
     timeWindow: 'week',
-    searchQuery: 'cat',
+    searchQuery: '',
     page: 1,
   language: 'en',
-    stringUrl: 'https://api.themoviedb.org/3/trending/movie/week?api_key=a6a422d110dec9c7fa9eeee757b6f274&page=1&language=',
     totalPage: 1000,
 
 
@@ -24,7 +21,6 @@ export default {
 // поиск фильма по названию
     searchMovie() {
         const url = `${BASE_URL}/search/${this.mediaType}?api_key=${API_KEY}&query=${this.searchQuery}&page=${this.page}&language=${this.language}`;
-      this.stringUrl = url;
       return fetch(url)
             .then(res => res.json())
             .catch((error) => console.log(error))
@@ -56,7 +52,16 @@ export default {
     },
     decrementPage() {
         this.page -= 1;
-    },
+  },
+    setPage(value) {
+    this.page = value;
+  },
+  setTotalPage(value) {
+    this.totalPage = value;
+  },
+  getTotalPage() {
+    return this.totalPage;
+  },
 // для работы со поисковым запросом (предварительно)
     get query() {
         return this.searchQuery;
@@ -83,10 +88,4 @@ export default {
   set totalPages(num) {
     this.totalPage = num;
   },
-  get url() {
-    return this.stringUrl;
-  },
-  set url(link) {
-    this.stringUrl = link;
-  }
 };

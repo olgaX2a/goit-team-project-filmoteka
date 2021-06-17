@@ -3,12 +3,9 @@ import APi from '../apiServises/apiService';
 import { createObj } from '../apiServises/normalizeResults';
 import {showSpinner, hideSpinner} from '../js/spiner';
 import { openModal } from './renderMovieInfo';
-import { pagination } from './pagination.js';
-
 
 
 const searchRef = document.getElementById('search');
-
 const cardList = document.querySelector('.card__list');
 
 // отрисовка популярных фильмов при загрузке страницы;
@@ -36,7 +33,6 @@ homeLink.addEventListener('click', () => {
 export default async function renderTrending() {
   try {
     const trends = await APi.fetchTrending().then(data => {
-      APi.totalPages = Number(data.total_pages);
       return data.results;
     });
     const genres = await APi.getGenresList().then(list => {

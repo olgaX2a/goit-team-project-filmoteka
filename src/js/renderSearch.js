@@ -3,7 +3,7 @@ import APi from '../apiServises/apiService';
 import { createObj } from '../apiServises/normalizeResults';
 import {showSpinner, hideSpinner} from '../js/spiner';
 import { openModal } from './renderMovieInfo';
-import { pagination } from './pagination.js';
+import { pagination } from './pagination';
 
 
 const cardList = document.querySelector('.card__list');
@@ -16,7 +16,7 @@ function onSearchSubmit(event) {
   clearCardsMarkup();
 
   APi.searchQuery = event.target.query.value.trim();
-  // console.log('APi.searchQuery :>> ', !APi.searchQuery);
+  console.log('APi.searchQuery :>> ', !APi.searchQuery);
   if (!APi.searchQuery) {
     // временный вывод в консоль, необходимо выкидывать ошибку в разметку
       console.log('Nothing to search');
@@ -25,19 +25,14 @@ function onSearchSubmit(event) {
   else {
     showSpinner();
     APi.resetPage();
-    pagination.movePageTo(1);
-    renderSearch()
+    renderSearch();
   }
 }
 
-
 export default async function renderSearch() {
-
   try {
     const trends = await APi.searchMovie().then(data => {
-      console.dir(APi.searchMovie)
-      APi.totalPages = Number(data.total_pages);
-      pagination.reset(Number(data.total_pages));
+      APi.setTotalPage(data.total_pages);
       return data.results;
     });
     const genres = await APi.getGenresList().then(list => {
@@ -54,10 +49,12 @@ export default async function renderSearch() {
     console.log('error :>> ', error);
   } finally {
     hideSpinner();
+    pagination.setTotalItems(APi.getTotalPage());
   }
-
 }
+
+
+
 function clearCardsMarkup() {
   cardList.innerHTML = "";
-}
-
+};
