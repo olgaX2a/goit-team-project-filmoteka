@@ -5,7 +5,6 @@ import renderSearch from './renderSearch';
 import { showSpinner, hideSpinner} from './spiner.js';
 // tui-pagination
 import Pagination from 'tui-pagination';
-import 'tui-pagination/dist/tui-pagination.css';
 import API from '../apiServises/apiService.js';
 
 
