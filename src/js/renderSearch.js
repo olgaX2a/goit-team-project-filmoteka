@@ -21,8 +21,7 @@ function onSearchSubmit(event) {
     // временный вывод в консоль, необходимо выкидывать ошибку в разметку
       console.log('Nothing to search');
       return
-  }
-  else {
+  } else {
     showSpinner();
     APi.resetPage();
     renderSearch()

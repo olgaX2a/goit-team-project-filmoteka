@@ -5,7 +5,7 @@ const createYear = function(obj) {
 const createPoster = function(obj) {
   return obj.poster_path
     ? "https://image.tmdb.org/t/p/w500" + obj.poster_path
-    : "./images/noPoster/t-plug2.png";
+    : "https://cdn.pixabay.com/photo/2017/08/16/01/54/m-ms-2646242_640.png";
 }
 
 const createGenres = function(obj, list) {
