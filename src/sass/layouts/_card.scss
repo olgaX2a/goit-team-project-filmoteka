@@ -50,11 +50,16 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+  margin-left: auto;
+  margin-right: auto;
+  
 }
 
 .card__thumb {
   border-radius: 5px;
   overflow: hidden;
+  min-height: 402px;
+  background-color: black;
 }
 
 .card__info {
@@ -100,4 +105,13 @@
 
 .is-hidden {
   display: none;
+}
+
+.library__empty{
+  background-color: black;
+}
+.library__empty-text{
+  text-align: center;
+  color: var(--accent-color);
+  @include font(500, 20px, 40px)
 }
