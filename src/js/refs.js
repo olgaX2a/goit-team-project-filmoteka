@@ -9,6 +9,7 @@ export default {
 
   //   cards
   cardList: document.querySelector('.card__list'),
+  emptyLib: document.querySelector('.library__empty'),
   // pagination
 
   // modal-film
@@ -16,8 +17,10 @@ export default {
   modalFilm: document.querySelector('.modal'),
   watchedBtn: document.querySelector('.js-modal-watched'),
   queueBtn: document.querySelector('.js-modal-queue'),
-  closeModalBtn: document.querySelector('.modal-close-btn'),
+  closeModalBtn: document.querySelector('.modal__close-btn'),
   backdrop: document.querySelector('.backdrop'),
+  modalPoster: document.querySelector('.modal__poster-wrapper'),
+  modalText: document.querySelector('.modal__text-container'),
 
   // footer
 

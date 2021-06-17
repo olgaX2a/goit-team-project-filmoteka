@@ -1,5 +1,6 @@
 import { watchedTest, queueTest, filmToCheckOne, filmToCheckTwo, cruella } from './testFilms';
 import cardFilm from '../templates/card';
+import emptyLib from '../templates/emptyLib';
 import refs from './refs';
 
 // export let targetFilm;
@@ -9,20 +10,43 @@ import refs from './refs';
 refs.libWatched.addEventListener('click', () => {
   clearContent(refs.cardList);
   const result = getWatchedFromLocal();
-  renderCardList(result);
+  if (result.length > 0) {
+    hideEmptyLib();
+    renderCardList(result);
+    return;
+  }
+  if (result.length === 0) {
+    renderEmptyLib();
+    return;
+  }
 });
 
 refs.libQueue.addEventListener('click', () => {
   clearContent(refs.cardList);
   const result = getQueueFromLocal();
-  renderCardList(result);
+  if (result.length > 0) {
+    hideEmptyLib();
+    renderCardList(result);
+    return;
+  }
+  if (result.length === 0) {
+    renderEmptyLib();
+    return;
+  }
 });
 
 refs.myLibraryLink.addEventListener('click', () => {
   clearContent(refs.cardList);
   const fullLibrary = getFullLibraryFromLocal();
-  console.log('fullLibrary :>> ', fullLibrary);
-  renderCardList(fullLibrary);
+  if (fullLibrary.length > 0) {
+    hideEmptyLib();
+    renderCardList(fullLibrary);
+    return;
+  }
+  if (fullLibrary.length === 0) {
+    renderEmptyLib();
+    return;
+  }
 });
 // ------END FUNCTIONS------
 
@@ -32,40 +56,6 @@ export function getFullLibraryFromLocal() {
   const queueArray = getQueueFromLocal();
   return watchedArray.concat(queueArray);
 }
-
-// export function onWatchedBtnClick() {
-//   const action = checkWatchedDataAction();
-//   console.log('action :>> ', action);
-//   if (action === 'add') {
-//     console.log('targetFilm in listener:>> ', targetFilm);
-//     addFilmToWatched(targetFilm);
-//     console.log('targetFilm :>> ', targetFilm);
-//     renderRemoveFromWatched();
-//     return;
-//   }
-//   if (action === 'remove') {
-//     removeFilmFromWatched(targetFilm);
-//     console.log('targetFilm :>> ', targetFilm);
-//     renderAddToWatched();
-//     return;
-//   }
-// }
-
-// export function onQueueBtnClick() {
-//   const action = checkQueueDataAction();
-//   if (action === 'add') {
-//     addFilmToQueue(targetFilm);
-//     console.log('targetFilm :>> ', targetFilm);
-//     renderRemoveFromQueue();
-//     return;
-//   }
-//   if (action === 'remove') {
-//     removeFilmFromQueue(targetFilm);
-//     console.log('targetFilm :>> ', targetFilm);
-//     renderAddToQueue();
-//     return;
-//   }
-// }
 
 export function addFilmToWatched(film) {
   const userWatched = getWatchedFromLocal();
@@ -104,6 +94,13 @@ export function clearContent(element) {
 
 export function renderCardList(markup) {
   refs.cardList.innerHTML = cardFilm(markup);
+}
+
+export function renderEmptyLib() {
+  refs.emptyLib.classList.remove('hidden');
+}
+export function hideEmptyLib() {
+  refs.emptyLib.classList.add('hidden');
 }
 
 export function getWatchedFromLocal() {
