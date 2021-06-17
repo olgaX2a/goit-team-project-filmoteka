@@ -35,12 +35,16 @@ export async function openModal(event) {
   showModal();
 }
 
+const prevent = event => event.preventDefault();
+
 function showModal() {
   refs.backdrop.classList.remove('is-hidden');
+  document.addEventListener('wheel', prevent, { passive: false });
   window.addEventListener('keydown', closeModalByEscape);
 }
 function closeModal() {
   refs.backdrop.classList.add('is-hidden');
+  document.removeEventListener('wheel', prevent);
   window.removeEventListener('keydown', closeModalByEscape);
 }
 
