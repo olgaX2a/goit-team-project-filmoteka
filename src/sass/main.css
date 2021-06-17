@@ -1313,7 +1313,7 @@ li {
   opacity: 0;
 }
 
-@media screen and (min-width: 1200px) {
+@media screen and (min-width: 1024px) {
   .modal {
     max-width: 528px;
     min-height: 581px;
@@ -1322,8 +1322,16 @@ li {
 
 .modal__container {
   background-color: var(--white-color);
+  height: 100vh;
   width: 100%;
   padding: 0;
+  overflow: scroll;
+}
+
+@media screen and (min-width: 1024px) {
+  .modal__container {
+    overflow: hidden;
+  }
 }
 
 .modal__film-title {
