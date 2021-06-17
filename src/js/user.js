@@ -12,7 +12,7 @@
 
     // TODO: Replace the following with your app's Firebase project configuration
       // For Firebase JavaScript SDK v7.20.0 and later, `measurementId` is an optional field
-      const firebaseConfig = {
+      const config = {
         apiKey: "AIzaSyABQXBd2NFX3W2v3R2amAJrQ6tIPkdPgGY",
         authDomain: "filmoteka-bcf47.firebaseapp.com",
         databaseURL: "https://filmoteka-bcf47-default-rtdb.firebaseio.com",
@@ -24,17 +24,17 @@
       };
 
       // Initialize Firebase
-      firebase.initializeApp(firebaseConfig);
+      firebase.initializeApp(config);
 
-// var admin = require("firebase-admin");
-import * as admin from 'firebase-admin';
+// let admin = require("firebase-admin");
+// import * as admin from 'firebase-admin';
 
-var serviceAccount = require("../../serviceAccountKey.json");
+// let serviceAccount = require("../../serviceAccountKey.json");
 
-admin.initializeApp({
-  credential: admin.credential.cert(serviceAccount),
-  databaseURL: "https://filmoteka-bcf47-default-rtdb.firebaseio.com"
-});
+// admin.initializeApp({
+//   credential: admin.credential.cert(serviceAccount),
+//   databaseURL: "https://filmoteka-bcf47-default-rtdb.firebaseio.com"
+// });
 
 const openRegistrFormButton = document.querySelector('.button_registration');
 const openLogInFormButton = document.querySelector('.button_login');
@@ -44,8 +44,6 @@ const body = document.querySelector('body');
 const registrationButton = document.querySelector('.register-button');
 const logInButton = document.querySelector('.log-in-button');
 const signOutButton = document.querySelector('.button_signOut');
-const logInMail = document.querySelector('.logIn .mail');
-const logInPass = document.querySelector('.logIn .pass');
 const formButtonClose = document.querySelector('.form-button-close');
 const logInForm = document.querySelector('.logIn');
 
@@ -88,8 +86,8 @@ registrationButton.addEventListener('click', event => {
 });
 
 function handleRegister() {
-  var email = document.getElementById('reg-email').value;
-  var password = document.getElementById('reg-password').value;
+  const email = document.getElementById('reg-email').value;
+  const password = document.getElementById('reg-password').value;
   if (email.length < 4) {
     alert('Please enter correct email address.');
     return;
@@ -101,8 +99,8 @@ function handleRegister() {
   // создание пользователя по имейлу и паролю
   firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
   // обработка ошибок.
-    var errorCode = error.code;
-    var errorMessage = error.message;
+    const errorCode = error.code;
+    const errorMessage = error.message;
     if (errorCode == 'auth/weak-password') {
       alert('The password is too weak.');
     } else {
@@ -110,14 +108,8 @@ function handleRegister() {
       }
       console.log(error);
   });
-  sendEmailVerification();
-}
-    
-//верификация почтового ящика пользователя
-function sendEmailVerification() {
-  firebase.auth().currentUser.sendEmailVerification().then(function() {
-    alert('Email Verification Sent! Please follow the link in your email!');
-    if (confirm('Email Verification Sent! Please follow the link in your email!')) {
+  
+  if (confirm('Your account has been created')) {
       body.classList.remove('blocked-scroll');
       formModal.classList.add('hidden');
       registrationForm.classList.add('hidden');
@@ -125,10 +117,25 @@ function sendEmailVerification() {
       signOutButton.classList.remove('hidden');
       openRegistrFormButton.classList.add('hidden');
       openLogInFormButton.classList.add('hidden');
-    } 
-  });
+  // sendEmailVerification();
+}
+    
+//верификация почтового ящика пользователя
+// function sendEmailVerification() {
+//   firebase.auth().currentUser.sendEmailVerification().then(function() {
+//     if (confirm('Email Verification Sent! Please follow the link in your email!')) {
+//       body.classList.remove('blocked-scroll');
+//       formModal.classList.add('hidden');
+//       registrationForm.classList.add('hidden');
+//       logInForm.classList.add('hidden');
+//       signOutButton.classList.remove('hidden');
+//       openRegistrFormButton.classList.add('hidden');
+//       openLogInFormButton.classList.add('hidden');
+//     } 
+//   });
   
 }
+
 
 //работа с формой входа
 openLogInFormButton.addEventListener('click', event => {
@@ -152,8 +159,8 @@ function toggleLogIn() {
   if (firebase.auth().currentUser) {
     firebase.auth().signOut();
   } else {
-    var email = document.getElementById('log-email').value;
-    var password = document.getElementById('log-password').value;
+    const email = document.getElementById('log-email').value;
+    const password = document.getElementById('log-password').value;
     if (email.length < 4) {
       alert('Please enter an email address.');
       return;
@@ -165,8 +172,8 @@ function toggleLogIn() {
     // вход по почтовому ящику и паролю
     firebase.auth().signInWithEmailAndPassword(email, password).catch(function (error) {
       // обработка ошибок
-      var errorCode = error.code;
-      var errorMessage = error.message;
+      const errorCode = error.code;
+      const errorMessage = error.message;
       if (errorCode === 'auth/wrong-password') {
         alert('Wrong password.');
       } else {
