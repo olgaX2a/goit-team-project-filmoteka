@@ -6,7 +6,6 @@ import { openModal } from './renderMovieInfo';
 import paginationAPI from './pagination';
 import refs from './refs';
 
-
 refs.search.addEventListener('submit', onSearchSubmit);
 
 function onSearchSubmit(event) {
@@ -55,8 +54,6 @@ export default async function renderSearch() {
   }
 }
 
-
-
 function clearCardsMarkup() {
   refs.cardList.innerHTML = '';
 }
@@ -64,9 +61,10 @@ function clearCardsMarkup() {
 export function renderEmptySearch() {
   refs.emptySearch.classList.remove('hidden');
   refs.errorMessage.classList.remove('hidden');
+  refs.pagination.classList.add('hidden');
 }
 export function hideEmptySearch() {
   refs.emptySearch.classList.add('hidden');
   refs.errorMessage.classList.add('hidden');
+  refs.pagination.classList.remove('hidden');
 }
-

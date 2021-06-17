@@ -12,8 +12,9 @@ export default {
   cardList: document.querySelector('.card__list'),
   emptyLib: document.querySelector('.js-library-empty'),
   emptySearch: document.querySelector('.js-search-empty'),
-  // pagination
 
+  // pagination
+  pagination: document.querySelector('.tui-pagination'),
   // modal-film
   modalInfoContainer: document.querySelector('.modal__container__info'),
   modalFilm: document.querySelector('.modal'),

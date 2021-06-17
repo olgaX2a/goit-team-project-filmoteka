@@ -8,49 +8,49 @@ import { hideEmptySearch } from './renderSearch';
 
 // Library render
 refs.libWatched.addEventListener('click', () => {
+  hidePagination();
+  hideEmptySearch();
   clearContent(refs.cardList);
   const result = getWatchedFromLocal();
   if (result.length > 0) {
     hideEmptyLib();
-    hideEmptySearch();
     renderCardList(result);
     return;
   }
   if (result.length === 0) {
     hideEmptySearch();
-    renderEmptyLib();
     return;
   }
 });
 
 refs.libQueue.addEventListener('click', () => {
+  hidePagination();
+  hideEmptySearch();
   clearContent(refs.cardList);
   const result = getQueueFromLocal();
   if (result.length > 0) {
     hideEmptyLib();
-    hideEmptySearch();
     renderCardList(result);
     return;
   }
   if (result.length === 0) {
-    hideEmptySearch();
     renderEmptyLib();
     return;
   }
 });
 
 refs.myLibraryLink.addEventListener('click', () => {
+  hidePagination();
+  hideEmptySearch();
   clearContent(refs.cardList);
   const fullLibrary = getFullLibraryFromLocal();
   if (fullLibrary.length > 0) {
     hideEmptyLib();
-    hideEmptySearch();
     renderCardList(fullLibrary);
     return;
   }
   if (fullLibrary.length === 0) {
     renderEmptyLib();
-    hideEmptySearch();
     return;
   }
 });
@@ -110,6 +110,10 @@ export function hideEmptyLib() {
   refs.emptyLib.classList.add('hidden');
 }
 
+function hidePagination() {
+  refs.pagination.classList.add('hidden');
+}
+
 export function getWatchedFromLocal() {
   if (JSON.parse(localStorage.getItem('watched'))) {
     return JSON.parse(localStorage.getItem('watched'));
@@ -135,35 +139,30 @@ export function setQueueToLocal(moviesArray) {
 }
 
 export function isInWatched(id) {
+  const numId = +id;
   const watchedList = getWatchedFromLocal();
   if (watchedList.length === 0) {
     return false;
   }
   if (watchedList.length > 0) {
     const resArray = [...watchedList].map(el => el.id);
-    const res = resArray.indexOf(id);
-    if (res === -1) {
-      console.log('not in watched');
-      return false;
-    }
-    if (res >= 0) {
-      console.log('YeS in watched');
-      return true;
-    }
+    const res = resArray.indexOf(numId);
+    return res >= 0 ? true : false;
   }
 }
 export function isInQueue(id) {
+  const numId = +id;
   const queueList = getQueueFromLocal();
   if (queueList.length === 0) {
     return false;
   }
   if (queueList.length > 0) {
     const resArray = [...queueList].map(el => el.id);
-    const res = resArray.indexOf(id);
-    return res > 0 ? false : true;
+    const res = resArray.indexOf(numId);
+    return res >= 0 ? true : false;
   }
 }
-
+// -----BUTTONS------
 export function renderRemoveFromWatched() {
   refs.watchedBtn.innerHTML = 'Remove from watched';
   refs.watchedBtn.setAttribute('data-action', 'remove');
@@ -202,7 +201,8 @@ export function getCorrectQueueButtons(id) {
   if (isInQueue(id)) {
     renderRemoveFromQueue();
     return;
-  } else {
+  }
+  if (!isInQueue(id)) {
     renderAddToQueue();
     return;
   }
