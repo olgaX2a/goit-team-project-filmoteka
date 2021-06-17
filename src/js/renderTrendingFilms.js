@@ -4,6 +4,7 @@ import { createObj } from '../apiServises/normalizeResults';
 import { showSpinner, hideSpinner } from '../js/spiner';
 import { openModal } from './renderMovieInfo';
 import refs from './refs';
+import { hideEmptyLib } from './userLibrary';
 
 // const searchRef = document.getElementById('search');
 
@@ -16,6 +17,7 @@ document.addEventListener('DOMContentLoaded', renderTrending);
 // const logoLink = document.querySelector('.logo');
 
 refs.logoLink.addEventListener('click', () => {
+  hideEmptyLib();
   clearQuery();
   showSpinner();
   APi.resetPage();
@@ -25,6 +27,7 @@ refs.logoLink.addEventListener('click', () => {
 // отрисовка популярных фильмов при нажатии на кнопу HOME;
 // const homeLink = document.querySelector('.link__home');
 refs.homeLink.addEventListener('click', () => {
+  hideEmptyLib();
   clearQuery();
   showSpinner();
   APi.resetPage();

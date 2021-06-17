@@ -5,7 +5,6 @@ import { showSpinner, hideSpinner } from '../js/spiner';
 import { openModal } from './renderMovieInfo';
 import paginationAPI from './pagination';
 import refs from './refs';
-import * as lib from './userLibrary';
 
 refs.search.addEventListener('submit', onSearchSubmit);
 
@@ -18,8 +17,10 @@ function onSearchSubmit(event) {
   if (!APi.searchQuery) {
     // временный вывод в консоль, необходимо выкидывать ошибку в разметку
     console.log('Nothing to search');
+    renderEmptySearch();
     return;
   } else {
+    hideEmptySearch();
     showSpinner();
     APi.resetPage();
     renderSearch();
@@ -48,4 +49,11 @@ export default async function renderSearch() {
 }
 function clearCardsMarkup() {
   refs.cardList.innerHTML = '';
+}
+
+function renderEmptySearch() {
+  refs.emptySearch.classList.remove('hidden');
+}
+function hideEmptySearch() {
+  refs.emptySearch.classList.add('hidden');
 }

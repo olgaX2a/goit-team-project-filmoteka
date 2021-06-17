@@ -1,6 +1,5 @@
 import { watchedTest, queueTest, filmToCheckOne, filmToCheckTwo, cruella } from './testFilms';
 import cardFilm from '../templates/card';
-import emptyLib from '../templates/emptyLib';
 import refs from './refs';
 
 // export let targetFilm;
@@ -48,9 +47,9 @@ refs.myLibraryLink.addEventListener('click', () => {
     return;
   }
 });
-// ------END FUNCTIONS------
+// ------END EVENT LISTENERS------
 
-// ------END FUNCTIONS------
+// ------START FUNCTIONS------
 export function getFullLibraryFromLocal() {
   const watchedArray = getWatchedFromLocal();
   const queueArray = getQueueFromLocal();
