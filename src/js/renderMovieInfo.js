@@ -86,3 +86,5 @@ function onQueueBtnClick() {
     return;
   }
 }
+
+refs.backdrop.addEventListener('click', closeModal);
