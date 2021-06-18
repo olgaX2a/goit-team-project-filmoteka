@@ -168,7 +168,7 @@ function onArrowClick(e) {
 
 }
 
-export const smoothScrool = function() {
+const smoothScrool = function() {
    gallery.innerHTML = '';
     window.scrollTo({ top: 0, behavior: 'smooth' });
 }

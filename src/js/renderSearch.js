@@ -3,14 +3,15 @@ import APi from '../apiServises/apiService';
 import { createObj } from '../apiServises/normalizeResults';
 import { showSpinner, hideSpinner } from '../js/spiner';
 import { openModal } from './renderMovieInfo';
-import paginationAPI from './pagination';
 import refs from './refs';
+import {pagination} from './pagination';
 import { hidePagination, showPagination } from './userLibrary';
 
 refs.search.addEventListener('submit', onSearchSubmit);
 
 function onSearchSubmit(event) {
   event.preventDefault();
+  pagination.movePageTo(1);
   clearCardsMarkup();
   APi.searchQuery = event.target.query.value.trim();
   if (!APi.searchQuery) {
@@ -26,10 +27,15 @@ function onSearchSubmit(event) {
   }
 }
 
+
+
 export default async function renderSearch() {
   try {
     const trends = await APi.searchMovie().then(data => {
       APi.setTotalPage(data.total_pages);
+       if (data.total_pages < 6) {
+        pagination.reset(data.total_pages)
+      }
       return data.results;
     });
     const genres = await APi.getGenresList().then(list => {
