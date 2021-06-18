@@ -46,7 +46,7 @@ const logInButton = document.querySelector('.log-in-button');
 const signOutButton = document.querySelector('.button_signOut');
 const formButtonClose = document.querySelector('.form-button-close');
 const logInForm = document.querySelector('.logIn');
-const navMenu = document.querySelector('.nav__menu');
+const navMenu = document.querySelector('.navigation');
 
 //общая работа с формами - закрытие
 formButtonClose.addEventListener('click', closeFormModal);
