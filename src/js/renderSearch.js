@@ -4,8 +4,8 @@ import { createObj } from '../apiServises/normalizeResults';
 import { showSpinner, hideSpinner } from '../js/spiner';
 import { openModal } from './renderMovieInfo';
 import refs from './refs';
-import { hidePagination } from './userLibrary';
 import {pagination} from './pagination';
+import { hidePagination, showPagination } from './userLibrary';
 
 refs.search.addEventListener('submit', onSearchSubmit);
 
@@ -15,9 +15,11 @@ function onSearchSubmit(event) {
   clearCardsMarkup();
   APi.searchQuery = event.target.query.value.trim();
   if (!APi.searchQuery) {
+    hidePagination();
     renderEmptySearch();
     return;
   } else {
+    showPagination();
     hideEmptySearch();
     showSpinner();
     APi.resetPage();

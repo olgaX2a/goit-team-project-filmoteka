@@ -3,12 +3,18 @@ import cardFilm from '../templates/card';
 import refs from './refs';
 import { hideEmptySearch } from './renderSearch';
 
-// export let targetFilm;
+// ----- Pagination hide-show-----
+export const hidePagination = function () {
+  refs.pagination.classList.add('hidden');
+};
+export const showPagination = function () {
+  refs.pagination.classList.remove('hidden');
+};
 // ------start eventListeners------
 
 // Library render
 refs.libWatched.addEventListener('click', () => {
-  // hidePagination();
+  hidePagination();
   hideEmptySearch();
   clearContent(refs.cardList);
   const result = getWatchedFromLocal();
@@ -24,7 +30,7 @@ refs.libWatched.addEventListener('click', () => {
 });
 
 refs.libQueue.addEventListener('click', () => {
-  // hidePagination();
+  hidePagination();
   hideEmptySearch();
   clearContent(refs.cardList);
   const result = getQueueFromLocal();
@@ -40,7 +46,7 @@ refs.libQueue.addEventListener('click', () => {
 });
 
 refs.myLibraryLink.addEventListener('click', () => {
-  // hidePagination();
+  hidePagination();
   hideEmptySearch();
   clearContent(refs.cardList);
   const fullLibrary = getFullLibraryFromLocal();
@@ -108,10 +114,6 @@ export function renderEmptyLib() {
 }
 export function hideEmptyLib() {
   refs.emptyLib.classList.add('hidden');
-}
-
-export function hidePagination() {
-  refs.pagination.classList.add('hidden');
 }
 
 export function getWatchedFromLocal() {
