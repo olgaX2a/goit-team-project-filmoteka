@@ -7,6 +7,7 @@ import refs from './refs';
 import { hideEmptyLib } from './userLibrary';
 import { hideEmptySearch } from './renderSearch';
 import { hidePagination, showPagination } from './userLibrary';
+import { pagination } from './pagination';
 
 // отрисовка популярных фильмов при загрузке страницы;
 document.addEventListener('DOMContentLoaded', renderTrending);
@@ -14,6 +15,7 @@ refs.logoLink.addEventListener('click', renderHomePage);
 refs.homeLink.addEventListener('click', renderHomePage);
 
 function renderHomePage() {
+  pagination.movePageTo(1);
   showPagination();
   hideEmptySearch();
   hideEmptyLib();
@@ -26,6 +28,10 @@ function renderHomePage() {
 export default async function renderTrending() {
   try {
     const trends = await APi.fetchTrending().then(data => {
+      APi.setTotalPage(data.total_pages);
+      if (data.total_pages < 6) {
+        pagination.reset(data.total_pages);
+      }
       return data.results;
     });
     const genres = await APi.getGenresList().then(list => {
