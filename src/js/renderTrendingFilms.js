@@ -6,6 +6,7 @@ import { openModal } from './renderMovieInfo';
 import refs from './refs';
 import { hideEmptyLib } from './userLibrary';
 import { hideEmptySearch } from './renderSearch';
+import { hidePagination, showPagination } from './userLibrary';
 
 // отрисовка популярных фильмов при загрузке страницы;
 document.addEventListener('DOMContentLoaded', renderTrending);
@@ -13,6 +14,7 @@ refs.logoLink.addEventListener('click', renderHomePage);
 refs.homeLink.addEventListener('click', renderHomePage);
 
 function renderHomePage() {
+  showPagination();
   hideEmptySearch();
   hideEmptyLib();
   clearQuery();
