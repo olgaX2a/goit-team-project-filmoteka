@@ -46,6 +46,7 @@ const logInButton = document.querySelector('.log-in-button');
 const signOutButton = document.querySelector('.button_signOut');
 const formButtonClose = document.querySelector('.form-button-close');
 const logInForm = document.querySelector('.logIn');
+const navMenu = document.querySelector('.nav__menu');
 
 //общая работа с формами - закрытие
 formButtonClose.addEventListener('click', closeFormModal);
@@ -110,13 +111,14 @@ function handleRegister() {
   });
   
   if (confirm('Your account has been created')) {
-      body.classList.remove('blocked-scroll');
-      formModal.classList.add('hidden');
-      registrationForm.classList.add('hidden');
-      logInForm.classList.add('hidden');
-      signOutButton.classList.remove('hidden');
-      openRegistrFormButton.classList.add('hidden');
-      openLogInFormButton.classList.add('hidden');
+    body.classList.remove('blocked-scroll');
+    formModal.classList.add('hidden');
+    registrationForm.classList.add('hidden');
+    logInForm.classList.add('hidden');
+    signOutButton.classList.remove('hidden');
+    openRegistrFormButton.classList.add('hidden');
+    openLogInFormButton.classList.add('hidden');
+    navMenu.classList.remove('hidden');
   // sendEmailVerification();
 }
     
@@ -191,6 +193,7 @@ function toggleLogIn() {
     signOutButton.classList.remove('hidden');
     openRegistrFormButton.classList.add('hidden');
     openLogInFormButton.classList.add('hidden');
+    navMenu.classList.remove('hidden');
   }
 }
 
