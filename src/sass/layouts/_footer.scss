@@ -71,3 +71,8 @@
   margin-left: 10px;
   margin-right: 10px;
 }
+
+.content-hidden {
+  overflow: hidden;
+  pointer-events: none;
+}

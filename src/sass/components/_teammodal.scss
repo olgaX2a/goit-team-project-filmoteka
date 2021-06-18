@@ -26,8 +26,48 @@
 }
 
 .lightbox__content {
+  position: absolute;
   transform: scale(0.95);
   transition: transform var(--animation-duration) var(--timing);
+  border: 1px solid var(--accent-color);
+  padding: 30px 110px;
+  border-radius: 20px;
+
+  background-color: rgba(0, 0, 0, 0.56);
+  background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56));
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.close-modal {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  @include center-flex();
+
+  width: 30px;
+  height: 30px;
+  background: transparent;
+  border: 1px solid var(--accent-color);
+  border-radius: 50%;
+  cursor: pointer;
+
+  &:focus,
+  &:hover {
+    background-color: var(--accent-color);
+  }
+}
+
+.close-modal-icon {
+  fill: var(--accent-color);
+  transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  .close-modal:focus &,
+  .close-modal:hover & {
+    fill: var(--grey-color);
+    background-color: var(--accent-color);
+  }
 }
 
 .lightbox.is-open .lightbox__content {
@@ -36,9 +76,7 @@
   .user-list {
     .content-el {
       width: 200px;
-      &:not(:last-child) {
-        margin-bottom: 10px;
-      }
+      margin-bottom: 10px;
     }
 
     .item-footer {
