@@ -110,7 +110,7 @@ export function hideEmptyLib() {
   refs.emptyLib.classList.add('hidden');
 }
 
-function hidePagination() {
+export function hidePagination() {
   refs.pagination.classList.add('hidden');
 }
 
