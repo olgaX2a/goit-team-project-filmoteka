@@ -30,8 +30,15 @@
   transform: scale(0.95);
   transition: transform var(--animation-duration) var(--timing);
   border: 1px solid var(--accent-color);
-  padding: 30px 110px;
   border-radius: 20px;
+
+  @media screen and (min-width: 768px) {
+    padding: 15px 50px;
+  }
+
+  @media screen and (min-width: 1024px) {
+    padding: 30px 110px;
+  }
 
   background-color: rgba(0, 0, 0, 0.56);
   background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56));
@@ -85,11 +92,14 @@
       color: var(--accent-color);
 
       display: block;
-      padding: 10px;
       border-radius: 8px;
       width: 200px;
-      padding: 15px;
+      padding: 0px, 15px;
       @include centeredFlex();
+
+      @media screen and (min-width: 768px) {
+        padding: 15px;
+      }
 
       &:hover,
       &:focus {
@@ -164,5 +174,15 @@
     flex-basis: calc(100% / 2 - 30px);
     margin-left: 30px;
     margin-top: 30px;
+  }
+}
+
+.teammodal__container {
+  @media screen and (max-width: 767px) {
+    height: 100vh;
+    padding-top: 50px;
+    padding-left: 20px;
+    padding-right: 20px;
+    overflow: auto;
   }
 }
