@@ -1,4 +1,3 @@
-import { watchedTest, queueTest, filmToCheckOne, filmToCheckTwo, cruella } from './testFilms';
 import cardFilm from '../templates/card';
 import refs from './refs';
 import { hideEmptySearch } from './renderSearch';
@@ -91,12 +90,8 @@ export function removeFilmFromWatched(film) {
 }
 export function removeFilmFromQueue(film) {
   const list = getQueueFromLocal();
-  console.log('list :>> ', list);
   const idArray = list.map(obj => obj.id);
-  console.log('idArray :>> ', idArray);
   const indexToRemove = idArray.indexOf(film.id);
-  console.log('indexToRemove :>> ', indexToRemove);
-  console.log('list :>> ', list);
   setQueueToLocal(list);
   refs.queueBtn.setAttribute('data-action', 'add');
 }
@@ -217,10 +212,3 @@ export function getCorrectButtons(id) {
 }
 
 // ------END FUNCTIONS------
-
-// tests
-// addFilmToQueue(cruella);
-// console.log('object 1:>> ', isInQueue(filmToCheckTwo));
-// removeFilmFromQueue(filmToCheckOne);
-// addFilmToQueue(film)
-// console.log('object 2:>> ', isInQueue(filmToCheckTwo));
