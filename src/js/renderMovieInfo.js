@@ -87,4 +87,10 @@ function onQueueBtnClick() {
   }
 }
 
-refs.backdrop.addEventListener('click', closeModal);
+refs.backdrop.addEventListener('click', event => {
+  if (event.currentTarget !== event.target) {
+    return;
+  } else {
+    closeModal();
+  }
+});
